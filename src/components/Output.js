@@ -7,7 +7,7 @@ const Output = (props) => {
 
 
 return(
-    <div>
+    <div className={props.className}>
         <p>
 
         </p>

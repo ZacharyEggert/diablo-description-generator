@@ -165,12 +165,14 @@ const Form = () => {
 
 return(
     <FormContext.Provider value={{formData, formDataPrettier, formOptions, formOther, setFormData, setFormOther, handleFormChange}}>
-    <form onSubmit={e => e.preventDefault()}>
+    <div className='flex flex-row'>
+    <form className='flex-1 w-6/12' onSubmit={e => e.preventDefault()}>
         
         {Object.keys(formData).map(d => (<FormSelect name={d} key={d}/>))}
         
     </form>
-    <Output />
+    <Output className='flex-1 w-6/12'/>
+    </div>
     </FormContext.Provider>
 );
 }
