@@ -4,7 +4,7 @@ import Output from './Output';
 
 const Form = () => {
     const formOptions = {
-        make:['Fender', 'Gibson', 'Jackson'],
+        make:['Fender', 'Gibson', 'Jackson', 'Gretch', 'Knaggs', 'Ibanez', 'Epiphone', 'Schecter', 'PRS', 'Washburn', 'ESP', 'Caparison', 'Martin', 'Taylor', 'Yamaha'],
         model:[],
         year:[],
         finish:[],
