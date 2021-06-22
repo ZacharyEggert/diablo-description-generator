@@ -10,21 +10,22 @@ const FormSelect = (props) => {
 return (
     <div>
         <label htmlFor={props.name} name='hello'>
-            {(props.name).toUpperCase()}: 
+            <span className='w-[12rem] inline-block'>{(props.name).toUpperCase()}:</span> 
             {formOptions[props.name].length>0?(
-                <select name={props.name} value={formData[props.name] || 'select...'} onChange={handleFormChange}>
-                    <option>select...</option>
+                <select className='w-[12rem]' name={props.name} value={formData[props.name] || 'select...'} onChange={handleFormChange}>
+                    <option value=''>select...</option>
                     {formOptions[props.name].map(option => (<option key={option+'opt'}>{option}</option>))}
-                    <option>Other</option>
+                    <option >Other</option>
                 </select>
             ) : (
-                <input name={props.name} value={formData[props.name] || ''} onChange={handleFormChange} />
+                <input placeholder={props.name.toUpperCase()} className='px-1 border-black border-solid border-[1px] my-[1px]' name={props.name} value={formData[props.name] || ''} onChange={handleFormChange} />
             )}
-            {formData[props.name] === 'Other' ? (
-                <input name={`other.${props.name}`} value={formOther[props.name]} onChange={handleFormChange}/>
-            ) : null}
             
         </label>
+            {formData[props.name] === 'Other' ? (
+                <input placeholder={props.name.toUpperCase()} className='px-1 ml-[12rem] border-black border-solid border-[1px] my-[1px]' name={`other.${props.name}`} value={formOther[props.name]} onChange={handleFormChange}/>
+                ) : null}
+            
     </div>
 )
 }

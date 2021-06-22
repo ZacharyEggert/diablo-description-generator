@@ -29,7 +29,7 @@ const Form = () => {
         pickupConfiguration:[],
         pickguard:[],
         controls:[],
-        switch:[],
+        switches:[],
         hardware:[],
         tuningMachines:[],
         bridge:[],
@@ -37,7 +37,7 @@ const Form = () => {
         modifications:[],
         otherFeatures:[],
         stringGuage:['10-46', '9-42'],
-        case:[],
+        guitarCase:[],
     }
     const formDataPrettier = {
         make:'Make',
@@ -65,7 +65,7 @@ const Form = () => {
         pickupConfiguration:'Pickup Configuration',
         pickguard:'Pickguard',
         controls:'Controls',
-        switch:'Switch',
+        switches:'Switch',
         hardware:'Hardware',
         tuningMachines:'Tuning Machines',
         bridge:'Bridge',
@@ -73,7 +73,7 @@ const Form = () => {
         modifications:'Modifications',
         otherFeatures:'Other Features',
         stringGuage:'String Guage',
-        case:'Case'
+        guitarCase:'Case'
     }
     const [formOther, setFormOther] = useState({
         make:'',
@@ -101,7 +101,7 @@ const Form = () => {
         pickupConfiguration:'',
         pickguard:'',
         controls:'',
-        switch:'',
+        switches:'',
         hardware:'',
         tuningMachines:'',
         bridge:'',
@@ -109,7 +109,7 @@ const Form = () => {
         modifications:'',
         otherFeatures:'',
         stringGuage:'',
-        case:''
+        guitarCase:''
     })
     const [formData, setFormData] = useState({
         make:'',
@@ -137,7 +137,7 @@ const Form = () => {
         pickupConfiguration:'',
         pickguard:'',
         controls:'',
-        switch:'',
+        switches:'',
         hardware:'',
         tuningMachines:'',
         bridge:'',
@@ -145,7 +145,7 @@ const Form = () => {
         modifications:'',
         otherFeatures:'',
         stringGuage:'',
-        case:''
+        guitarCase:''
     })
 
     const handleFormChange = (e) => {
@@ -165,7 +165,7 @@ const Form = () => {
 
 return(
     <FormContext.Provider value={{formData, formDataPrettier, formOptions, formOther, setFormData, setFormOther, handleFormChange}}>
-    <div className='flex flex-row'>
+    <div className='flex flex-row p-4'>
     <form className='flex-1 w-6/12' onSubmit={e => e.preventDefault()}>
         
         {Object.keys(formData).map(d => (<FormSelect name={d} key={d}/>))}
