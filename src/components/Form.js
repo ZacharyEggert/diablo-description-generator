@@ -8,7 +8,7 @@ const Form = () => {
         model:[],
         year:[],
         finish:[],
-        countryOfOrigin:['the USA', 'Mexico', 'Japan'],
+        countryOfOrigin:['USA', 'Mexico', 'Japan'],
         serial:[],
         condition:['Mint', 'Excellent', 'Very Good', 'Good'],
         weight:[],
@@ -20,7 +20,7 @@ const Form = () => {
         neckFinish:[],
         fingerBoard:['Rosewood', 'Ebony', 'Maple', 'Pau Ferro', 'Richlite'],
         radius:[7.25, 9.5, 10, 11.5, 12, 14, 15, 16, 20, 24, 'Flat'],
-        neckProfile:['C', 'Chunky C', 'D', 'V', 'U', 'Hard V', 'BB', 'Asymmetrical'],
+        neckProfile:['Modern C shape', 'Chunky C', 'D', 'V', 'U', 'Hard V', 'BB', 'Asymmetrical'],
         inlays:[],
         nutWidth:['1.745', '1.6875' ],
         nut:['Synthetic Bone', 'Composite Bone', 'Tektoid'],
@@ -151,7 +151,7 @@ const Form = () => {
     const handleFormChange = (e) => {
         const register = e.target.name;
         const value = e.target.value;
-        if(register.match('other.')){
+        if(register.match('other.') && !register.match('otherFeatures')){
             const registerOther = register.split('.')[1];
             // console.log('setting formOther')
             setFormOther({...formOther, [registerOther]:value});
