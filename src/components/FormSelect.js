@@ -10,15 +10,15 @@ const FormSelect = (props) => {
 return (
     <div>
         <label htmlFor={props.name} name='hello'>
-            <span className='w-[12rem] inline-block'>{(props.name).toUpperCase()}:</span> 
+            <span className='w-[12rem] inline-block font-bold'>{(props.name).toUpperCase()}:</span> 
             {formOptions[props.name].length>0?(
-                <select className='w-[12rem]' name={props.name} value={formData[props.name] || 'select...'} onChange={handleFormChange}>
+                <select className='mb-2 w-[12rem] bg-black text-white' name={props.name} value={formData[props.name] || 'select...'} onChange={handleFormChange}>
                     <option value=''>select...</option>
                     {formOptions[props.name].map(option => (<option key={option+'opt'}>{option}</option>))}
                     <option >Other</option>
                 </select>
             ) : (
-                <input placeholder={props.name.toUpperCase()} className='px-1 border-black border-solid border-[1px] my-[1px]' name={props.name} value={formData[props.name] || ''} onChange={handleFormChange} />
+                <input placeholder={props.name.toUpperCase()} className='px-1 border-black border-solid border-[1px] my-[1px] bg-black bg-opacity-90 text-white' name={props.name} value={formData[props.name] || ''} onChange={handleFormChange} />
             )}
             
         </label>

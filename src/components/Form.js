@@ -165,13 +165,13 @@ const Form = () => {
 
 return(
     <FormContext.Provider value={{formData, formDataPrettier, formOptions, formOther, setFormData, setFormOther, handleFormChange}}>
-    <div className='flex flex-row p-4'>
-    <form className='flex-1 w-6/12' onSubmit={e => e.preventDefault()}>
+    <div className='flex flex-col w-full min-h-screen px-12 pt-12 text-white bg-black bg-opacity-90'>
+    <form className='flex flex-row flex-wrap justify-between flex-1 pb-8 mx-auto md:w-11/12' onSubmit={e => e.preventDefault()}>
         
         {Object.keys(formData).map(d => (<FormSelect name={d} key={d}/>))}
         
     </form>
-    <Output className='flex-1 w-6/12'/>
+    <Output className='flex-1 w-9/12 mx-auto'/>
     </div>
     </FormContext.Provider>
 );

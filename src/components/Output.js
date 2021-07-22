@@ -16,9 +16,9 @@ return(
     <div>
         <label>
             Template:
-        <select onChange={templateHandler} value={template}>
-            <option>1</option>
-            <option>2</option>
+        <select onChange={templateHandler} value={template} className='ml-4 bg-black'>
+            <option value='1'>HILDING</option>
+            <option value='2'>2</option>
         </select>
         </label>
     </div>
