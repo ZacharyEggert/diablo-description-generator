@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const SetupMessage = (props) => {
-
-    const {stringGuage, guitarCase} = props;
+    const { stringGauge, guitarCase } = props;
 
     return (
         <span>
-            Guitar is freshly setup and restrung with {stringGuage || 'GUAGE'} strings{guitarCase?` and includes ${guitarCase || 'CASE'} case`:null}.
+            Guitar is freshly setup and restrung with {stringGauge || "GAUGE"}{" "}
+            strings{guitarCase ? ` and includes ${guitarCase || "CASE"}` : null}
+            .
         </span>
     );
 };
