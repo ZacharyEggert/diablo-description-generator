@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors.js');
+
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -6,7 +8,12 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+        colors: {
+            gray: colors.trueGray,
+            grey: colors.trueGray,
+        }
+    },
   },
   plugins: [],
 }
