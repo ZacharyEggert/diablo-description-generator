@@ -1,6 +1,44 @@
-const formPresets = {
+import { defaultContext, IFormContext } from "../../lib/context";
+
+const formPresets:{[key:string]:IFormContext&{name:string}} = {
     'Fender American Deluxe Stratocaster':{
         'name':'Fender American Deluxe Stratocaster',
-    }
+        'make':'Fender',
+        'model':'Stratocaster',
+        'subModel':'American Deluxe',
+        'year':'',
+        'finish':'',
+        'countryOfOrigin':'',
+        'serial':'',
+        'condition':'',
+        'weight':'',
+        'bodyType':'Solid',
+        'bodyWood':'Alder',
+        'scaleLength':'25.5',
+        'neckJoint':'Bolt-on',
+        'neckWood':'Maple',
+        'neckFinish':'',
+        'fingerBoard':'Rosewood',
+        'radius':'9.5',
+        'neckProfile':'C',
+        'inlays':'Abalone Dots',
+        'nutWidth':'',
+        'nut':'Plastic',
+        'frets':'22 Medium',
+        'pickups':'',
+        'pickupConfiguration':'SSS',
+        'pickguard':'',
+        'controls':'',
+        'switches':'5-Way Blade Switch',
+        'hardware':'',
+        'tuningMachines':'',
+        'bridge':'',
+        'knobs':'',
+        'modifications':'',
+        'otherFeatures':'',
+        'stringGauge':'',
+        'guitarCase':'',
+    },
+    'Clear': {...defaultContext, name:'Clear'},
 };
 export default formPresets;

@@ -8,7 +8,7 @@ const Home:React.FC<{alterForm:(Object:SVP) =>void }> = ({alterForm}) => {
     return (
         <div className=''>
             <Presets alterForm={alterForm}/>
-            <Form/>
+            <Form alterForm={alterForm}/>
         </div>
     );
 };

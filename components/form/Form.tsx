@@ -1,9 +1,12 @@
 import React from 'react';
 import { UseFormContext } from '../../lib/context';
 import { formLabelPrettier, formOptions } from '../../lib/options';
+import { SVP } from '../../lib/types';
 import FormSelect from './FormSelect';
 
-const Form: React.FC<{}> = () => {
+const Form: React.FC<{ alterForm: (Object: SVP) => void }> = ({
+    alterForm,
+}) => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     };
@@ -17,20 +20,31 @@ const Form: React.FC<{}> = () => {
                 onSubmit={onSubmit}>
                 {Object.keys(formOptions).map((key) => {
                     let opt = [];
-                    if(key === 'model'){
-                        if(currentOptions.make){
-                        opt = formOptions.model[currentOptions.make];
-                        }else{
+                    if (key === 'model') {
+                        if (
+                            currentOptions.make &&
+                            currentOptions.make !== 'sel'
+                        ) {
+                            opt = formOptions.model[currentOptions.make];
+                        } else {
                             opt = [];
                         }
-                    }else if (key === 'subModel'){
-                        if(currentOptions.model && currentOptions.make){
-                        opt = formOptions.subModel[currentOptions.make][currentOptions.model];
-                        }else{
+                    } else if (key === 'subModel') {
+                        if (
+                            currentOptions.model &&
+                            currentOptions.make &&
+                            currentOptions.make !== 'sel' &&
+                            currentOptions.model !== 'sel'
+                        ) {
+                            opt =
+                                formOptions.subModel[currentOptions.make][
+                                    currentOptions.model
+                                ];
+                        } else {
                             opt = [];
                         }
-                    }else {
-                        opt = formOptions[key]
+                    } else {
+                        opt = formOptions[key];
                     }
                     return (
                         <FormSelect
@@ -38,6 +52,7 @@ const Form: React.FC<{}> = () => {
                             key={key}
                             field={key}
                             options={opt}
+                            alterForm={alterForm}
                         />
                     );
                 })}
