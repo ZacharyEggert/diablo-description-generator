@@ -1,3 +1,5 @@
+import { IFormContext } from "./context";
+
 export const make = [
     'Fender',
     'Gibson',
@@ -311,6 +313,7 @@ export const tuningMachines = ['Vintage Kluson', 'Gibson Branded Schaller', 'Gib
 export const formOptions = {
     make,
     model,
+    subModel,
     year: [],
     finish: [],
     countryOfOrigin: country,
@@ -343,4 +346,42 @@ export const formOptions = {
     otherFeatures,
     stringGauge,
     guitarCase,
+};
+
+export const formLabelPrettier:IFormContext = {
+    make: "Make",
+    model: "Model",
+    subModel: "Sub-Model",
+    year: "Year",
+    finish: "Finish",
+    countryOfOrigin: "Country",
+    serial: "Serial #",
+    condition: "Condition",
+    weight: "Weight",
+    bodyType: "Body Type",
+    bodyWood: "Body Wood",
+    scaleLength: "Scale Length",
+    neckJoint: "Neck Joint",
+    neckWood: "Neck Wood",
+    neckFinish: "Neck Finish",
+    fingerBoard: "Finger Board",
+    radius: "Neck Radius",
+    neckProfile: "Neck Profile",
+    inlays: "Inlays",
+    nutWidth: "Nut Width",
+    nut: "Nut",
+    frets: "Frets",
+    pickups: "Pickups",
+    pickupConfiguration: "Pickup Config",
+    pickguard: "Pickguard",
+    controls: "Controls",
+    switches: "Switch",
+    hardware: "Hardware",
+    tuningMachines: "Tuning Machines",
+    bridge: "Bridge",
+    knobs: "Knobs",
+    modifications: "Mods",
+    otherFeatures: "Other Features",
+    stringGauge: "String Guage",
+    guitarCase: "Case",
 };
