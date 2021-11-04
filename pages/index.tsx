@@ -1,4 +1,4 @@
-import Form from "../components/form/Form";
+import Form from "../components/Form/Form";
 import Presets from "../components/Presets/Presets";
 import { SVP } from "../lib/types";
 
