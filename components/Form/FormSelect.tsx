@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { UseFormContext } from '../../lib/context';
-import { SVP } from '../../lib/types';
+import { IFormContext, UseFormContext } from '../../lib/context';
 
 interface Props {
     label: string;
     options: string[];
     field: string;
-    alterForm: (Object: SVP) => void;
+    alterForm: (Object: Partial<IFormContext>) => void;
 }
 
 const FormSelect: React.FC<Props> = ({ label, options, field, alterForm }) => {
@@ -35,13 +34,13 @@ const FormSelect: React.FC<Props> = ({ label, options, field, alterForm }) => {
 
     return (
         <div className='col-span-1 p-2'>
-            <label className='flex w-full px-4 py-2 mx-auto bg-gray-800 rounded-3xl'>
+            <label className='flex w-full px-4 py-2 mx-auto bg-gray-700 rounded-3xl'>
                 <span className='inline-block w-1/4 font-bold text-right'>
                     {label}
                 </span>
                 <div className='w-3/4 pl-6'>
                     <select
-                        className='inline-block w-11/12 bg-gray-900'
+                        className='inline-block w-11/12 bg-gray-800'
                         name={field}
                         value={selected}
                         onChange={handleChange}>

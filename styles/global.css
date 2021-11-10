@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+    body {
+        @apply bg-gray-800 text-white;
+    }
 
+    select {
+        @apply text-white;
+        background-color: inherit;
+    }
 }
 
 @layer utilities {

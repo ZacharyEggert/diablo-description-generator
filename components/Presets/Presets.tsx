@@ -1,10 +1,9 @@
 import React from 'react';
-import { UseFormContext } from '../../lib/context';
-import { SVP } from '../../lib/types';
+import { IFormContext, UseFormContext } from '../../lib/context';
 import formPresets from './formPresets';
 
 interface Props {
-    alterForm: (Object: SVP) => void;
+    alterForm: (Object: Partial<IFormContext>) => void;
 }
 const Presets: React.FC<Props> = ({ alterForm }) => {
     const selectRef = React.useRef<HTMLSelectElement>(null);
@@ -22,7 +21,7 @@ const Presets: React.FC<Props> = ({ alterForm }) => {
     };
 
     return (
-        <div className='py-4 text-white bg-gray-900'>
+        <div className='py-4 text-white'>
             <h3 className='inline mx-12 text-2xl font-bold'>Presets</h3>
             <select
                 className='mx-4 bg-gray-800 w-72'

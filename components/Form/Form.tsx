@@ -1,10 +1,9 @@
 import React from 'react';
-import { UseFormContext } from '../../lib/context';
+import { IFormContext, UseFormContext } from '../../lib/context';
 import { formLabelPrettier, formOptions } from '../../lib/options';
-import { SVP } from '../../lib/types';
 import FormSelect from './FormSelect';
 
-const Form: React.FC<{ alterForm: (Object: SVP) => void }> = ({
+const Form: React.FC<{ alterForm: (Object: Partial<IFormContext>) => void }> = ({
     alterForm,
 }) => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -14,7 +13,7 @@ const Form: React.FC<{ alterForm: (Object: SVP) => void }> = ({
     const currentOptions = UseFormContext();
 
     return (
-        <div className='flex flex-col w-full min-h-screen px-12 pt-12 text-white bg-black bg-opacity-90'>
+        <div className='flex flex-col w-full min-h-screen px-12 pt-12 text-white'>
             <form
                 className='grid grid-cols-2 pb-8 mx-auto md:grid-cols-4 md:w-11/12'
                 onSubmit={onSubmit}>
