@@ -76,5 +76,46 @@ export const defaultContext:IFormContext = {
     guitarCase: "sel",
 }
 
+export const emptyContext:IFormContext = {
+    make: "",
+    model: "",
+    subModel: "",
+    year: "",
+    finish: "",
+    countryOfOrigin: "",
+    serial: "",
+    condition: "",
+    weight: "",
+    bodyType: "",
+    bodyWood: "",
+    scaleLength: "",
+    neckJoint: "",
+    neckWood: "",
+    neckFinish: "",
+    fingerBoard: "",
+    radius: "",
+    neckProfile: "",
+    inlays: "",
+    nutWidth: "",
+    nut: "",
+    frets: "",
+    pickups: "",
+    pickupConfiguration: "",
+    pickguard: "",
+    controls: "",
+    switches: "",
+    hardware: "",
+    tuningMachines: "",
+    bridge: "",
+    knobs: "",
+    modifications: "",
+    otherFeatures: "",
+    stringGauge: "",
+    guitarCase: "",
+}
+
 export const FormContext = createContext<IFormContext>(defaultContext);
 export const UseFormContext = () => useContext(FormContext);
+
+export const OtherContext = createContext<IFormContext>(emptyContext);
+export const UseOtherContext = () => useContext(OtherContext);

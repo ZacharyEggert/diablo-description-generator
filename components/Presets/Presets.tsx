@@ -1,11 +1,12 @@
 import React from 'react';
-import { IFormContext, UseFormContext } from '../../lib/context';
+import { emptyContext, IFormContext, UseFormContext } from '../../lib/context';
 import formPresets from './formPresets';
 
 interface Props {
     alterForm: (Object: Partial<IFormContext>) => void;
+    alterOther:(Object:Partial<IFormContext>)=>void; 
 }
-const Presets: React.FC<Props> = ({ alterForm }) => {
+const Presets: React.FC<Props> = ({ alterForm, alterOther }) => {
     const selectRef = React.useRef<HTMLSelectElement>(null);
 
     const formState = UseFormContext();
@@ -18,6 +19,7 @@ const Presets: React.FC<Props> = ({ alterForm }) => {
         const selectedPreset = selectRef.current.value;
         const preset = formPresets[selectedPreset];
         alterForm(preset);
+        alterOther(emptyContext);
     };
 
     return (

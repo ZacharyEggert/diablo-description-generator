@@ -5,11 +5,11 @@ import { IFormContext } from "../lib/context";
 
 
 
-const Home:React.FC<{alterForm:(Object:Partial<IFormContext>) =>void }> = ({alterForm}) => {
+const Home:React.FC<{alterForm:(Object:Partial<IFormContext>) =>void, alterOther:(Object:Partial<IFormContext>)=>void }> = ({alterForm, alterOther }) => {
     return (
         <div className=''>
-            <Presets alterForm={alterForm}/>
-            <Form alterForm={alterForm}/>
+            <Presets alterForm={alterForm} alterOther={alterOther}/>
+            <Form alterForm={alterForm} alterOther={alterOther}/>
             <FormOutput/>
         </div>
     );

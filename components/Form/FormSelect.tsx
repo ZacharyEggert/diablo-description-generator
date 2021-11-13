@@ -1,15 +1,27 @@
 import React, { useEffect } from 'react';
-import { IFormContext, UseFormContext } from '../../lib/context';
+import {
+    IFormContext,
+    UseFormContext,
+    UseOtherContext,
+} from '../../lib/context';
 
 interface Props {
     label: string;
     options: string[];
     field: string;
     alterForm: (Object: Partial<IFormContext>) => void;
+    alterOther: (Object: Partial<IFormContext>) => void;
 }
 
-const FormSelect: React.FC<Props> = ({ label, options, field, alterForm }) => {
+const FormSelect: React.FC<Props> = ({
+    label,
+    options,
+    field,
+    alterForm,
+    alterOther,
+}) => {
     const [selected, setSelected] = React.useState('sel');
+    const [other, setOther] = React.useState('');
 
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (
         event
@@ -26,11 +38,22 @@ const FormSelect: React.FC<Props> = ({ label, options, field, alterForm }) => {
         alterForm(alterObject);
     };
 
+    const handleOtherChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        let alterObject = { [field]: e.target.value };
+        alterOther(alterObject);
+    };
+
     const formState = UseFormContext();
+    const otherState = UseOtherContext();
 
     useEffect(() => {
         setSelected(formState[field]);
     }, [formState, field]);
+
+    useEffect(() => {
+        setOther(otherState[field]);
+    }, [otherState, field]);
+
 
     return (
         <div className='col-span-1 p-2'>
@@ -57,6 +80,8 @@ const FormSelect: React.FC<Props> = ({ label, options, field, alterForm }) => {
                     <input
                         disabled={selected !== ''}
                         type='text'
+                        onChange={handleOtherChange}
+                        value={other}
                         className='w-11/12 mt-1 bg-gray-900 disabled:opacity-5'
                     />
                 </div>
