@@ -7,10 +7,10 @@ const formats = [
         method: (form: IFormContext, other: IFormContext) => {
             let state = {} as IFormContext;
             for (let key in form) {
-                if (form[key] !== '') {
+                if (form[key] !== '' && form[key] !== 'sel') {
                     state[key] = form[key];
                 } else {
-                    state[key] = other[key];
+                    state[key] = other[key] ?? '';
                 }
             }
 
@@ -71,7 +71,8 @@ const formats = [
                         Controlled by {controls || 'CONTROLS'} knob
                         {controls !== 'One Master Volume' ? 's' : null} and{' '}
                         {switches || 'SWITCH'}. The{' '}
-                        {scaleLength || 'SCALELENGTH'}&quot; scale length neck has{' '}
+                        {scaleLength || 'SCALELENGTH'}&quot; scale length neck
+                        has{' '}
                         {inlays ? `${inlays || 'INLAYS'} inlays and ` : null}
                         {frets || 'FRETS'} frets with a{' '}
                         {neckProfile || 'NECKPROFILE'} neck profile. The
@@ -106,7 +107,8 @@ const formats = [
                         {Object.keys(state).map((data, i) =>
                             data === 'name'
                                 ? null
-                                : state[data] && (
+                                : state[data] &&
+                                  state[data] !== '' && (
                                       <li className='' key={'li' + data}>
                                           {formLabelPrettier[data]}:{' '}
                                           {state[data]}
