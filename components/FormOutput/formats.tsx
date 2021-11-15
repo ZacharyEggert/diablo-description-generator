@@ -81,7 +81,7 @@ const formats = [
                         hardware is comprised of{' '}
                         {(tuningMachines || 'TUNINGMACHINES') +
                             ' tuning machines, '}
-                        a {nut || 'NUT'} Nut,{!hardware ? ` and` : null} a{' '}
+                        a {nut || 'NUT'} nut,{!hardware ? ` and` : null} a{' '}
                         {bridge || 'BRIDGE'}
                         {bridge.match('bridge') || bridge.match('Bridge')
                             ? null
