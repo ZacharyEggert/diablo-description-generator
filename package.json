@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "half-build" : "next build",
+    "export" : "next export",
+    "build": "npm run half-build && npm run export",
     "start": "next start"
   },
   "dependencies": {
