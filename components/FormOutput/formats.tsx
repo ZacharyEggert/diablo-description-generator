@@ -9,8 +9,10 @@ const formats = [
             for (let key in form) {
                 if (form[key] !== '' && form[key] !== 'sel') {
                     state[key] = form[key];
-                } else {
-                    state[key] = other[key] ?? '';
+                } else  if (other[key] !== 'sel') {
+                    state[key] = other[key];
+                }else{
+                    state[key] = '';
                 }
             }
 
