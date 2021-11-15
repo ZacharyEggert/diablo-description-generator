@@ -1,4 +1,4 @@
-const basePath = process.env.NODE_ENV === 'production' ? '/Diablo-Guitars' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '' : '';
 
 module.exports = {
   basePath,
