@@ -282,7 +282,7 @@ export const fingerBoardMaterial = [
     'Purpleheart',
 ];
 
-export const radius = [7.25, 9.5, 10, 12, 14, 15, 16, 20, 'Flat'];
+export const radius = ['7.25"', '9.5"', '10"', '12"', '14"', '15"', '16"', '20"', 'Flat'];
 
 export const neckProfile = [
     'Modern C',
@@ -411,6 +411,11 @@ export const knobs = [
 export const otherFeatures = [
     'Certificate of Authenticity',
     'Original Case Candy',
+    'NOS',
+    'VOS',
+    '100% Factory',
+    'Original Plastic'
+
 ];
 export const stringGauge = ['9-42', '10-46', '9-46'];
 export const guitarCase = [
@@ -427,6 +432,7 @@ export const guitarCase = [
 export const bridge = [
     'ABR-1 Tune-O-Matic',
     'Tune-O-Matic',
+    'Tune-O-Matic with Fine Tune Stoptail',
     'Fender Hardtail with Block Saddles',
     'Fender 2-Point Deluxe Synchronized Tremolo',
     'Vintage Telecaster Bridge with Compensated Brass Saddles',
@@ -435,8 +441,10 @@ export const bridge = [
 ];
 export const tuningMachines = [
     'Vintage Kluson',
+    'Gibson Deluxe Vintage Style Kluson Keystone',
     'Gibson Branded Schaller',
     'Gibson Branded Schaller Locking',
+    'Grover Deluxe Die Cast',
     'Vintage Style Fender',
     'Fender Sealed Die Case',
     'Fender Deluxe Die-cast',
