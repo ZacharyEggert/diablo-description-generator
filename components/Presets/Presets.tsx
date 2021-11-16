@@ -1,5 +1,5 @@
 import React from 'react';
-import { emptyContext, IFormContext, UseFormContext } from '../../lib/context';
+import { emptyContext, IFormContext, UseFormContext, UseOtherContext } from '../../lib/context';
 import formPresets from './formPresets';
 
 interface Props {
@@ -10,16 +10,17 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther }) => {
     const selectRef = React.useRef<HTMLSelectElement>(null);
 
     const formState = UseFormContext();
+    const otherState = UseOtherContext();
 
     const printStateToConsole = () => {
-        console.log({ formState });
+        console.log({ formState, otherState });
     };
 
     const handlePresetApplication = () => {
         const selectedPreset = selectRef.current.value;
         const preset = formPresets[selectedPreset];
-        alterForm(preset);
-        alterOther(emptyContext);
+        alterForm(preset.formState);
+        alterOther(preset.otherState);
     };
 
     return (

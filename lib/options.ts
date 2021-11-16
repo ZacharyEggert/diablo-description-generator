@@ -79,12 +79,7 @@ export const subModel = {
     Gibson: {
         'Les Paul': ['Standard', 'Custom', 'Special', 'Junior', 'Studio'],
         SG: [],
-        Firebird: [
-            'I',
-            'III',
-            'V',
-            'VII',
-        ],
+        Firebird: ['I', 'III', 'V', 'VII'],
         Explorer: [],
         'Flying V': [],
         M3: [],
@@ -247,6 +242,8 @@ export const neckJoint = ['Bolt-on', 'Set Neck', 'Neck-through'];
 
 export const neckWood = [
     'Maple',
+    'Flamed Maple',
+    'Birdseye Maple',
     'Koa',
     'Rosewood',
     'Mahogany',
@@ -258,6 +255,8 @@ export const neckWood = [
 
 export const fingerBoardMaterial = [
     'Maple',
+    'Flamed Maple',
+    'Birdseye Maple',
     'Rosewood',
     'Ebony',
     'Pau Ferro',
@@ -312,7 +311,7 @@ export const nutMaterial = [
     'Tektoid',
     'Floyd Rose Locking',
     'Kahler Locking',
-    'Fender LSR Roller Nut',
+    'Fender LSR Roller',
 ];
 export const frets = [
     '22 Medium Jumbo',
@@ -382,18 +381,37 @@ export const otherFeatures = [
     'Certificate of Authenticity',
     'Original Case Candy',
 ];
-export const stringGauge = ['10-46', '9-42', '9-46'];
-export const guitarCase = ['Original Hard Shell Case', 'Gator Hard Shell Case'];
+export const stringGauge = ['9-42', '10-46', '9-46'];
+export const guitarCase = [
+    'Original Hard Shell Case',
+    'Original Molded Case',
+    'Original Soft Shell Case',
+    'Gator Hard Shell Case',
+    'TKL Hard Shell Case',
+    'TKL Molded Hard Shell Case',
+    'SKB Molded Hard Shell Case',
+    'Gigbag',
+];
 
 export const bridge = [
     'ABR-1 Tune-O-Matic',
+    'Tune-O-Matic',
+    'Fender Hardtail with Block Saddles',
+    'Fender 2-Point Deluxe Synchronized Tremolo',
+    'Vintage Telecaster Bridge with Compensated Brass Saddles',
     'Floyd Rose 1000 Series Double Locking Tremolo',
+    'Kahler 2700 Locking Tremolo System',
 ];
 export const tuningMachines = [
     'Vintage Kluson',
     'Gibson Branded Schaller',
     'Gibson Branded Schaller Locking',
+    'Vintage Style Fender',
     'Fender Sealed Die Case',
+    'Fender Deluxe Die-cast',
+    'Fender Staggered Deluxe Die-cast',
+    'Fender Staggered Deluxe Sealed Locking',
+    'Fender “F” Tuners',
     'Jackson Sealed Die Cast',
 ];
 
