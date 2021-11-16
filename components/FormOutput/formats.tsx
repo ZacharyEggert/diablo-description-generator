@@ -73,7 +73,7 @@ const formats = [
                         Controlled by {controls || 'CONTROLS'} knob
                         {controls !== 'One Master Volume' ? 's' : null} and{' '}
                         {switches || 'SWITCH'}. The{' '}
-                        {scaleLength || 'SCALELENGTH'}&quot; scale length neck
+                        {scaleLength || 'SCALELENGTH'} scale length neck
                         has{' '}
                         {inlays ? `${inlays || 'INLAYS'} inlays and ` : null}
                         {frets || 'FRETS'} frets with a{' '}
@@ -114,10 +114,6 @@ const formats = [
                                       <li className='' key={'li' + data}>
                                           {formLabelPrettier[data]}:{' '}
                                           {state[data]}
-                                          {data === 'scaleLength' ||
-                                          data === 'nutWidth'
-                                              ? `"`
-                                              : null}
                                       </li>
                                   )
                         )}
