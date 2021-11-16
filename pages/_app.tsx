@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
     defaultContext,
+    emptyContext,
     FormContext,
     IFormContext,
     OtherContext,
@@ -9,7 +10,7 @@ import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
     const [formState, setFormState] = useState(defaultContext);
-    const [otherState, setOtherState] = useState(defaultContext);
+    const [otherState, setOtherState] = useState(emptyContext);
 
     const alterForm = (Object: Partial<IFormContext>) => {
         setFormState((oldState) => ({ ...oldState, ...Object }));
