@@ -211,7 +211,14 @@ export const subModel = {
     },
 };
 
-export const country = ['USA', 'Mexico', 'Japan', 'Indonesia', 'Vietnam'];
+export const country = [
+    'USA',
+    'Mexico',
+    'Japan',
+    'China',
+    'Indonesia',
+    'Vietnam',
+];
 
 export const condition = [
     'Mint',
@@ -237,7 +244,15 @@ export const bodyWood = [
     'Walnut',
 ];
 
-export const scaleLength = [25.5, 24.75, 24, 24.5, 25, 26.5, 27];
+export const scaleLength = [
+    '25.5"',
+    '24.75"',
+    '24"',
+    '24.5"',
+    '25"',
+    '26.5"',
+    '27"',
+];
 export const neckJoint = ['Bolt-on', 'Set Neck', 'Neck-through'];
 
 export const neckWood = [
@@ -299,8 +314,21 @@ export const inlays = [
     'Reverse Sharkfin',
 ];
 export const nutWidth = [
-    1.6875, 1.685, 1.656, 1.6, 1.65, 1.625, 1.575, 1.687, 1.69, 1.66, 1.695,
-].sort((a, b) => a - b);
+    '1.575"',
+    '1.6"',
+    '1.625"',
+    '1.65"',
+    '1.656"',
+    '1.66"',
+    '1.685"',
+    '1.687"',
+    '1.6875"',
+    '1.69"',
+    '1.695"',
+    '1 1/8"',
+    '1 5/8"',
+    '1 11/16"',
+];
 export const nutMaterial = [
     'Bone',
     'Fossil Ivory',
@@ -322,6 +350,8 @@ export const frets = [
     '21 Medium Tall',
     '22 Jumbo',
     '21 Jumbo',
+    '24 Medium Jumbo',
+    '24 Medium',
 ];
 export const pickupConfiguration = [
     'HH',
@@ -351,6 +381,7 @@ export const controls = [
     '1-Volume, 1-Tone',
     '2-Volume, 1-Tone',
     'One Master Volume',
+    'One Master Volume, One Master Tone',
 ];
 export const switches = [
     '3-Way Toggle Switch',
@@ -415,6 +446,15 @@ export const tuningMachines = [
     'Jackson Sealed Die Cast',
 ];
 
+export const modifications = [
+    'Refretted',
+    'Neck Reset',
+    "Refretted and Plek'd",
+    'Upgraded Pickups',
+    'Upgraded Tuning Machines',
+    'FU TONE Floyd Upgrades',
+];
+
 export const formOptions = {
     make,
     model,
@@ -447,7 +487,7 @@ export const formOptions = {
     tuningMachines,
     bridge,
     knobs,
-    modifications: [],
+    modifications,
     otherFeatures,
     stringGauge,
     guitarCase,
