@@ -79,7 +79,12 @@ export const subModel = {
     Gibson: {
         'Les Paul': ['Standard', 'Custom', 'Special', 'Junior', 'Studio'],
         SG: [],
-        Firebird: [],
+        Firebird: [
+            'I',
+            'III',
+            'V',
+            'VII',
+        ],
         Explorer: [],
         'Flying V': [],
         M3: [],
