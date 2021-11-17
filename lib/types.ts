@@ -40,7 +40,3 @@ export type IFormContext = {
     stringGauge:string;
     guitarCase:string;
 }
-
-export type IOtherContext = IFormContext & {
-    lockingTuners:boolean;
-}

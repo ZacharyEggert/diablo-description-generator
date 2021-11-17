@@ -1,6 +1,6 @@
 import { make } from "./options";
-const safeCapitals = [
-    ...make.map(x => x.toLowerCase()),
+const whitelist = [
+    ...make,
     'c',
     'd',
     'v',
@@ -22,15 +22,24 @@ const safeCapitals = [
     '490r',
     'graph',
     'tech',
+    'Grover',
+    'Gotoh',
+    'Hip',
+    'Shot',
+    'Sperzel',
+    'Schaller',
+    'Floyd',
+    'Rose',
+    
     
 
 
-];
+].map(x => x.toLowerCase());
 
 export const fixCase = (paragraph:string) :string => {
     const words = paragraph.split(' ');
     const fixed = words.map(word => {
-        if (safeCapitals.includes(word.toLowerCase())) {
+        if (whitelist.includes(word.toLowerCase())) {
             return word;
         }
         return word.toLowerCase();
