@@ -57,7 +57,7 @@ const FormSelect: React.FC<Props> = ({
 
     return (
         <div className='col-span-1 p-2'>
-            <label className='flex w-full px-4 py-2 mx-auto bg-gray-700 rounded-3xl'>
+            <div className='flex w-full px-4 py-2 mx-auto bg-gray-700 rounded-3xl'>
                 <span className='inline-block w-1/4 font-bold text-right'>
                     {label}
                 </span>
@@ -82,10 +82,11 @@ const FormSelect: React.FC<Props> = ({
                         type='text'
                         onChange={handleOtherChange}
                         value={other}
+                        onClick={(e) => e.stopPropagation()}
                         className='w-11/12 mt-1 bg-gray-900 disabled:opacity-5'
                     />
                 </div>
-            </label>
+            </div>
         </div>
     );
 };
