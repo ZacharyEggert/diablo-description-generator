@@ -1,4 +1,4 @@
-export interface IFormContext {
+export type IFormContext = {
     make:string;
     model:string;
     subModel:string;
@@ -39,4 +39,8 @@ export interface IFormContext {
     otherFeatures:string;
     stringGauge:string;
     guitarCase:string;
+}
+
+export type IOtherContext = IFormContext & {
+    lockingTuners:boolean;
 }
