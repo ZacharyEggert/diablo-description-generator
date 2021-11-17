@@ -4,7 +4,7 @@ import { fixCase } from '../../lib/helpers';
 
 const formats = [
     {
-        name: 'Hilding (Dry)',
+        name: "Hilding (That's the fact, Jack)",
         method: (form: IFormContext, other: IFormContext) => {
             let state = {} as IFormContext;
             for (let key in form) {
