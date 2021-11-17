@@ -66,15 +66,27 @@ export const model = {
 export const subModel = {
     Fender: {
         Stratocaster: [
-            'American Deluxe',
             'American Standard',
+            'American Deluxe',
+            'American Ultra',
+            'American Elite',
+            "American Original '50s",
             'American Vintage',
+            'American Performer',
+            'Hardtail',
+            'VG',
         ],
-        Telecaster: [],
+        Telecaster: [
+            'American Vintage',
+            'American Performer',
+            'American Professional',
+            'Thinline Semihollow',
+            'Hot Rod',
+        ],
         Esquire: [],
         Nocaster: [],
         Jaguar: [],
-        Jazzmaster: [],
+        Jazzmaster: ['American Vintage'],
     },
     Gibson: {
         'Les Paul': ['Standard', 'Custom', 'Special', 'Junior', 'Studio'],
@@ -282,7 +294,17 @@ export const fingerBoardMaterial = [
     'Purpleheart',
 ];
 
-export const radius = ['7.25"', '9.5"', '10"', '12"', '14"', '15"', '16"', '20"', 'Flat'];
+export const radius = [
+    '7.25"',
+    '9.5"',
+    '10"',
+    '12"',
+    '14"',
+    '15"',
+    '16"',
+    '20"',
+    'Flat',
+];
 
 export const neckProfile = [
     'Modern C',
@@ -414,8 +436,7 @@ export const otherFeatures = [
     'NOS',
     'VOS',
     '100% Factory',
-    'Original Plastic'
-
+    'Original Plastic',
 ];
 export const stringGauge = ['9-42', '10-46', '9-46'];
 export const guitarCase = [

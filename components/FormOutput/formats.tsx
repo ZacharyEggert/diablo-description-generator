@@ -1,5 +1,6 @@
 import { IFormContext } from '../../lib/context';
 import { formLabelPrettier } from '../../lib/options';
+import { fixCase } from '../../lib/helpers';
 
 const formats = [
     {
@@ -9,9 +10,9 @@ const formats = [
             for (let key in form) {
                 if (form[key] !== '' && form[key] !== 'sel') {
                     state[key] = form[key];
-                } else  if (other[key] !== 'sel') {
+                } else if (other[key] !== 'sel') {
                     state[key] = other[key];
-                }else{
+                } else {
                     state[key] = '';
                 }
             }
@@ -62,36 +63,42 @@ const formats = [
                         {guitarCase ? ` with ${guitarCase || 'CASE'}` : null}.
                         <br />
                         <br />
-                        This guitar features a {bodyType || 'BODYTYPE'}{' '}
-                        {bodyWood || 'BODYWOOD'} body,{' '}
+                        This guitar features a {fixCase(bodyType) ||
+                            'BODYTYPE'}{' '}
+                        {fixCase(bodyWood) || 'BODYWOOD'} body,{' '}
                         {/**neckFinish?`${neckFinish || 'NECKFINISH'} `:null*/}
-                        {neckWood || 'NECKWOOD'} neck and{' '}
+                        {fixCase(neckWood) || 'NECKWOOD'} neck and{' '}
                         {neckWood.toUpperCase() !== fingerBoard.toUpperCase()
-                            ? `${fingerBoard || 'FINGERBOARD'} `
+                            ? `${fixCase(fingerBoard) || 'FINGERBOARD'} `
                             : null}
-                        fingerboard. Equipped with {pickups || 'PICKUPS'}.
-                        Controlled by {controls || 'CONTROLS'} knob
-                        {controls !== 'One Master Volume' ? 's' : null} and{' '}
-                        {switches || 'SWITCH'}. The{' '}
-                        {scaleLength || 'SCALELENGTH'} scale length neck
-                        has{' '}
-                        {inlays ? `${inlays || 'INLAYS'} inlays and ` : null}
-                        {frets || 'FRETS'} frets with a{' '}
-                        {neckProfile || 'NECKPROFILE'} neck profile. The
+                        fingerboard. Equipped with{' '}
+                        {fixCase(pickups) || 'PICKUPS'}. Controlled by{' '}
+                        {fixCase(controls) || 'CONTROLS'} knob
+                        {controls !== 'One Master Volume' ? 's' : null} and a{' '}
+                        {fixCase(switches) || 'SWITCH'}. The{' '}
+                        {scaleLength || 'SCALELENGTH'} scale length neck has{' '}
+                        {inlays
+                            ? `${fixCase(inlays) || 'INLAYS'} inlays and `
+                            : null}
+                        {fixCase(frets) || 'FRETS'} frets with a{' '}
+                        {fixCase(neckProfile) || 'NECKPROFILE'} neck profile. The
                         hardware is comprised of{' '}
-                        {(tuningMachines || 'TUNINGMACHINES') +
+                        {(fixCase(tuningMachines) || 'TUNINGMACHINES') +
                             ' tuning machines, '}
-                        a {nut || 'NUT'} nut,{!hardware ? ` and` : null} a{' '}
-                        {bridge || 'BRIDGE'}
+                        a {fixCase(nut) || 'NUT'} nut,
+                        {!hardware ? ` and` : null} a{' '}
+                        {fixCase(bridge) || 'BRIDGE'}
                         {bridge.match('bridge') || bridge.match('Bridge')
                             ? null
                             : ` bridge`}
                         ,
                         {knobs
-                            ? ` with ${(knobs || 'KNOBS') + ' Knobs'}`
+                            ? ` with ${(fixCase(knobs) || 'KNOBS') + ' knobs'}`
                             : null}
                         {pickguard
-                            ? ` on a ${pickguard || 'PICKGUARD'} pickguard`
+                            ? ` on a ${
+                                  fixCase(pickguard) || 'PICKGUARD'
+                              } pickguard`
                             : null}
                         .
                         <br />
@@ -100,7 +107,9 @@ const formats = [
                             Guitar is freshly setup and restrung with{' '}
                             {stringGauge || 'GAUGE'} strings
                             {guitarCase
-                                ? ` and includes ${guitarCase || 'CASE'}`
+                                ? ` and includes ${
+                                      fixCase(guitarCase) || 'CASE'
+                                  }`
                                 : null}
                             .
                         </span>

@@ -1,59 +1,24 @@
 import { createContext, useContext } from "react";
+import { IFormContext } from "./types";
 
-export interface IFormContext {
-    make:string;
-    model:string;
-    subModel:string;
-    year: string;
-    finish: string;
-    countryOfOrigin: string;
-    serial: string;
-    condition: string;
-    weight: string;
-    bodyType: string;
-    bodyWood:string;
-    scaleLength:string;
-    neckJoint:string;
-    neckWood:string;
-    neckFinish:string;
-    fingerBoard:string;
-    radius:string;
-    neckProfile:string;
-    inlays:string;
-    nutWidth:string;
-    nut:string;
-    frets:string;
-    pickups:string;
-    pickupConfiguration:string;
-    pickguard:string;
-    controls:string;
-    switches:string;
-    hardware:string;
-    tuningMachines:string;
-    bridge:string;
-    knobs:string;
-    modifications:string;
-    otherFeatures:string;
-    stringGauge:string;
-    guitarCase:string;
-}
+export type {IFormContext} from "./types";
 
 export const defaultContext:IFormContext = {
     make: "sel",
     model: "sel",
     subModel: "sel",
-    year: "sel",
-    finish: "sel",
+    year: "",
+    finish: "",
     countryOfOrigin: "sel",
-    serial: "sel",
+    serial: "",
     condition: "sel",
-    weight: "sel",
+    weight: "",
     bodyType: "sel",
     bodyWood: "sel",
     scaleLength: "sel",
     neckJoint: "sel",
     neckWood: "sel",
-    neckFinish: "sel",
+    neckFinish: "",
     fingerBoard: "sel",
     radius: "sel",
     neckProfile: "sel",
@@ -61,7 +26,7 @@ export const defaultContext:IFormContext = {
     nutWidth: "sel",
     nut: "sel",
     frets: "sel",
-    pickups: "sel",
+    pickups: "",
     pickupConfiguration: "sel",
     pickguard: "sel",
     controls: "sel",
