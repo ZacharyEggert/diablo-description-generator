@@ -3,10 +3,10 @@ import { IFormContext, UseFormContext } from '../../lib/context';
 import { formLabelPrettier, formOptions } from '../../lib/options';
 import FormSelect from './FormSelect';
 
-const Form: React.FC<{ alterForm: (Object: Partial<IFormContext>) => void, alterOther:(Object:Partial<IFormContext>)=>void  }> = ({
-    alterForm,
-    alterOther
-}) => {
+const Form: React.FC<{
+    alterForm: (Object: Partial<IFormContext>) => void;
+    alterOther: (Object: Partial<IFormContext>) => void;
+}> = ({ alterForm, alterOther }) => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     };
@@ -46,6 +46,19 @@ const Form: React.FC<{ alterForm: (Object: Partial<IFormContext>) => void, alter
                     } else {
                         opt = formOptions[key];
                     }
+
+                    if (
+                        (key === 'pickupNeck' || key === 'pickupMiddle') &&
+                        (currentOptions.pickupConfiguration === 'sel' ||
+                            currentOptions.pickupConfiguration.length === 1)
+                    ) {
+                        return null;
+                    }
+
+                    if(key === 'pickupMiddle' && currentOptions.pickupConfiguration.length === 2) {
+                        return null;
+                    }
+
                     return (
                         <FormSelect
                             label={formLabelPrettier[key]}

@@ -40,8 +40,10 @@ const formats = [
                 nutWidth,
                 nut,
                 frets,
-                pickups,
                 pickupConfiguration,
+                pickupNeck,
+                pickupMiddle,
+                pickupBridge,
                 pickguard,
                 controls,
                 bridge,
@@ -54,6 +56,8 @@ const formats = [
                 switches,
                 tuningMachines,
             }: IFormContext = state;
+
+            let pickups = `${!!pickupNeck?`${pickupNeck} in the neck position, `:''}${!!pickupMiddle?`${pickupMiddle} in the middle position, `:''}${!!pickupNeck?'and ':''}${pickupBridge} in the bridge position`
 
             return (
                 <div>

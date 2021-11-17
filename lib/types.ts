@@ -21,8 +21,10 @@ export interface IFormContext {
     nutWidth:string;
     nut:string;
     frets:string;
-    pickups:string;
     pickupConfiguration:string;
+    pickupNeck:string;
+    pickupMiddle:string;
+    pickupBridge:string;
     pickguard:string;
     controls:string;
     switches:string;

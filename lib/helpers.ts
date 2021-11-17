@@ -20,6 +20,9 @@ const safeCapitals = [
     '498r',
     '490t',
     '490r',
+    'graph',
+    'tech',
+    
 
 
 ];
