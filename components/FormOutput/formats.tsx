@@ -10,10 +10,11 @@ const formats = [
             for (let key in form) {
                 if (form[key] !== '' && form[key] !== 'sel') {
                     state[key] = form[key];
-                } else if (other[key] !== 'sel') {
-                    state[key] = other[key];
                 } else {
-                    state[key] = '';
+                    state[key] = other[key];
+                }
+                if (key === 'radius') {
+                    state[key] = `${form[key]} ${other[key]}`;
                 }
             }
 
@@ -45,7 +46,10 @@ const formats = [
                 pickupMiddle,
                 pickupBridge,
                 pickguard,
-                controls,
+                pots,
+                coilTap,
+                killSwitch,
+                phaseSwitch,
                 bridge,
                 guitarCase,
                 hardware,
@@ -53,22 +57,25 @@ const formats = [
                 modifications,
                 otherFeatures,
                 stringGauge,
-                switches,
+                pickupSwitch,
                 tuningMachines,
             }: IFormContext = state;
 
-            let pickups = `${!!pickupNeck?`${pickupNeck} in the neck position, `:''}${!!pickupMiddle?`${pickupMiddle} in the middle position, `:''}${!!pickupNeck?'and ':''}${pickupBridge} in the bridge position`
+            let pickups = `${
+                !!pickupNeck ? `${pickupNeck} in the neck position, ` : ''
+            }${
+                !!pickupMiddle ? `${pickupMiddle} in the middle position, ` : ''
+            }${
+                !!pickupNeck ? 'and ' : ''
+            }${pickupBridge} in the bridge position`;
 
             return (
                 <div>
                     <p className='mb-8'>
-                        {make || 'MAKE'} {model || 'MODEL'} {finish || 'FINISH'}{' '}
-                        {year || 'YEAR'}
+                        {make || 'MAKE'} {model || 'MODEL'} {subModel || ''} in{' '}
+                        {finish || 'FINISH'} finish made in {year || 'YEAR'}
                         {guitarCase ? ` with ${guitarCase || 'CASE'}` : null}.
-                        <br />
-                        <br />
-                        This guitar features a {fixCase(bodyType) ||
-                            'BODYTYPE'}{' '}
+                        This guitar features a {fixCase(bodyType) || 'BODYTYPE'}{' '}
                         {fixCase(bodyWood) || 'BODYWOOD'} body,{' '}
                         {/**neckFinish?`${neckFinish || 'NECKFINISH'} `:null*/}
                         {fixCase(neckWood) || 'NECKWOOD'} neck and{' '}
@@ -77,16 +84,16 @@ const formats = [
                             : null}
                         fingerboard. Equipped with{' '}
                         {fixCase(pickups) || 'PICKUPS'}. Controlled by{' '}
-                        {fixCase(controls) || 'CONTROLS'} knob
-                        {controls !== 'One Master Volume' ? 's' : null} and a{' '}
-                        {fixCase(switches) || 'SWITCH'}. The{' '}
+                        {fixCase(pots) || 'CONTROLS'} knob
+                        {pots !== 'One Master Volume' ? 's' : null} and a{' '}
+                        {fixCase(pickupSwitch) || 'SWITCH'}. The{' '}
                         {scaleLength || 'SCALELENGTH'} scale length neck has{' '}
                         {inlays
                             ? `${fixCase(inlays) || 'INLAYS'} inlays and `
                             : null}
                         {fixCase(frets) || 'FRETS'} frets with a{' '}
-                        {fixCase(neckProfile) || 'NECKPROFILE'} neck profile. The
-                        hardware is comprised of{' '}
+                        {fixCase(neckProfile) || 'NECKPROFILE'} neck profile.
+                        The hardware is comprised of{' '}
                         {(fixCase(tuningMachines) || 'TUNINGMACHINES') +
                             ' tuning machines, '}
                         a {fixCase(nut) || 'NUT'} nut,

@@ -26,8 +26,11 @@ export interface IFormContext {
     pickupMiddle:string;
     pickupBridge:string;
     pickguard:string;
-    controls:string;
-    switches:string;
+    pots:string;
+    coilTap:string;
+    pickupSwitch:string;
+    phaseSwitch:string;
+    killSwitch:string;
     hardware:string;
     tuningMachines:string;
     bridge:string;

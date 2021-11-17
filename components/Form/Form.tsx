@@ -53,9 +53,10 @@ const Form: React.FC<{
                             currentOptions.pickupConfiguration.length === 1)
                     ) {
                         return null;
-                    }
-
-                    if(key === 'pickupMiddle' && currentOptions.pickupConfiguration.length === 2) {
+                    } else if (
+                        key === 'pickupMiddle' &&
+                        currentOptions.pickupConfiguration.length === 2
+                    ) {
                         return null;
                     }
 

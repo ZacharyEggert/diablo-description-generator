@@ -38,7 +38,9 @@ const FormSelect: React.FC<Props> = ({
         alterForm(alterObject);
     };
 
-    const handleOtherChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const handleOtherChange: React.ChangeEventHandler<HTMLInputElement> = (
+        e
+    ) => {
         let alterObject = { [field]: e.target.value };
         alterOther(alterObject);
     };
@@ -53,7 +55,6 @@ const FormSelect: React.FC<Props> = ({
     useEffect(() => {
         setOther(otherState[field]);
     }, [otherState, field]);
-
 
     return (
         <div className='col-span-1 p-2'>
@@ -78,7 +79,7 @@ const FormSelect: React.FC<Props> = ({
                         <option value=''>Other</option>
                     </select>
                     <input
-                        disabled={selected !== ''}
+                        disabled={selected !== '' && selected !== 'Compound'}
                         type='text'
                         onChange={handleOtherChange}
                         value={other}
