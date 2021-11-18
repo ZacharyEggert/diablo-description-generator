@@ -39,9 +39,9 @@ function MyApp({ Component, pageProps }) {
 
     useEffect(() => {
         setTimeout(() => {
-        localStorage.setItem('formState', JSON.stringify(debouncedForm));
-        localStorage.setItem('otherState', JSON.stringify(debouncedOther));
-        console.debug('debounce triggered: writing to local storage');
+            localStorage.setItem('formState', JSON.stringify(debouncedForm));
+            localStorage.setItem('otherState', JSON.stringify(debouncedOther));
+            console.debug('debounce triggered: writing to local storage');
         }, 1000);
     }, [debouncedForm, debouncedOther]);
 

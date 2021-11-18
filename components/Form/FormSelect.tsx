@@ -24,7 +24,7 @@ const FormSelect: React.FC<Props> = ({
     const [other, setOther] = React.useState('');
 
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (
-        event
+        event,
     ) => {
         let alterObject = { [field]: event.target.value };
 
@@ -41,7 +41,7 @@ const FormSelect: React.FC<Props> = ({
     };
 
     const handleOtherChange: React.ChangeEventHandler<HTMLInputElement> = (
-        e
+        e,
     ) => {
         let alterObject = { [field]: e.target.value };
         alterOther(alterObject);

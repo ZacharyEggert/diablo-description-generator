@@ -39,7 +39,7 @@ const FormOutput: React.FC<FormOutputProps> = ({}) => {
             console.log(format);
 
             setCopy(
-                formats.filter((f) => f.name === format)[0].method(form, other)
+                formats.filter((f) => f.name === format)[0].method(form, other),
             );
         }
     };

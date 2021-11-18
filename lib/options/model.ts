@@ -40,6 +40,6 @@ const model = {
     Caparison: ['Orbit'],
     Carvin: ['DC', 'CS', 'AC'],
     Kiesel: ['DC', 'CS', 'AC'],
-}
+};
 
 export default model;

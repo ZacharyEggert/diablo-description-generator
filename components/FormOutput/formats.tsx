@@ -1,6 +1,10 @@
 import { IFormContext } from '../../lib/context';
-import { formLabelPrettier } from '../../lib/options';
-import { combinePickups, combineStates, fixCase, listify } from '../../lib/helpers';
+import {
+    combinePickups,
+    combineStates,
+    fixCase,
+    listify,
+} from '../../lib/helpers';
 
 const formats = [
     {
@@ -53,7 +57,11 @@ const formats = [
                 tuningMachineHeads,
             }: IFormContext = state;
 
-            let pickups = combinePickups(pickupNeck, pickupMiddle, pickupBridge);
+            let pickups = combinePickups(
+                pickupNeck,
+                pickupMiddle,
+                pickupBridge,
+            );
 
             return (
                 <div>
@@ -68,9 +76,8 @@ const formats = [
                         {neckWood.toUpperCase() !== fingerBoard.toUpperCase()
                             ? `${fixCase(fingerBoard) || 'FINGERBOARD'} `
                             : null}
-                        fingerboard. Equipped with{' '}
-                        {pickups || 'PICKUPS'}. Controlled by{' '}
-                        {fixCase(pots) || 'CONTROLS'} knob
+                        fingerboard. Equipped with {pickups || 'PICKUPS'}.
+                        Controlled by {fixCase(pots) || 'CONTROLS'} knob
                         {pots !== 'One Master Volume' ? 's' : null} and a{' '}
                         {fixCase(pickupSwitch) || 'SWITCH'}. The{' '}
                         {scaleLength || 'SCALELENGTH'} scale length neck has{' '}

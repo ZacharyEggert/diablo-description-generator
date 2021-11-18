@@ -16,7 +16,7 @@ const tuningMachineModels = {
         'Mini Roto-Grip Locking Rotomatic 6-In-Line',
         'Roto-Grip Locking Rotomatic',
         'Roto-Grip Locking Rotomatic 6-In-Line',
-        'Sta-Tite Slotted Peghead'
+        'Sta-Tite Slotted Peghead',
     ],
     Gotoh: [
         'Large Schaller-Style',
@@ -37,19 +37,11 @@ const tuningMachineModels = {
         'Left-Handed Locking 6-In-Line',
         'Road Worn 6-In-Line',
     ],
-    Gibson: [
-        'Vintage Deluxe',
-        'Modern',
-    ],
-    Jackson: [
-        'Sealed Diecast'
-    ],
+    Gibson: ['Vintage Deluxe', 'Modern'],
+    Jackson: ['Sealed Diecast'],
     Ibanez: [],
     'Hip Shot': [],
-    Sperzel: [
-        'Trim-Lok Locking',
-        'Trim-Lok 6-In-Line Locking',
-    ],
+    Sperzel: ['Trim-Lok Locking', 'Trim-Lok 6-In-Line Locking'],
     Schaller: [
         'Locking',
         'Locking 6-In-Line',

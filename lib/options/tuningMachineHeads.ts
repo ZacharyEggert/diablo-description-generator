@@ -1,8 +1,3 @@
-const tuningMachineHeads = [
-    'Kidney Bean',
-    'Keystone',
-    'Oval',
-    'Cloche',
-];
+const tuningMachineHeads = ['Kidney Bean', 'Keystone', 'Oval', 'Cloche'];
 
 export default tuningMachineHeads;

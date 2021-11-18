@@ -54,7 +54,7 @@ export const combinateArrays = (a: string[], b: string[]) => {
 
 export const combineStates = (
     form: IFormContext,
-    other: IFormContext
+    other: IFormContext,
 ): IFormContext => {
     let state = {} as IFormContext;
     for (let key in form) {
@@ -83,7 +83,7 @@ export const combineStates = (
 export const combinePickups = (
     pickupNeck: string,
     pickupMiddle: string,
-    pickupBridge: string
+    pickupBridge: string,
 ): string => {
     let pickupCount = 0;
     if (pickupNeck) {

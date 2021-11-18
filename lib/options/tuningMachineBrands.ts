@@ -1,4 +1,3 @@
-
 const tuningMachineBrands = [
     'Grover',
     'Gotoh',

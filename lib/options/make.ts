@@ -15,6 +15,6 @@ const make = [
     'Caparison',
     'Carvin',
     'Kiesel',
-]
+];
 
 export default make;
