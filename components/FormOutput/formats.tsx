@@ -58,7 +58,7 @@ const formats = [
                 otherFeatures,
                 stringGauge,
                 pickupSwitch,
-                tuningMachines,
+                tuningMachineBrands,
             }: IFormContext = state;
 
             let pickups = `${
@@ -94,7 +94,7 @@ const formats = [
                         {fixCase(frets) || 'FRETS'} frets with a{' '}
                         {fixCase(neckProfile) || 'NECKPROFILE'} neck profile.
                         The hardware is comprised of{' '}
-                        {(fixCase(tuningMachines) || 'TUNINGMACHINES') +
+                        {(fixCase(tuningMachineBrands) || 'TUNINGMACHINES') +
                             ' tuning machines, '}
                         a {fixCase(nut) || 'NUT'} nut,
                         {!hardware ? ` and` : null} a{' '}
