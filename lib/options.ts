@@ -31,6 +31,7 @@ import tuningMachineModels from './options/tuningMachineModels';
 import tuningMachineHeads from './options/tuningMachineHeads';
 import modifications from './options/modifications';
 import pickupBrands from './options/pickupBrands';
+import coilTap from './options/coilTap';
 
 export {
     make,
@@ -96,10 +97,10 @@ export const formOptions = {
     pickupBridge: pickupBrands,
     pickguard,
     pots,
-    coilTap: [],
+    coilTap,
     pickupSwitch: switches,
-    killSwitch: switches,
-    phaseSwitch: switches,
+    killSwitch: coilTap,
+    phaseSwitch: coilTap,
     hardware,
     tuningMachineBrands,
     tuningMachineModels,
