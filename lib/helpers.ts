@@ -30,7 +30,7 @@ const whitelist = [
     'Schaller',
     'Floyd',
     'Rose',
-    
+
     
 
 
@@ -46,4 +46,11 @@ export const fixCase = (paragraph:string) :string => {
     });
 
     return fixed.join(' ');
+}
+
+
+// return all combinations of two arrays as one array a single level deep
+export const combine = (a:string[], b:string[]) => {
+    const ret = a.map(x => b.map(y => `${x} ${y}`));
+    return ret.reduce((acc, cur) => acc.concat(cur), []);
 }
