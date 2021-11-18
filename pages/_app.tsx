@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDebounce } from '../lib/hooks';
 import {
     defaultContext,
     emptyContext,
@@ -18,6 +19,31 @@ function MyApp({ Component, pageProps }) {
     const alterOther = (Object: Partial<IFormContext>) => {
         setOtherState((oldState) => ({ ...oldState, ...Object }));
     };
+
+    const debouncedForm = useDebounce(formState, 6000);
+    const debouncedOther = useDebounce(otherState, 6000);
+
+    useEffect(() => {
+        const formStateImport = localStorage.getItem('formState');
+        const otherStateImport = localStorage.getItem('otherState');
+
+        console.debug('app load triggered: reading from local storage');
+
+        if (formStateImport) {
+            alterForm(JSON.parse(formStateImport));
+        }
+        if (otherStateImport) {
+            alterOther(JSON.parse(otherStateImport));
+        }
+    }, []);
+
+    useEffect(() => {
+        setTimeout(() => {
+        localStorage.setItem('formState', JSON.stringify(debouncedForm));
+        localStorage.setItem('otherState', JSON.stringify(debouncedOther));
+        console.debug('debounce triggered: writing to local storage');
+        }, 1000);
+    }, [debouncedForm, debouncedOther]);
 
     return (
         <FormContext.Provider value={formState}>
