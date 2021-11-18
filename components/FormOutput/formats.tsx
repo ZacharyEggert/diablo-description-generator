@@ -129,15 +129,22 @@ const formats = [
                     </p>
                     <ul className='list-disc'>
                         {Object.keys(state).map((data, i) =>
-                            data === 'name'
-                                ? null
-                                : state[data] &&
-                                  state[data] !== '' && (
-                                      <li className='' key={'li' + data}>
-                                          {formLabelPrettier[data]}:{' '}
-                                          {state[data]}
-                                      </li>
-                                  )
+                            data === 'name' ||
+                            data === 'tuningMachineHeads' ||
+                            data === 'tuningMachineModels' ? null : data ===
+                              'tuningMachineBrands' ? (
+                                <li className='' key={'li' + data}>
+                                    Tuning Machines:{' '}
+                                    {`${state['tuningMachineBrands']} ${state['tuningMachineModels']} with ${state['tuningMachineHeads']} Heads`}
+                                </li>
+                            ) : (
+                                state[data] &&
+                                state[data] !== '' && (
+                                    <li className='' key={'li' + data}>
+                                        {formLabelPrettier[data]}: {state[data]}
+                                    </li>
+                                )
+                            )
                         )}
                     </ul>
                 </div>
