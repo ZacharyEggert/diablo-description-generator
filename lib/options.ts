@@ -30,6 +30,7 @@ import tuningMachineBrands from './options/tuningMachineBrands';
 import tuningMachineModels from './options/tuningMachineModels';
 import tuningMachineHeads from './options/tuningMachineHeads';
 import modifications from './options/modifications';
+import pickupBrands from './options/pickupBrands';
 
 export {
     make,
@@ -63,6 +64,7 @@ export {
     tuningMachineModels,
     tuningMachineHeads,
     modifications,
+    pickupBrands,
 };
 
 export const formOptions = {
@@ -89,9 +91,9 @@ export const formOptions = {
     nut: nutMaterial,
     frets,
     pickupConfiguration,
-    pickupNeck: [],
-    pickupMiddle: [],
-    pickupBridge: [],
+    pickupNeck: pickupBrands,
+    pickupMiddle: pickupBrands,
+    pickupBridge: pickupBrands,
     pickguard,
     pots,
     coilTap: [],

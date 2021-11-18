@@ -1,33 +1,74 @@
 const tuningMachineModels = {
-    'Grover':[
-
+    Grover: [
+        'Vintage',
+        'Vintage Deluxe',
+        'Mini Rotomatic',
+        'Mini Locking Rotomatic',
+        'Mini Locking Rotomatic 6-In-Line',
+        'Original Rotomatic',
+        'Original Locking Rotomatic',
+        'Rotomatic',
+        'Super Rotomatic',
+        '"Milk Bottle" Rotomatic',
+        'Rotomatic Locking',
+        'Rotomatic 6-In-Line',
+        'Mini Roto-Grip Locking Rotomatic',
+        'Mini Roto-Grip Locking Rotomatic 6-In-Line',
+        'Roto-Grip Locking Rotomatic',
+        'Roto-Grip Locking Rotomatic 6-In-Line',
+        'Sta-Tite Slotted Peghead'
     ],
-    'Gotoh':[
-        
+    Gotoh: [
+        'Large Schaller-Style',
+        'Schaller-Style 6-In-Line',
+        'Magnum Lock-Trad',
+        'Magnum Lock-Trad 6-In-Line',
+        'Midsize',
+        'Mini',
+        'Mini 6-In-Line',
+        'Mini Locking 6-In-Line',
+        'Staggered-Height 6-In-Line',
+        'Vintage Style',
+        'Vintage Style 6-In-Line',
+        'Compact Bass',
     ],
-    'Fender':[
-        
+    Fender: [
+        'Locking 6-In-Line',
+        'Left-Handed Locking 6-In-Line',
+        'Road Worn 6-In-Line',
     ],
-    'Gibson':[
-        
+    Gibson: [
+        'Vintage Deluxe',
+        'Modern',
     ],
-    'Jackson':[
-        
+    Jackson: [
+        'Sealed Diecast'
     ],
-    'Ibanez':[
-        
+    Ibanez: [],
+    'Hip Shot': [],
+    Sperzel: [
+        'Trim-Lok Locking',
+        'Trim-Lok 6-In-Line Locking',
     ],
-    'Hip Shot':[
-        
+    Schaller: [
+        'Locking',
+        'Locking 6-In-Line',
+        'M-6',
+        'M-6 Mini',
+        'M-6 Mini 6-In-Line',
     ],
-    'Sperzel':[
-        
-    ],
-    'Schaller':[
-        
-    ],
-    'Kluson':[
-        
+    Kluson: [
+        'Deluxe',
+        'Locking Deluxe',
+        '6-In-Line Deluxe',
+        '6-In-Line Locking Deluxe',
+        '6-In-Line Diecast 2-Pin',
+        '6-In-Line Locking Diecast 2-Pin',
+        'Revolution',
+        '6-In-Line Revolution',
+        '6-In-Line Locking Revolution',
+        'Supreme',
+        '6-In-Line Supreme',
     ],
 };
 

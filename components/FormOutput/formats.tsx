@@ -16,6 +16,9 @@ const formats = [
                 if (key === 'radius') {
                     state[key] = `${form[key]} ${other[key]}`;
                 }
+                if (key === 'pickupNeck' || key === 'pickupMiddle' || key === 'pickupBridge'){
+                    state[key] = `${form[key]}${form[key] && other[key] ? ' ':''}${other[key]}`;
+                }
             }
 
             let {

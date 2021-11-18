@@ -37,7 +37,6 @@ const FormSelect: React.FC<Props> = ({
             alterObject['tuningMachineModel'] = 'sel';
         }
 
-
         alterForm(alterObject);
     };
 
@@ -82,7 +81,13 @@ const FormSelect: React.FC<Props> = ({
                         <option value=''>Other</option>
                     </select>
                     <input
-                        disabled={selected !== '' && selected !== 'Compound'}
+                        disabled={
+                            selected !== '' &&
+                            selected !== 'Compound' &&
+                            field !== 'pickupNeck' &&
+                            field !== 'pickupMiddle' &&
+                            field !== 'pickupBridge'
+                        }
                         type='text'
                         onChange={handleOtherChange}
                         value={other}
