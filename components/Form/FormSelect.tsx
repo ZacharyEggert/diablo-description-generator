@@ -33,7 +33,10 @@ const FormSelect: React.FC<Props> = ({
             alterObject['subModel'] = 'sel';
         } else if (field === 'model') {
             alterObject['subModel'] = 'sel';
+        } else if (field === 'tuningMachineBrand') {
+            alterObject['tuningMachineModel'] = 'sel';
         }
+
 
         alterForm(alterObject);
     };

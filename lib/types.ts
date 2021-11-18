@@ -33,6 +33,8 @@ export type IFormContext = {
     killSwitch:string;
     hardware:string;
     tuningMachineBrands:string;
+    tuningMachineModels:string;
+    tuningMachineHeads:string;
     bridge:string;
     knobs:string;
     modifications:string;

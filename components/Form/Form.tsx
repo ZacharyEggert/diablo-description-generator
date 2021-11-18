@@ -43,6 +43,18 @@ const Form: React.FC<{
                         } else {
                             opt = [];
                         }
+                    } else if (key === 'tuningMachineModels') {
+                        if (
+                            currentOptions.tuningMachineBrands &&
+                            currentOptions.tuningMachineBrands !== 'sel'
+                        ) {
+                            opt =
+                                formOptions.tuningMachineModels[
+                                    currentOptions.tuningMachineBrands
+                                ];
+                        } else {
+                            opt = [];
+                        }
                     } else {
                         opt = formOptions[key];
                     }

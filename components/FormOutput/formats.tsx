@@ -59,6 +59,8 @@ const formats = [
                 stringGauge,
                 pickupSwitch,
                 tuningMachineBrands,
+                tuningMachineModels,
+                tuningMachineHeads,
             }: IFormContext = state;
 
             let pickups = `${

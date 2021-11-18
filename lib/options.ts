@@ -26,7 +26,9 @@ import otherFeatures from './options/otherFeatures';
 import stringGauge from './options/stringGauge';
 import guitarCase from './options/guitarCase';
 import bridge from './options/bridge';
-import tuningMachineBrands from './options/tuningMachines';
+import tuningMachineBrands from './options/tuningMachineBrands';
+import tuningMachineModels from './options/tuningMachineModels';
+import tuningMachineHeads from './options/tuningMachineHeads';
 import modifications from './options/modifications';
 
 export {
@@ -58,6 +60,8 @@ export {
     bridge,
     guitarCase,
     tuningMachineBrands,
+    tuningMachineModels,
+    tuningMachineHeads,
     modifications,
 };
 
@@ -96,6 +100,8 @@ export const formOptions = {
     phaseSwitch: switches,
     hardware,
     tuningMachineBrands,
+    tuningMachineModels,
+    tuningMachineHeads,
     bridge,
     knobs,
     modifications,
@@ -138,7 +144,9 @@ export const formLabelPrettier: IFormContext = {
     killSwitch: 'Kill Switch',
     phaseSwitch: 'Phase Switch',
     hardware: 'Hardware',
-    tuningMachineBrands: 'Tuning Machine Brand',
+    tuningMachineBrands: 'Tuner Brand',
+    tuningMachineModels: 'Tuner Model',
+    tuningMachineHeads: 'Tuner Head',
     bridge: 'Bridge',
     knobs: 'Knobs',
     modifications: 'Mods',
