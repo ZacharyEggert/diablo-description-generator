@@ -1,25 +1,12 @@
 import { IFormContext } from '../../lib/context';
 import { formLabelPrettier } from '../../lib/options';
-import { fixCase } from '../../lib/helpers';
+import { combinePickups, combineStates, fixCase, listify } from '../../lib/helpers';
 
 const formats = [
     {
         name: "Hilding (That's the fact, Jack)",
         method: (form: IFormContext, other: IFormContext) => {
-            let state = {} as IFormContext;
-            for (let key in form) {
-                if (form[key] !== '' && form[key] !== 'sel') {
-                    state[key] = form[key];
-                } else {
-                    state[key] = other[key];
-                }
-                if (key === 'radius') {
-                    state[key] = `${form[key]} ${other[key]}`;
-                }
-                if (key === 'pickupNeck' || key === 'pickupMiddle' || key === 'pickupBridge'){
-                    state[key] = `${form[key]}${form[key] && other[key] ? ' ':''}${other[key]}`;
-                }
-            }
+            let state = combineStates(form, other);
 
             let {
                 make,
@@ -66,13 +53,7 @@ const formats = [
                 tuningMachineHeads,
             }: IFormContext = state;
 
-            let pickups = `${
-                !!pickupNeck ? `${pickupNeck} in the neck position, ` : ''
-            }${
-                !!pickupMiddle ? `${pickupMiddle} in the middle position, ` : ''
-            }${
-                !!pickupNeck ? 'and ' : ''
-            }${pickupBridge} in the bridge position`;
+            let pickups = combinePickups(pickupNeck, pickupMiddle, pickupBridge);
 
             return (
                 <div>
@@ -88,7 +69,7 @@ const formats = [
                             ? `${fixCase(fingerBoard) || 'FINGERBOARD'} `
                             : null}
                         fingerboard. Equipped with{' '}
-                        {fixCase(pickups) || 'PICKUPS'}. Controlled by{' '}
+                        {pickups || 'PICKUPS'}. Controlled by{' '}
                         {fixCase(pots) || 'CONTROLS'} knob
                         {pots !== 'One Master Volume' ? 's' : null} and a{' '}
                         {fixCase(pickupSwitch) || 'SWITCH'}. The{' '}
@@ -109,10 +90,10 @@ const formats = [
                             : ` bridge`}
                         ,
                         {knobs
-                            ? ` with ${(fixCase(knobs) || 'KNOBS') + ' knobs'}`
+                            ? ` and ${(fixCase(knobs) || 'KNOBS') + ' knobs'}`
                             : null}
                         {pickguard
-                            ? ` on a ${
+                            ? ` with a ${
                                   fixCase(pickguard) || 'PICKGUARD'
                               } pickguard`
                             : null}
@@ -130,26 +111,7 @@ const formats = [
                             .
                         </span>
                     </p>
-                    <ul className='list-disc'>
-                        {Object.keys(state).map((data, i) =>
-                            data === 'name' ||
-                            data === 'tuningMachineHeads' ||
-                            data === 'tuningMachineModels' ? null : data ===
-                              'tuningMachineBrands' ? (
-                                <li className='' key={'li' + data}>
-                                    Tuning Machines:{' '}
-                                    {`${state['tuningMachineBrands']} ${state['tuningMachineModels']} with ${state['tuningMachineHeads']} Heads`}
-                                </li>
-                            ) : (
-                                state[data] &&
-                                state[data] !== '' && (
-                                    <li className='' key={'li' + data}>
-                                        {formLabelPrettier[data]}: {state[data]}
-                                    </li>
-                                )
-                            )
-                        )}
-                    </ul>
+                    {listify(state)}
                 </div>
             );
         },
