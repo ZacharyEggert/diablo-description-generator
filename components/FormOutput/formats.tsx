@@ -5,6 +5,8 @@ import {
     fixCase,
     listify,
 } from '../../lib/helpers';
+import { guitarCaseMap } from '../../lib/options/guitarCase';
+import { topWoodsMap } from '../../lib/options/topWoods';
 
 const formats = [
     {
@@ -24,6 +26,7 @@ const formats = [
                 weight,
                 bodyType,
                 bodyWood,
+                topWood,
                 scaleLength,
                 neckJoint,
                 neckWood,
@@ -65,12 +68,16 @@ const formats = [
 
             return (
                 <div>
+                    <p>
+                        <strong>{make} {model} {subModel} {finish} {year} {!!guitarCase&&`${guitarCaseMap[guitarCase]||''}`} {topWoodsMap[topWood]||''}</strong>
+                    </p>
+                    <br/>
                     <p className='mb-8'>
                         {make || 'MAKE'} {model || 'MODEL'} {subModel || ''} in{' '}
                         {finish || 'FINISH'} finish made in {year || 'YEAR'}
                         {guitarCase ? ` with ${guitarCase || 'CASE'}` : null}.
                         This guitar features a {fixCase(bodyType) || 'BODYTYPE'}{' '}
-                        {fixCase(bodyWood) || 'BODYWOOD'} body,{' '}
+                        {fixCase(bodyWood) || 'BODYWOOD'} body{topWood? ` with a ${fixCase(topWood)}`:''},{' '}
                         {/**neckFinish?`${neckFinish || 'NECKFINISH'} `:null*/}
                         {fixCase(neckWood) || 'NECKWOOD'} neck and{' '}
                         {neckWood.toUpperCase() !== fingerBoard.toUpperCase()

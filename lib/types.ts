@@ -10,6 +10,7 @@ export type IFormContext = {
     weight: string;
     bodyType: string;
     bodyWood: string;
+    topWood: string;
     scaleLength: string;
     neckJoint: string;
     neckWood: string;

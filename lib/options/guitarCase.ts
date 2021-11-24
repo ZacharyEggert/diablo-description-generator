@@ -9,4 +9,16 @@ const guitarCase = [
     'Gigbag',
 ];
 
+export const guitarCaseMap = {
+    'Original Hard Shell Case': 'OHSC',
+    'Original Molded Case': 'OHSC',
+    'Original Soft Shell Case': 'OSSC',
+    'Gator Hard Shell Case': 'Gator Case',
+    'TKL Hard Shell Case': 'TKL Case',
+    'TKL Molded Hard Shell Case': 'TKL Case',
+    'SKB Molded Hard Shell Case': 'SKB Case',
+    'Gigbag': 'Gigbag',
+};
+
+ 
 export default guitarCase;

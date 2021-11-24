@@ -132,6 +132,7 @@ export const listify = (state: IFormContext): JSX.Element => {
         'weight',
         'bodyType',
         'bodyWood',
+        'topWood',
         'scaleLength',
         'neckJoint',
         'neckWood',

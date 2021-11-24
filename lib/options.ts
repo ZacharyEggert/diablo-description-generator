@@ -32,6 +32,7 @@ import tuningMachineHeads from './options/tuningMachineHeads';
 import modifications from './options/modifications';
 import pickupBrands from './options/pickupBrands';
 import coilTap from './options/coilTap';
+import topWood from './options/topWoods';
 
 export {
     make,
@@ -66,6 +67,7 @@ export {
     tuningMachineHeads,
     modifications,
     pickupBrands,
+    topWood,
 };
 
 export const formOptions = {
@@ -80,6 +82,7 @@ export const formOptions = {
     weight: [],
     bodyType,
     bodyWood,
+    topWood,
     scaleLength,
     neckJoint,
     neckWood,
@@ -125,6 +128,7 @@ export const formLabelPrettier: IFormContext = {
     weight: 'Weight',
     bodyType: 'Body Type',
     bodyWood: 'Body Wood',
+    topWood: 'Top Wood',
     scaleLength: 'Scale Length',
     neckJoint: 'Neck Joint',
     neckWood: 'Neck Wood',
