@@ -22,6 +22,7 @@ const FormSelect: React.FC<Props> = ({
 }) => {
     const [selected, setSelected] = React.useState('sel');
     const [other, setOther] = React.useState('');
+    const otherRef = React.useRef<HTMLInputElement>(null);
 
     const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (
         event,
@@ -50,13 +51,16 @@ const FormSelect: React.FC<Props> = ({
     const formState = UseFormContext();
     const otherState = UseOtherContext();
 
+
     useEffect(() => {
         setSelected(formState[field]);
     }, [formState, field]);
 
     useEffect(() => {
         setOther(otherState[field]);
+        otherRef.current.value = otherState[field];
     }, [otherState, field]);
+
 
     return (
         <div className='col-span-1 p-2'>
@@ -88,9 +92,10 @@ const FormSelect: React.FC<Props> = ({
                             field !== 'pickupMiddle' &&
                             field !== 'pickupBridge'
                         }
+                        ref={otherRef}
                         type='text'
                         onChange={handleOtherChange}
-                        value={other}
+                        defaultValue={other}
                         onClick={(e) => e.stopPropagation()}
                         className='w-11/12 mt-1 bg-gray-900 disabled:opacity-5'
                     />
