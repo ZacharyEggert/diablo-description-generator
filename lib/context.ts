@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
-import { IFormContext } from './types';
+import { IFormContext } from 'lib/types';
 
-export type { IFormContext } from './types';
+export type { IFormContext } from 'lib/types';
 
 export const defaultContext: IFormContext = {
     make: 'sel',

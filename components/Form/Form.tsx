@@ -1,6 +1,6 @@
 import React from 'react';
-import { IFormContext, UseFormContext } from '../../lib/context';
-import { formLabelPrettier, formOptions } from '../../lib/options';
+import { IFormContext, UseFormContext } from 'lib/context';
+import { formLabelPrettier, formOptions } from 'lib/options';
 import FormSelect from './FormSelect';
 
 const Form: React.FC<{

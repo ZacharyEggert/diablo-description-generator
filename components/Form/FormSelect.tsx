@@ -3,10 +3,10 @@ import {
     IFormContext,
     UseFormContext,
     UseOtherContext,
-} from '../../lib/context';
+} from 'lib/context';
 
 interface Props {
-    label: string;
+    label: string; 
     options: string[];
     field: string;
     alterForm: (Object: Partial<IFormContext>) => void;

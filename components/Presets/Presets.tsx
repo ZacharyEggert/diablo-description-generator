@@ -4,7 +4,7 @@ import {
     IFormContext,
     UseFormContext,
     UseOtherContext,
-} from '../../lib/context';
+} from 'lib/context';
 import formPresets from './formPresets';
 
 interface Props {

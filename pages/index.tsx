@@ -1,7 +1,7 @@
-import Form from '../components/Form/Form';
-import FormOutput from '../components/FormOutput/FormOutput';
-import Presets from '../components/Presets/Presets';
-import { IFormContext } from '../lib/context';
+import Form from 'components/Form/Form';
+import FormOutput from 'components/FormOutput/FormOutput';
+import Presets from 'components/Presets/Presets';
+import { IFormContext } from 'lib/context';
 
 const Home: React.FC<{
     alterForm: (Object: Partial<IFormContext>) => void;

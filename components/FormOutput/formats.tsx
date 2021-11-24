@@ -1,12 +1,12 @@
-import { IFormContext } from '../../lib/context';
+import { IFormContext } from 'lib/context';
 import {
     combinePickups,
     combineStates,
     fixCase,
     listify,
-} from '../../lib/helpers';
-import { guitarCaseMap } from '../../lib/options/guitarCase';
-import { topWoodsMap } from '../../lib/options/topWoods';
+} from 'lib/helpers';
+import { guitarCaseMap } from 'lib/options/guitarCase';
+import { topWoodsMap } from 'lib/options/topWoods';
 
 const formats = [
     {

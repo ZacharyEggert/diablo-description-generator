@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useDebounce } from '../lib/hooks';
+import { useDebounce } from 'lib/hooks';
 import {
     defaultContext,
     emptyContext,
     FormContext,
     IFormContext,
     OtherContext,
-} from '../lib/context';
-import '../styles/global.css';
+} from 'lib/context';
+import 'styles/global.css';
 
 function MyApp({ Component, pageProps }) {
     const [formState, setFormState] = useState(defaultContext);

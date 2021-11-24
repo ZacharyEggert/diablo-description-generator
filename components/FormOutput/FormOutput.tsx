@@ -1,7 +1,7 @@
 import React from 'react';
 import FormatSelect from './FormatSelect';
 import formats from './formats';
-import { UseFormContext, UseOtherContext } from '../../lib/context';
+import { UseFormContext, UseOtherContext } from 'lib/context';
 
 interface FormOutputProps {}
 
