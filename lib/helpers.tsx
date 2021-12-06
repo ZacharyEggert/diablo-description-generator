@@ -1,4 +1,4 @@
-import { formLabelPrettier, make, tuningMachineBrands } from 'lib/options';
+import { formLabelPrettier, make, tuningMachineBrands } from 'lib/description/description';
 import { IFormContext } from 'lib/types';
 const whitelist = [
     ...make,

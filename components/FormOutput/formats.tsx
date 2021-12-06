@@ -5,8 +5,8 @@ import {
     fixCase,
     listify,
 } from 'lib/helpers';
-import { guitarCaseMap } from 'lib/options/guitarCase';
-import { topWoodsMap } from 'lib/options/topWoods';
+import { guitarCaseMap } from 'lib/description/options/guitarCase';
+import { topWoodsMap } from 'lib/description/options/topWoods';
 
 const formats = [
     {
