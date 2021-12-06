@@ -1,5 +1,10 @@
-import { formLabelPrettier, make, tuningMachineBrands } from 'lib/description/description';
-import { IFormContext } from 'lib/types';
+import {
+    formLabelPrettier,
+    make,
+    tuningMachineBrands,
+} from 'lib/description/description';
+import { IDamageContext, IFormContext } from 'lib/types';
+import { damageLabelPrettier } from './damage/damage';
 const whitelist = [
     ...make,
     ...tuningMachineBrands,
@@ -180,6 +185,40 @@ export const listify = (state: IFormContext): JSX.Element => {
             state[data] !== '' && (
                 <li className='' key={'li' + data}>
                     {formLabelPrettier[data]}: {state[data]}
+                </li>
+            )
+        );
+    });
+
+    return <ul className='list-disc'>{mappedObject}</ul>;
+};
+
+export const damageReport = (damageState: IDamageContext): JSX.Element => {
+    const manualArrayOfKeys = [
+        'overallCondition',
+        'bodyBack',
+        'bodyFront',
+        'bodyBinding',
+        'fretBoard',
+        'fretLife',
+        'neckBack',
+        'neckBinding',
+        'neckPocket',
+        'headstockFront',
+        'headstockBack',
+        'pickups',
+        'bridge',
+        'tailpiece',
+        'knobs',
+        'hardware',
+    ];
+
+    const mappedObject = manualArrayOfKeys.map((data, i) => {
+        return (
+            damageState[data] &&
+            damageState[data] !== '' && (
+                <li className='' key={'li' + data}>
+                    {damageLabelPrettier[data]}: {damageState[data]}
                 </li>
             )
         );

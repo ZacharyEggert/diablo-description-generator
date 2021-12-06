@@ -36,6 +36,38 @@ export {
     pickups,
 };
 
+const stars = [
+    '☆',
+    '✯',
+    '✯☆',
+    '✯✯',
+    '✯✯☆',
+    '✯✯✯',
+    '✯✯✯☆',
+    '✯✯✯✯',
+    '✯✯✯✯☆',
+    '✯✯✯✯✯',
+];
+
+export const damageOptions = {
+    overallCondition: stars,
+    bodyBack: stars,
+    bodyFront: stars,
+    bodyBinding: stars,
+    fretboard: stars,
+    fretLife: stars,
+    neckBack: stars,
+    neckBinding: stars,
+    neckPocket: stars,
+    headstockBack: stars,
+    headstockFront: stars,
+    bridge: stars,
+    tailpiece: stars,
+    hardware: stars,
+    knobs: stars,
+    pickups: stars,
+};
+
 export const damageLabelPrettier: IDamageContext = {
     overallCondition: 'Overall Condition',
     bodyBack: 'Body Back',
