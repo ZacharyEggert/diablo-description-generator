@@ -10,6 +10,7 @@ const subModel = {
             'American Performer',
             'Hardtail',
             'VG',
+            'Masterbuilt',
         ],
         Telecaster: [
             'American Vintage',
@@ -17,6 +18,7 @@ const subModel = {
             'American Professional',
             'Thinline Semihollow',
             'Hot Rod',
+            'Masterbuilt',
         ],
         Esquire: [],
         Nocaster: [],
@@ -30,6 +32,8 @@ const subModel = {
         Explorer: [],
         'Flying V': [],
         M3: [],
+        'ES-335': [],
+        'ES-347': [],
     },
     Jackson: {
         Dinky: [

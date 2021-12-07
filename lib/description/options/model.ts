@@ -7,7 +7,16 @@ const model = {
         'Jaguar',
         'Jazzmaster',
     ],
-    Gibson: ['Les Paul', 'SG', 'Firebird', 'Explorer', 'Flying V', 'M3'],
+    Gibson: [
+        'Les Paul',
+        'SG',
+        'Firebird',
+        'Explorer',
+        'Flying V',
+        'M3',
+        'ES-335',
+        'ES-347',
+    ],
     Jackson: [
         'Dinky',
         'Kelly',
