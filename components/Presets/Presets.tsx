@@ -66,7 +66,27 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
             'Enter a name for this preset. You can delete it later by pressing ` (above the tab key)',
         );
         if (name) {
-            const preset = { formState, otherState, name };
+            const preset = {
+                formState: {
+                    ...formState,
+                    year: '',
+                    serial: '',
+                    weight: '',
+                    finish: '',
+                    modifications: 'sel',
+                    otherFeatures: 'sel',
+                },
+                otherState: {
+                    ...otherState,
+                    year: 'XXXX',
+                    serial: '-',
+                    weight: 'Xlbs Xoz',
+                    finish: '',
+                    modifications: '',
+                    otherFeatures: '',
+                },
+                name,
+            };
             const newPresets = { ...presets, [name]: preset };
             setPresets(newPresets);
             localStorage.setItem('presets', JSON.stringify(newPresets));
