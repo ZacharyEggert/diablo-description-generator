@@ -215,9 +215,13 @@ export const damageReport = (damageState: IDamageContext): JSX.Element => {
 
     const mappedObject = manualArrayOfKeys.map((data, i) => {
         return (
-            <li className='' key={'li' + data + 'damage'}>
-                {damageLabelPrettier[data]}: {damageState.rating[data]}
-            </li>
+            <>
+                {damageState.rating[data] !== 'N/A' && (
+                    <li className='' key={'li' + data + 'damage'}>
+                        {damageLabelPrettier[data]}: {damageState.rating[data]}
+                    </li>
+                )}
+            </>
         );
     });
 
@@ -248,12 +252,16 @@ export const damageReportVerbose = (
 
     const mappedObject = manualArrayOfKeys.map((data, i) => {
         return (
-            <li className='' key={'li' + data + 'damage'}>
-                {damageLabelPrettier[data]}: {damageState.rating[data]}
-                {damageState.description[data] && (
-                    <> - {damageState.description[data]}</>
+            <>
+                {damageState.rating[data] !== 'N/A' && (
+                    <li className='' key={'li' + data + 'damage'}>
+                        {damageLabelPrettier[data]}: {damageState.rating[data]}
+                        {damageState.description[data] && (
+                            <> - {damageState.description[data]}</>
+                        )}
+                    </li>
                 )}
-            </li>
+            </>
         );
     });
 
