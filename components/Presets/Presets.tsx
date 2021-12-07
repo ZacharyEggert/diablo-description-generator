@@ -38,7 +38,9 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
 
     const savePreset = () => {
         printStateToConsole();
-        const name = prompt('Enter a name for this preset');
+        const name = prompt(
+            'Enter a name for this preset. You can delete it later by pressing ` (above the tab key)',
+        );
         if (name) {
             const preset = { formState, otherState, name };
             const newPresets = { ...presets, [name]: preset };
