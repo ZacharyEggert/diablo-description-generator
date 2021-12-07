@@ -19,6 +19,7 @@ const bridge = [
     'Fender American Professional Stratocaster Tremolo',
     'Fender American Vintage Stratocaster Tremolo',
     'Vintage Telecaster Bridge with Compensated Brass Saddles',
+    'Vintage Telecaster Bridge',
     'Floyd Rose 1000 Series Double Locking Tremolo',
     'Floyd Rose 2000 Series Double Locking Tremolo',
     'Licensed Floyd Rose Double Locking Tremolo',
@@ -27,5 +28,41 @@ const bridge = [
     'Kahler Tremolo System',
     'Kahler Locking Tremolo System',
 ];
+
+export const bridgeByBrand = {
+    Fender: [
+        'Fender Hardtail with Block Saddles',
+        'Fender 2-Point Deluxe Synchronized Tremolo',
+        'Fender Vintage-Style Standard Stratocaster Tremolo',
+        'Fender American Standard Stratocaster Tremolo',
+        'Fender American Deluxe Stratocaster Tremolo',
+        'Fender American Professional Stratocaster Tremolo',
+        'Fender American Vintage Stratocaster Tremolo',
+        'Vintage Telecaster Bridge with Compensated Brass Saddles',
+        'Vintage Telecaster Bridge',
+    ],
+    Gibson: [
+        'ABR-1 Tune-O-Matic',
+        'Tune-O-Matic',
+        'Tune-O-Matic with Fine Tune Stoptail',
+        'Locking Tune-O-Matic',
+        'Tune-O-Matic with Locking Stoptail',
+        'Locking Tune-O-Matic with Locking Stoptail',
+        'Tone Pros Locking Tune-O-Matic with Locking Stoptail',
+        'Compensated Wraparound',
+        'Adjustable Wraparound',
+        'Pigtail Adjustable Wraparound',
+        'Schaller Adjustable Wraparound',
+        'Tone Pros Adjustable Wraparound',
+    ],
+    Floyd: [
+        'Floyd Rose 1000 Series Double Locking Tremolo',
+        'Floyd Rose 2000 Series Double Locking Tremolo',
+        'Licensed Floyd Rose Double Locking Tremolo',
+        'Floyd Rose Original Double Locking Tremolo',
+        'Floyd Rose Special Double Locking Tremolo',
+    ],
+    Kahler: ['Kahler Tremolo System', 'Kahler Locking Tremolo System'],
+};
 
 export default bridge;
