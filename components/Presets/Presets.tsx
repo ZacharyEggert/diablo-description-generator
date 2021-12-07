@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     emptyContext,
     IFormContext,
@@ -22,13 +22,54 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
     const formState = UseFormContext();
     const otherState = UseOtherContext();
 
+    const [presets, setPresets] = React.useState<{
+        [key: string]: {
+            formState: IFormContext;
+            otherState: IFormContext;
+        } & { name: string };
+    }>(formPresets);
+
+    useEffect(() => {
+        const localPresets = localStorage.getItem('presets');
+        if (localPresets) {
+            setPresets(JSON.parse(localPresets));
+        }
+    }, []);
+
+    const savePreset = () => {
+        printStateToConsole();
+        const name = prompt('Enter a name for this preset');
+        if (name) {
+            const preset = { formState, otherState, name };
+            const newPresets = { ...presets, [name]: preset };
+            setPresets(newPresets);
+            localStorage.setItem('presets', JSON.stringify(newPresets));
+        }
+    };
+
+    const deletePreset = () => {
+        const confirm = window.confirm(
+            'Are you sure you want to delete this preset?',
+        );
+        if (!confirm) return;
+        const name = selectRef.current?.value;
+        if (name) {
+            const newPresets = { ...presets };
+            delete newPresets[name];
+            setPresets(newPresets);
+            localStorage.setItem('presets', JSON.stringify(newPresets));
+        }
+    };
+
     const printStateToConsole = () => {
         console.log({ formState, otherState });
     };
 
     const handlePresetApplication = () => {
         const selectedPreset = selectRef.current.value;
-        const preset = formPresets[selectedPreset];
+        console.log(selectedPreset); //TODO: apply preset
+        const preset = presets[selectedPreset];
+        console.log(preset, presets); //TODO: remove
         alterForm(preset.formState);
         alterOther(preset.otherState);
         alterDamage(defaultDamageContext);
@@ -40,14 +81,23 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
             <select
                 className='mx-4 bg-gray-800 w-72'
                 defaultValue='select...'
-                ref={selectRef}>
+                ref={selectRef}
+                onKeyPress={(e) => {
+                    if (
+                        e.key === '`' &&
+                        selectRef.current.value !== 'select...' &&
+                        selectRef.current.value !== 'Clear'
+                    ) {
+                        deletePreset();
+                    }
+                }}>
                 <option value='select...' disabled>
                     Select a preset
                 </option>
-                {Object.values(formPresets).map((preset, i) => (
+                {Object.values(presets).map((preset, i) => (
                     <option
                         key={i}
-                        value={Object.keys(formPresets)[i]}
+                        value={Object.keys(presets)[i]}
                         className='bg-gray-800'>
                         {preset.name}
                     </option>
@@ -56,7 +106,7 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
             <button onClick={handlePresetApplication} className='mx-4'>
                 Apply
             </button>
-            <button onClick={printStateToConsole} className='float-right mx-4'>
+            <button onClick={savePreset} className='float-right mx-4'>
                 Make Preset
             </button>
         </div>
