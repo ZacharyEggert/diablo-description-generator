@@ -2,6 +2,7 @@ import React from 'react';
 import FormatSelect from './FormatSelect';
 import formats from './formats';
 import { UseFormContext, UseOtherContext } from 'lib/context';
+import { useDamageContext } from 'lib/damageContext';
 
 interface FormOutputProps {}
 
@@ -10,6 +11,7 @@ const FormOutput: React.FC<FormOutputProps> = ({}) => {
 
     const form = UseFormContext();
     const other = UseOtherContext();
+    const damage = useDamageContext();
 
     const defaultCopy = (
         <p>
@@ -39,7 +41,9 @@ const FormOutput: React.FC<FormOutputProps> = ({}) => {
             console.log(format);
 
             setCopy(
-                formats.filter((f) => f.name === format)[0].method(form, other),
+                formats
+                    .filter((f) => f.name === format)[0]
+                    .method(form, other, damage),
             );
         }
     };

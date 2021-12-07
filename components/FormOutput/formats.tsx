@@ -4,14 +4,21 @@ import {
     combineStates,
     fixCase,
     listify,
+    damageReport,
+    damageReportVerbose,
 } from 'lib/helpers';
-import { guitarCaseMap } from 'lib/options/guitarCase';
-import { topWoodsMap } from 'lib/options/topWoods';
+import { guitarCaseMap } from 'lib/description/options/guitarCase';
+import { topWoodsMap } from 'lib/description/options/topWoods';
+import { IDamageContext } from 'lib/types';
 
 const formats = [
     {
         name: "Hilding (That's the fact, Jack)",
-        method: (form: IFormContext, other: IFormContext) => {
+        method: (
+            form: IFormContext,
+            other: IFormContext,
+            damage: IDamageContext,
+        ) => {
             let state = combineStates(form, other);
 
             let {
@@ -69,15 +76,21 @@ const formats = [
             return (
                 <div>
                     <p>
-                        <strong>{make} {model} {subModel} {finish} {year} {!!guitarCase&&`${guitarCaseMap[guitarCase]||''}`} {topWoodsMap[topWood]||''}</strong>
+                        <strong>
+                            {make} {model} {subModel} {finish} {year}{' '}
+                            {!!guitarCase &&
+                                `${guitarCaseMap[guitarCase] || ''}`}{' '}
+                            {topWoodsMap[topWood] || ''}
+                        </strong>
                     </p>
-                    <br/>
+                    <br />
                     <p className='mb-8'>
                         {make || 'MAKE'} {model || 'MODEL'} {subModel || ''} in{' '}
                         {finish || 'FINISH'} finish made in {year || 'YEAR'}
                         {guitarCase ? ` with ${guitarCase || 'CASE'}` : null}.
                         This guitar features a {fixCase(bodyType) || 'BODYTYPE'}{' '}
-                        {fixCase(bodyWood) || 'BODYWOOD'} body{topWood? ` with a ${fixCase(topWood)}`:''},{' '}
+                        {fixCase(bodyWood) || 'BODYWOOD'} body
+                        {topWood ? ` with a ${fixCase(topWood)}` : ''},{' '}
                         {/**neckFinish?`${neckFinish || 'NECKFINISH'} `:null*/}
                         {fixCase(neckWood) || 'NECKWOOD'} neck and{' '}
                         {neckWood.toUpperCase() !== fingerBoard.toUpperCase()
@@ -125,6 +138,10 @@ const formats = [
                             .
                         </span>
                     </p>
+                    <br />
+                    {damageReportVerbose(damage)}
+                    <br />
+                    <br />
                     {listify(state)}
                 </div>
             );

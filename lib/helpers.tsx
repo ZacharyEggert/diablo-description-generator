@@ -1,5 +1,10 @@
-import { formLabelPrettier, make, tuningMachineBrands } from 'lib/options';
-import { IFormContext } from 'lib/types';
+import {
+    formLabelPrettier,
+    make,
+    tuningMachineBrands,
+} from 'lib/description/description';
+import { IDamageContext, IFormContext } from 'lib/types';
+import { damageLabelPrettier } from './damage/damage';
 const whitelist = [
     ...make,
     ...tuningMachineBrands,
@@ -137,7 +142,7 @@ export const listify = (state: IFormContext): JSX.Element => {
         'neckJoint',
         'neckWood',
         'neckFinish',
-        'fingerboard',
+        'fingerBoard',
         'radius',
         'neckProfile',
         'inlays',
@@ -182,6 +187,73 @@ export const listify = (state: IFormContext): JSX.Element => {
                     {formLabelPrettier[data]}: {state[data]}
                 </li>
             )
+        );
+    });
+
+    return <ul className='list-disc'>{mappedObject}</ul>;
+};
+
+export const damageReport = (damageState: IDamageContext): JSX.Element => {
+    const manualArrayOfKeys = [
+        'overallCondition',
+        'bodyBack',
+        'bodyFront',
+        'bodyBinding',
+        'fretboard',
+        'fretLife',
+        'neckBack',
+        'neckBinding',
+        'neckPocket',
+        'headstockFront',
+        'headstockBack',
+        'pickups',
+        'bridge',
+        'tailpiece',
+        'knobs',
+        'hardware',
+    ];
+
+    const mappedObject = manualArrayOfKeys.map((data, i) => {
+        return (
+            <li className='' key={'li' + data + 'damage'}>
+                {damageLabelPrettier[data]}: {damageState.rating[data]}
+            </li>
+        );
+    });
+
+    return <ul className='list-disc'>{mappedObject}</ul>;
+};
+
+export const damageReportVerbose = (
+    damageState: IDamageContext,
+): JSX.Element => {
+    const manualArrayOfKeys = [
+        'overallCondition',
+        'bodyBack',
+        'bodyFront',
+        'bodyBinding',
+        'fretboard',
+        'fretLife',
+        'neckBack',
+        'neckBinding',
+        'neckPocket',
+        'headstockFront',
+        'headstockBack',
+        'pickups',
+        'bridge',
+        'tailpiece',
+        'knobs',
+        'hardware',
+    ];
+
+    const mappedObject = manualArrayOfKeys.map((data, i) => {
+        return (
+            <li className='' key={'li' + data + 'damage'}>
+                {damageLabelPrettier[data]}: {damageState.rating[data]}
+                {damageState.description[data] && (
+                    <> - {damageState.description[data]}</>
+                )}
+            </li>
         );
     });
 

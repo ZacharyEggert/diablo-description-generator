@@ -6,14 +6,19 @@ import {
     UseOtherContext,
 } from 'lib/context';
 import formPresets from './formPresets';
+import { defaultDamageContext } from 'lib/damageContext';
+import { IDamageAreas, IDamageContext } from 'lib/types';
 
 interface Props {
     alterForm: (Object: Partial<IFormContext>) => void;
     alterOther: (Object: Partial<IFormContext>) => void;
+    alterDamage: (Object: {
+        rating?: Partial<IDamageAreas>;
+        description?: Partial<IDamageAreas>;
+    }) => void;
 }
-const Presets: React.FC<Props> = ({ alterForm, alterOther }) => {
+const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
     const selectRef = React.useRef<HTMLSelectElement>(null);
-
     const formState = UseFormContext();
     const otherState = UseOtherContext();
 
@@ -26,6 +31,7 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther }) => {
         const preset = formPresets[selectedPreset];
         alterForm(preset.formState);
         alterOther(preset.otherState);
+        alterDamage(defaultDamageContext);
     };
 
     return (
