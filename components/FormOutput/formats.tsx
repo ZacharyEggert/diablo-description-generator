@@ -139,10 +139,12 @@ const formats = [
                         </span>
                     </p>
                     <br />
-                    {damageReportVerbose(damage)}
                     <br />
-                    <br />
+                    <h3 className='text-xl underline'>Specs</h3>
                     {listify(state)}
+                    <br />
+                    <h3 className='text-xl underline'>Condition</h3>
+                    {damageReportVerbose(damage)}
                 </div>
             );
         },
