@@ -1,10 +1,13 @@
 import { damageLabelPrettier, damageOptions } from 'lib/damage/damage';
 import { useDamageContext } from 'lib/damageContext';
-import { IDamageContext } from 'lib/types';
+import { IDamageAreas, IDamageContext } from 'lib/types';
 import DamageSelect from './DamageSelect';
 
 const DamageForm: React.FC<{
-    alterDamage: (Object: Partial<IDamageContext>) => void;
+    alterDamage: (Object: {
+        rating?: Partial<IDamageAreas>;
+        description?: Partial<IDamageAreas>;
+    }) => void;
 }> = ({ alterDamage }) => {
     const damageState = useDamageContext();
 
@@ -17,7 +20,7 @@ const DamageForm: React.FC<{
             <form
                 className='grid grid-cols-2 pb-8 mx-auto md:grid-cols-4 md:w-11/12'
                 onSubmit={onSubmit}>
-                {Object.keys(damageState).map((key) => {
+                {Object.keys(damageState.rating).map((key) => {
                     let opt = damageOptions[key];
 
                     return (

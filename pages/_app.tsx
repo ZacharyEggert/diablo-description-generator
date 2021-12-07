@@ -8,7 +8,7 @@ import {
     OtherContext,
 } from 'lib/context';
 import 'styles/global.css';
-import { IDamageContext } from 'lib/types';
+import { IDamageAreas, IDamageContext } from 'lib/types';
 import { DamageContext, defaultDamageContext } from 'lib/damageContext';
 
 function MyApp({ Component, pageProps }) {
@@ -22,8 +22,14 @@ function MyApp({ Component, pageProps }) {
     const alterOther = (Object: Partial<IFormContext>) => {
         setOtherState((oldState) => ({ ...oldState, ...Object }));
     };
-    const alterDamage = (Object: Partial<IDamageContext>) => {
-        setDamageState((oldState) => ({ ...oldState, ...Object }));
+    const alterDamage = (Object: {
+        rating?: Partial<IDamageAreas>;
+        description?: Partial<IDamageAreas>;
+    }) => {
+        setDamageState((oldState) => ({
+            rating: { ...oldState.rating, ...Object.rating },
+            description: { ...oldState.description, ...Object.description },
+        }));
     };
 
     const debouncedForm = useDebounce(formState, 6000);

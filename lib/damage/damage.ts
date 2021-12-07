@@ -1,4 +1,4 @@
-import { IDamageContext } from 'lib/types';
+import { IDamageAreas, IDamageContext } from 'lib/types';
 
 import overallCondition from './options/overallCondition';
 import bodyBack from 'lib/damage/options/bodyBack';
@@ -37,14 +37,14 @@ export {
 };
 
 const stars = [
-    '☆',
-    '✯',
-    '✯☆',
-    '✯✯',
-    '✯✯☆',
-    '✯✯✯',
-    '✯✯✯☆',
-    '✯✯✯✯',
+    '☆ · · · ·',
+    '✯ · · · ·',
+    '✯☆ · · ·',
+    '✯✯ · · ·',
+    '✯✯☆ · ·',
+    '✯✯✯ · ·',
+    '✯✯✯☆ ·',
+    '✯✯✯✯ ·',
     '✯✯✯✯☆',
     '✯✯✯✯✯',
 ];
@@ -68,7 +68,7 @@ export const damageOptions = {
     pickups: stars,
 };
 
-export const damageLabelPrettier: IDamageContext = {
+export const damageLabelPrettier: IDamageAreas = {
     overallCondition: 'Overall Condition',
     bodyBack: 'Body Back',
     bodyFront: 'Body Front',

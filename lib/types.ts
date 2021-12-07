@@ -44,7 +44,7 @@ export type IFormContext = {
     guitarCase: string;
 };
 
-export type IDamageContext = {
+export type IDamageAreas = {
     overallCondition: string;
     fretLife: string;
     headstockFront: string;
@@ -61,4 +61,9 @@ export type IDamageContext = {
     tailpiece: string;
     knobs: string;
     hardware: string;
+};
+
+export type IDamageContext = {
+    rating: IDamageAreas;
+    description: IDamageAreas;
 };

@@ -5,6 +5,7 @@ import {
     fixCase,
     listify,
     damageReport,
+    damageReportVerbose,
 } from 'lib/helpers';
 import { guitarCaseMap } from 'lib/description/options/guitarCase';
 import { topWoodsMap } from 'lib/description/options/topWoods';
@@ -138,7 +139,7 @@ const formats = [
                         </span>
                     </p>
                     <br />
-                    {damageReport(damage)}
+                    {damageReportVerbose(damage)}
                     <br />
                     <br />
                     {listify(state)}

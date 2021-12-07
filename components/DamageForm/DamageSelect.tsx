@@ -1,15 +1,17 @@
 import { useDamageContext } from 'lib/damageContext';
-import { IDamageContext } from 'lib/types';
+import { IDamageAreas, IDamageContext } from 'lib/types';
 import React, { useEffect } from 'react';
 
 const DamageSelect: React.FC<{
     label: string;
     options: string[];
     field: string;
-    alterDamage: (Object: Partial<IDamageContext>) => void;
+    alterDamage: (Object: {
+        rating?: Partial<IDamageAreas>;
+        description?: Partial<IDamageAreas>;
+    }) => void;
 }> = ({ label, options, field, alterDamage }) => {
     const [selected, setSelected] = React.useState('');
-    const otherRef = React.useRef<HTMLInputElement>(null);
 
     const damageState = useDamageContext();
 
@@ -18,11 +20,19 @@ const DamageSelect: React.FC<{
     ) => {
         let alterObject = { [field]: event.target.value };
 
-        alterDamage(alterObject);
+        alterDamage({ rating: alterObject });
+    };
+
+    const handleOtherChange: React.ChangeEventHandler<HTMLInputElement> = (
+        event,
+    ) => {
+        let alterObject = { [field]: event.target.value };
+
+        alterDamage({ description: alterObject });
     };
 
     useEffect(() => {
-        setSelected(damageState[field]);
+        setSelected(damageState.rating[field]);
     }, [damageState, field]);
 
     return (
@@ -46,11 +56,10 @@ const DamageSelect: React.FC<{
                         })}
                     </select>
                     <input
-                        ref={otherRef}
-                        className='inline-block w-11/12 bg-gray-800 opacity-0'
+                        value={damageState.description[field]}
+                        onChange={handleOtherChange}
+                        className='inline-block w-11/12 bg-gray-800'
                         name={field}
-                        value={selected}
-                        disabled
                     />
                 </div>
             </div>

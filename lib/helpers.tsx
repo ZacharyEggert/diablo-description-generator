@@ -142,7 +142,7 @@ export const listify = (state: IFormContext): JSX.Element => {
         'neckJoint',
         'neckWood',
         'neckFinish',
-        'fingerboard',
+        'fingerBoard',
         'radius',
         'neckProfile',
         'inlays',
@@ -199,7 +199,7 @@ export const damageReport = (damageState: IDamageContext): JSX.Element => {
         'bodyBack',
         'bodyFront',
         'bodyBinding',
-        'fretBoard',
+        'fretboard',
         'fretLife',
         'neckBack',
         'neckBinding',
@@ -215,12 +215,45 @@ export const damageReport = (damageState: IDamageContext): JSX.Element => {
 
     const mappedObject = manualArrayOfKeys.map((data, i) => {
         return (
-            damageState[data] &&
-            damageState[data] !== '' && (
-                <li className='' key={'li' + data}>
-                    {damageLabelPrettier[data]}: {damageState[data]}
-                </li>
-            )
+            <li className='' key={'li' + data + 'damage'}>
+                {damageLabelPrettier[data]}: {damageState.rating[data]}
+            </li>
+        );
+    });
+
+    return <ul className='list-disc'>{mappedObject}</ul>;
+};
+
+export const damageReportVerbose = (
+    damageState: IDamageContext,
+): JSX.Element => {
+    const manualArrayOfKeys = [
+        'overallCondition',
+        'bodyBack',
+        'bodyFront',
+        'bodyBinding',
+        'fretboard',
+        'fretLife',
+        'neckBack',
+        'neckBinding',
+        'neckPocket',
+        'headstockFront',
+        'headstockBack',
+        'pickups',
+        'bridge',
+        'tailpiece',
+        'knobs',
+        'hardware',
+    ];
+
+    const mappedObject = manualArrayOfKeys.map((data, i) => {
+        return (
+            <li className='' key={'li' + data + 'damage'}>
+                {damageLabelPrettier[data]}: {damageState.rating[data]}
+                {damageState.description[data] && (
+                    <> - {damageState.description[data]}</>
+                )}
+            </li>
         );
     });
 
