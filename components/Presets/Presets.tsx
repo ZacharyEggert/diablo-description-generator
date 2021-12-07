@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { MouseEventHandler, useEffect } from 'react';
 import {
     emptyContext,
     IFormContext,
@@ -36,8 +36,32 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
         }
     }, []);
 
-    const savePreset = () => {
-        printStateToConsole();
+    const importPresetList = () => {
+        try {
+            const newPresetList = JSON.parse(
+                prompt('Enter a list of presets to import', '{}'),
+            );
+            const replaceOrUpdate = confirm(
+                'Do you want to replace the current presets or update them? Yes to replace, No to update',
+            );
+            if (newPresetList && newPresetList !== {}) {
+                setPresets(
+                    replaceOrUpdate
+                        ? { ...newPresetList }
+                        : { ...presets, ...newPresetList },
+                );
+            }
+        } catch (error) {
+            console.debug('Error importing presets', error);
+        }
+    };
+
+    const savePreset: MouseEventHandler<HTMLButtonElement> = (e) => {
+        if (e.ctrlKey) {
+            importPresetList();
+            return;
+        }
+        // printStateToConsole();
         const name = prompt(
             'Enter a name for this preset. You can delete it later by pressing ` (above the tab key)',
         );
@@ -46,6 +70,8 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
             const newPresets = { ...presets, [name]: preset };
             setPresets(newPresets);
             localStorage.setItem('presets', JSON.stringify(newPresets));
+        } else {
+            console.log(JSON.stringify(presets));
         }
     };
 
@@ -69,9 +95,9 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
 
     const handlePresetApplication = () => {
         const selectedPreset = selectRef.current.value;
-        console.log(selectedPreset); //TODO: apply preset
+        // console.log(selectedPreset);
         const preset = presets[selectedPreset];
-        console.log(preset, presets); //TODO: remove
+        // console.log(preset, presets);
         alterForm(preset.formState);
         alterOther(preset.otherState);
         alterDamage(defaultDamageContext);
