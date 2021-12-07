@@ -18,7 +18,7 @@ const Home: React.FC<{
                 alterDamage={alterDamage}
             />
             <Form alterForm={alterForm} alterOther={alterOther} />
-            <DamageForm alterDamage={alterDamage} />
+            <DamageForm alterDamage={alterDamage} /> {/* for damage */}
             <FormOutput />
         </div>
     );
