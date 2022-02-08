@@ -9,6 +9,7 @@ const bodyWood = [
     'Koa',
     'Basswood',
     'Walnut',
+    'Sassafras',
 ];
 
 export default bodyWood;

@@ -2,10 +2,10 @@ const model = {
     Fender: [
         'Stratocaster',
         'Telecaster',
-        'Esquire',
-        'Nocaster',
         'Jaguar',
         'Jazzmaster',
+        'Esquire',
+        'Nocaster',
     ],
     Gibson: [
         'Les Paul',
@@ -15,6 +15,7 @@ const model = {
         'Flying V',
         'M3',
         'ES-335',
+        'ES-339',
         'ES-347',
     ],
     Jackson: [
@@ -49,6 +50,6 @@ const model = {
     Caparison: ['Orbit'],
     Carvin: ['DC', 'CS', 'AC'],
     Kiesel: ['DC', 'CS', 'AC'],
-};
+} as const;
 
 export default model;

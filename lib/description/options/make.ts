@@ -1,4 +1,6 @@
-const make = [
+import model from './model';
+
+const make: (keyof typeof model)[] = [
     'Fender',
     'Gibson',
     'Jackson',

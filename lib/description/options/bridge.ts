@@ -2,6 +2,7 @@ const bridge = [
     'ABR-1 Tune-O-Matic',
     'Tune-O-Matic',
     'Tune-O-Matic with Fine Tune Stoptail',
+    'Nashville Tune-O-Matic',
     'Locking Tune-O-Matic',
     'Tune-O-Matic with Locking Stoptail',
     'Locking Tune-O-Matic with Locking Stoptail',
@@ -11,9 +12,11 @@ const bridge = [
     'Pigtail Adjustable Wraparound',
     'Schaller Adjustable Wraparound',
     'Tone Pros Adjustable Wraparound',
+    'Maestro Vibrola',
+    'Sideways Vibrola',
     'Fender Hardtail with Block Saddles',
     'Fender 2-Point Deluxe Synchronized Tremolo',
-    'Fender Vintage-Style Standard Stratocaster Tremolo',
+    'Fender Vintage-Style Standard Synchronized Tremolo',
     'Fender American Standard Stratocaster Tremolo',
     'Fender American Deluxe Stratocaster Tremolo',
     'Fender American Professional Stratocaster Tremolo',
@@ -27,6 +30,12 @@ const bridge = [
     'Floyd Rose Special Double Locking Tremolo',
     'Kahler Tremolo System',
     'Kahler Locking Tremolo System',
+    'Bigsby B-3 Vibrola',
+    'Bigsby B-5 Vibrola',
+    'Bigsby B-6 Vibrola',
+    'Bigsby B-7 Vibrola',
+    'Bigsby B-11 Vibrola',
+    'Bigsby B-12 Vibrola',
 ];
 
 export const bridgeByBrand = {
