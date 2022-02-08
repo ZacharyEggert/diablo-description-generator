@@ -11,7 +11,7 @@ const Home: React.FC<{
     alterDamage: (Object: Partial<IDamageContext>) => void;
 }> = ({ alterForm, alterOther, alterDamage }) => {
     return (
-        <div className=''>
+        <div className='min-h-screen'>
             <Presets
                 alterForm={alterForm}
                 alterOther={alterOther}
