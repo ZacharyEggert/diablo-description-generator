@@ -18,6 +18,8 @@ export type IFormContext = {
     fingerBoard: string;
     radius: string;
     neckProfile: string;
+    // neckThickness_1: string;
+    // neckThickness_12: string;
     inlays: string;
     nutWidth: string;
     nut: string;
