@@ -1,42 +1,8 @@
-import { IDamageAreas, IDamageContext } from 'lib/types';
+import { IDamageAreas, StarRatingType } from 'lib/types';
 
-import overallCondition from './options/overallCondition';
-import bodyBack from 'lib/damage/options/bodyBack';
-import bodyFront from 'lib/damage/options/bodyFront';
-import bodyBinding from 'lib/damage/options/bodyBinding';
-import fretboard from 'lib/damage/options/fretboard';
-import fretLife from 'lib/damage/options/fretLife';
-import neckBack from 'lib/damage/options/neckBack';
-import neckBinding from 'lib/damage/options/neckBinding';
-import neckPocket from 'lib/damage/options/neckPocket';
-import headstockBack from 'lib/damage/options/headstockBack';
-import headstockFront from 'lib/damage/options/headstockFront';
-import bridge from 'lib/damage/options/bridge';
-import tailpiece from 'lib/damage/options/tailpiece';
-import hardware from 'lib/damage/options/hardware';
-import knobs from 'lib/damage/options/knobs';
-import pickups from 'lib/damage/options/pickups';
+export type { StarRatingType } from 'lib/types';
 
-export {
-    overallCondition,
-    bodyBack,
-    bodyFront,
-    bodyBinding,
-    fretboard,
-    fretLife,
-    neckBack,
-    neckBinding,
-    neckPocket,
-    headstockBack,
-    headstockFront,
-    bridge,
-    tailpiece,
-    hardware,
-    knobs,
-    pickups,
-};
-
-const stars = [
+const stars: StarRatingType[] = [
     'N/A',
     '☆ · · · ·',
     '✯ · · · ·',
