@@ -1,7 +1,8 @@
 import { damageLabelPrettier, damageOptions } from 'lib/damage/damage';
 import { useDamageContext } from 'lib/damageContext';
-import { IDamageAreas, IDamageContext } from 'lib/types';
+import { IDamageAreas } from 'lib/types';
 import DamageSelect from './DamageSelect';
+import { manualArrayOfDamageKeys } from 'lib/helpers';
 
 const DamageForm: React.FC<{
     alterDamage: (Object: {
@@ -16,11 +17,14 @@ const DamageForm: React.FC<{
     };
 
     return (
-        <div className='flex flex-col w-full px-12 pt-12 pb-16 text-white'>
+        <div className='flex flex-col w-full px-12 pt-0 pb-16 text-white'>
             <form
-                className='grid grid-cols-2 pb-8 mx-auto md:grid-cols-4 md:w-11/12'
+                className='grid grid-cols-2 px-2 pt-4 pb-4 mx-auto shadow-md lg:grid-cols-4 lg:w-10/12 bg-neutral-500 rounded-2xl shadow-neutral-900'
                 onSubmit={onSubmit}>
-                {Object.keys(damageState.rating).map((key) => {
+                <h2 className='col-span-2 text-2xl font-semibold text-center lg:col-span-4'>
+                    Condition
+                </h2>
+                {manualArrayOfDamageKeys.map((key) => {
                     let opt = damageOptions[key];
 
                     return (

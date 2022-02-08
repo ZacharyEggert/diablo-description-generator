@@ -65,6 +65,11 @@ const formats = [
                 tuningMachineBrands,
                 tuningMachineModels,
                 tuningMachineHeads,
+                bodyShape,
+                finishType,
+                neckThickness_1,
+                neckThickness_12,
+                strapButtons,
             }: IFormContext = state;
 
             let pickups = combinePickups(

@@ -47,6 +47,11 @@ export const defaultContext: IFormContext = {
     otherFeatures: 'sel',
     stringGauge: 'sel',
     guitarCase: 'sel',
+    bodyShape: 'sel',
+    finishType: 'sel',
+    neckThickness_1: '',
+    neckThickness_12: '',
+    strapButtons: '',
 };
 
 export const emptyContext: IFormContext = {
@@ -93,6 +98,11 @@ export const emptyContext: IFormContext = {
     otherFeatures: '',
     stringGauge: '',
     guitarCase: '',
+    bodyShape: '',
+    finishType: '',
+    neckThickness_1: '',
+    neckThickness_12: '',
+    strapButtons: '',
 };
 
 export const FormContext = createContext<IFormContext>(defaultContext);
