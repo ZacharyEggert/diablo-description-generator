@@ -33,6 +33,8 @@ import modifications from 'lib/description/options/modifications';
 import pickupBrands from 'lib/description/options/pickupBrands';
 import coilTap from 'lib/description/options/coilTap';
 import topWood from 'lib/description/options/topWoods';
+import bodyShape from 'lib/description/options/bodyShape';
+import finishType from 'lib/description/options/finishType';
 
 export {
     make,
@@ -114,6 +116,11 @@ export const formOptions = {
     otherFeatures,
     stringGauge,
     guitarCase,
+    bodyShape,
+    finishType,
+    neckThickness_1: [],
+    neckThickness_12: [],
+    strapButtons: [],
 };
 
 export const formLabelPrettier: IFormContext = {
@@ -160,4 +167,9 @@ export const formLabelPrettier: IFormContext = {
     otherFeatures: 'Other Features',
     stringGauge: 'String Gauge',
     guitarCase: 'Case',
+    bodyShape: 'Body Shape',
+    finishType: 'Finish Type',
+    neckThickness_1: 'Neck Thickness at 1st',
+    neckThickness_12: 'Neck Thickness at 12th',
+    strapButtons: 'Strap Buttons',
 };

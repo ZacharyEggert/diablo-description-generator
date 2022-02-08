@@ -39,6 +39,77 @@ const whitelist = [
     'Rose',
 ].map((x) => x.toLowerCase());
 
+export const manualArrayOfContextKeys: Array<
+    keyof (IFormContext & { name?: string })
+> = [
+    'make',
+    'model',
+    'subModel',
+    'year',
+    'finish',
+    'finishType',
+    'countryOfOrigin',
+    'serial',
+    'condition',
+    'weight',
+    'bodyShape',
+    'bodyType',
+    'bodyWood',
+    'topWood',
+    'scaleLength',
+    'neckJoint',
+    'neckWood',
+    'neckFinish',
+    'fingerBoard',
+    'radius',
+    'neckProfile',
+    'neckThickness_1',
+    'neckThickness_12',
+    'inlays',
+    'nutWidth',
+    'nut',
+    'frets',
+    'pickupConfiguration',
+    'pickupNeck',
+    'pickupMiddle',
+    'pickupBridge',
+    'pickguard',
+    'pots',
+    'coilTap',
+    'pickupSwitch',
+    'phaseSwitch',
+    'killSwitch',
+    'hardware',
+    'tuningMachineBrands',
+    'tuningMachineModels',
+    'tuningMachineHeads',
+    'bridge',
+    'knobs',
+    'modifications',
+    'otherFeatures',
+    'stringGauge',
+    'guitarCase',
+];
+
+export const manualArrayOfDamageKeys: Array<keyof IDamageContext['rating']> = [
+    'overallCondition',
+    'bodyBack',
+    'bodyFront',
+    'bodyBinding',
+    'fretboard',
+    'fretLife',
+    'neckBack',
+    'neckBinding',
+    'neckPocket',
+    'headstockFront',
+    'headstockBack',
+    'pickups',
+    'bridge',
+    'tailpiece',
+    'knobs',
+    'hardware',
+];
+
 export const fixCase = (paragraph: string): string => {
     const words = paragraph.split(' ');
     const fixed = words.map((word) => {
@@ -125,53 +196,7 @@ export const combinePickups = (
 };
 
 export const listify = (state: IFormContext): JSX.Element => {
-    const manualArrayOfKeys = [
-        'make',
-        'model',
-        'subModel',
-        'year',
-        'finish',
-        'countryOfOrigin',
-        'serial',
-        'condition',
-        'weight',
-        'bodyType',
-        'bodyWood',
-        'topWood',
-        'scaleLength',
-        'neckJoint',
-        'neckWood',
-        'neckFinish',
-        'fingerBoard',
-        'radius',
-        'neckProfile',
-        'inlays',
-        'nutWidth',
-        'nut',
-        'frets',
-        'pickupConfiguration',
-        'pickupNeck',
-        'pickupMiddle',
-        'pickupBridge',
-        'pickguard',
-        'pots',
-        'coilTap',
-        'pickupSwitch',
-        'phaseSwitch',
-        'killSwitch',
-        'hardware',
-        'tuningMachineBrands',
-        'tuningMachineModels',
-        'tuningMachineHeads',
-        'bridge',
-        'knobs',
-        'modifications',
-        'otherFeatures',
-        'stringGuage',
-        'guitarCase',
-    ];
-
-    const mappedObject = manualArrayOfKeys.map((data, i) => {
+    const mappedObject = manualArrayOfContextKeys.map((data, i) => {
         return data === 'name' ||
             data === 'tuningMachineHeads' ||
             data === 'tuningMachineModels' ? null : data ===
@@ -194,26 +219,7 @@ export const listify = (state: IFormContext): JSX.Element => {
 };
 
 export const damageReport = (damageState: IDamageContext): JSX.Element => {
-    const manualArrayOfKeys = [
-        'overallCondition',
-        'bodyBack',
-        'bodyFront',
-        'bodyBinding',
-        'fretboard',
-        'fretLife',
-        'neckBack',
-        'neckBinding',
-        'neckPocket',
-        'headstockFront',
-        'headstockBack',
-        'pickups',
-        'bridge',
-        'tailpiece',
-        'knobs',
-        'hardware',
-    ];
-
-    const mappedObject = manualArrayOfKeys.map((data, i) => {
+    const mappedObject = manualArrayOfDamageKeys.map((data, i) => {
         return (
             <>
                 {damageState.rating[data] !== 'N/A' && (
@@ -231,26 +237,7 @@ export const damageReport = (damageState: IDamageContext): JSX.Element => {
 export const damageReportVerbose = (
     damageState: IDamageContext,
 ): JSX.Element => {
-    const manualArrayOfKeys = [
-        'overallCondition',
-        'bodyBack',
-        'bodyFront',
-        'bodyBinding',
-        'fretboard',
-        'fretLife',
-        'neckBack',
-        'neckBinding',
-        'neckPocket',
-        'headstockFront',
-        'headstockBack',
-        'pickups',
-        'bridge',
-        'tailpiece',
-        'knobs',
-        'hardware',
-    ];
-
-    const mappedObject = manualArrayOfKeys.map((data, i) => {
+    const mappedObject = manualArrayOfDamageKeys.map((data, i) => {
         return (
             <>
                 {damageState.rating[data] !== 'N/A' && (

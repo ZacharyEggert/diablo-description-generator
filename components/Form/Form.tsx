@@ -83,11 +83,11 @@ const Form: React.FC<{
     return (
         <div className='flex flex-col w-full px-12 pt-12 text-white'>
             <form
-                className='grid w-full grid-cols-2 gap-4 pb-8 mx-auto md:grid-cols-6 md:w-10/12'
+                className='grid w-full grid-cols-2 gap-4 pb-8 mx-auto lg:grid-cols-6 lg:w-10/12'
                 onSubmit={onSubmit}>
                 {/*General Section*/}
-                <div className='grid w-full min-h-[3rem] grid-cols-1 col-span-2 py-2 rounded-2xl bg-neutral-500 md:col-span-6 md:grid-cols-2'>
-                    <h2 className='text-2xl font-semibold text-center text-white md:col-span-2'>
+                <div className='grid w-full min-h-[3rem] grid-cols-1 col-span-2 py-2 rounded-2xl bg-neutral-500 lg:col-span-6 lg:grid-cols-2 shadow-md shadow-neutral-900'>
+                    <h2 className='text-2xl font-semibold text-center text-white lg:col-span-2'>
                         General
                     </h2>
                     {makeFormSelect(formLabelPrettier.make, 'make')}
@@ -103,10 +103,10 @@ const Form: React.FC<{
                     {makeFormSelect(formLabelPrettier.condition, 'condition')}
                 </div>
 
-                <div className='flex flex-col w-full min-h-[3rem] col-span-2 md:col-span-3'>
+                <div className='flex flex-col w-full min-h-[3rem] col-span-2 lg:col-span-3'>
                     {/*Neck*/}
-                    <div className='grid flex-none grid-cols-1 py-2 mb-4 rounded-2xl bg-neutral-500'>
-                        <h2 className='text-2xl font-semibold text-center text-white md:col-span-1'>
+                    <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
+                        <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
                             Neck
                         </h2>
                         {makeFormSelect(
@@ -123,8 +123,14 @@ const Form: React.FC<{
                             formLabelPrettier.neckProfile,
                             'neckProfile',
                         )}
-                        {/* {makeFormSelect(formLabelPrettier.neckThickness_1, 'neckThickness_1')}
-												{makeFormSelect(formLabelPrettier.neckThickness_12, 'neckThickness_12')} */}
+                        {makeFormSelect(
+                            formLabelPrettier.neckThickness_1,
+                            'neckThickness_1',
+                        )}
+                        {makeFormSelect(
+                            formLabelPrettier.neckThickness_12,
+                            'neckThickness_12',
+                        )}
                         {makeFormSelect(formLabelPrettier.frets, 'frets')}
                         {makeFormSelect(
                             formLabelPrettier.scaleLength,
@@ -139,22 +145,28 @@ const Form: React.FC<{
                         {makeFormSelect(formLabelPrettier.inlays, 'inlays')}
                     </div>
                     {/*Body*/}
-                    <div className='grid flex-none grid-cols-1 py-2 mb-4 rounded-2xl bg-neutral-500'>
-                        <h2 className='text-2xl font-semibold text-center text-white md:col-span-1'>
+                    <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
+                        <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
                             Body
                         </h2>
                         {makeFormSelect(formLabelPrettier.bodyType, 'bodyType')}
                         {makeFormSelect(formLabelPrettier.bodyWood, 'bodyWood')}
-                        {/* {makeFormSelect(formLabelPrettier.finishType, 'finishType')} */}
-                        {/* {makeFormSelect(formLabelPrettier.bodyShape, 'bodyShape')} */}
+                        {makeFormSelect(
+                            formLabelPrettier.finishType,
+                            'finishType',
+                        )}
+                        {makeFormSelect(
+                            formLabelPrettier.bodyShape,
+                            'bodyShape',
+                        )}
                         {makeFormSelect(formLabelPrettier.topWood, 'topWood')}
                     </div>
                 </div>
 
-                <div className='flex flex-col w-full min-h-[3rem] col-span-2 md:col-span-3'>
+                <div className='flex flex-col w-full min-h-[3rem] col-span-2 lg:col-span-3'>
                     {/*Hardware*/}
-                    <div className='grid flex-none grid-cols-1 py-2 mb-4 rounded-2xl bg-neutral-500'>
-                        <h2 className='text-2xl font-semibold text-center text-white md:col-span-1'>
+                    <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
+                        <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
                             Hardware
                         </h2>
                         {makeFormSelect(formLabelPrettier.bridge, 'bridge')}
@@ -164,7 +176,10 @@ const Form: React.FC<{
                             formLabelPrettier.pickguard,
                             'pickguard',
                         )}
-                        {/* {makeFormSelect(formLabelPrettier.strapButtons, 'strapButtons')} */}
+                        {makeFormSelect(
+                            formLabelPrettier.strapButtons,
+                            'strapButtons',
+                        )}
                         {makeFormSelect(
                             formLabelPrettier.stringGauge,
                             'stringGauge',
@@ -183,8 +198,8 @@ const Form: React.FC<{
                         )}
                     </div>
                     {/*Electronics*/}
-                    <div className='grid flex-none grid-cols-1 py-2 mb-4 rounded-2xl bg-neutral-500'>
-                        <h2 className='text-2xl font-semibold text-center text-white md:col-span-1'>
+                    <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
+                        <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
                             Electronics
                         </h2>
                         {makeFormSelect(
@@ -220,8 +235,8 @@ const Form: React.FC<{
                     </div>
                 </div>
                 {/*Misc Section*/}
-                <div className='grid w-full min-h-[3rem] grid-cols-1 col-span-2 py-2 rounded-2xl bg-neutral-500 md:col-span-6 md:grid-cols-2'>
-                    <h2 className='text-2xl font-semibold text-center text-white md:col-span-2'>
+                <div className='grid w-full min-h-[3rem] grid-cols-1 col-span-2 py-2 rounded-2xl bg-neutral-500 lg:col-span-6 lg:grid-cols-2 shadow-md shadow-neutral-900'>
+                    <h2 className='text-2xl font-semibold text-center text-white lg:col-span-2'>
                         Miscellaneous
                     </h2>
                     {makeFormSelect(formLabelPrettier.weight, 'weight')}

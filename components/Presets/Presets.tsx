@@ -36,29 +36,44 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
         }
     }, []);
 
-    const importPresetList = () => {
+    const importPreset = () => {
         try {
-            const newPresetList = JSON.parse(
-                prompt('Enter a list of presets to import', '{}'),
+            const newPreset = JSON.parse(
+                prompt('Enter a preset to import', '{}'),
             );
-            const replaceOrUpdate = confirm(
-                'Do you want to replace the current presets or update them? Yes to replace, No to update',
-            );
-            if (newPresetList && newPresetList !== {}) {
-                setPresets(
-                    replaceOrUpdate
-                        ? { ...newPresetList }
-                        : { ...presets, ...newPresetList },
+            if (newPreset && newPreset !== '{}') {
+                const replaceOrUpdate = confirm(
+                    'Are you sure you want to import this preset?',
                 );
+                if (replaceOrUpdate) {
+                    setPresets({ ...presets, ...newPreset });
+                    localStorage.setItem(
+                        'presets',
+                        JSON.stringify({ ...presets, ...newPreset }),
+                    );
+                }
             }
         } catch (error) {
             console.debug('Error importing presets', error);
         }
     };
 
+    const printPresetToConsole = () => {
+        const selectedPreset = selectRef.current.value;
+        // console.log(selectedPreset);
+
+        if (selectedPreset && selectedPreset === 'select...') {
+            return;
+        }
+
+        const preset = presets[selectedPreset];
+        // console.log(preset, presets);
+        console.log(JSON.stringify({ [preset.name]: preset }));
+    };
+
     const savePreset: MouseEventHandler<HTMLButtonElement> = (e) => {
         if (e.ctrlKey) {
-            importPresetList();
+            importPreset();
             return;
         }
         // printStateToConsole();
@@ -91,7 +106,7 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
             setPresets(newPresets);
             localStorage.setItem('presets', JSON.stringify(newPresets));
         } else {
-            console.log(JSON.stringify(presets));
+            printPresetToConsole();
         }
     };
 
@@ -109,15 +124,17 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
         }
     };
 
-    const printStateToConsole = () => {
-        console.log({ formState, otherState });
-    };
-
     const handlePresetApplication = () => {
         const selectedPreset = selectRef.current.value;
         // console.log(selectedPreset);
+
+        if (selectedPreset && selectedPreset === 'select...') {
+            return;
+        }
+
         const preset = presets[selectedPreset];
         // console.log(preset, presets);
+
         alterForm(preset.formState);
         alterOther(preset.otherState);
         alterDamage(defaultDamageContext);
