@@ -6,22 +6,22 @@ import { IFormContext } from 'lib/context';
 import { IDamageContext } from 'lib/types';
 
 const Home: React.FC<{
-    alterForm: (Object: Partial<IFormContext>) => void;
-    alterOther: (Object: Partial<IFormContext>) => void;
-    alterDamage: (Object: Partial<IDamageContext>) => void;
+  alterForm: (Object: Partial<IFormContext>) => void;
+  alterOther: (Object: Partial<IFormContext>) => void;
+  alterDamage: (Object: Partial<IDamageContext>) => void;
 }> = ({ alterForm, alterOther, alterDamage }) => {
-    return (
-        <div className='min-h-screen'>
-            <Presets
-                alterForm={alterForm}
-                alterOther={alterOther}
-                alterDamage={alterDamage}
-            />
-            <Form alterForm={alterForm} alterOther={alterOther} />
-            <DamageForm alterDamage={alterDamage} /> {/* for damage */}
-            <FormOutput />
-        </div>
-    );
+  return (
+    <div className='min-h-screen'>
+      <Presets
+        alterForm={alterForm}
+        alterOther={alterOther}
+        alterDamage={alterDamage}
+      />
+      <Form alterForm={alterForm} alterOther={alterOther} />
+      <DamageForm alterDamage={alterDamage} /> {/* for damage */}
+      <FormOutput />
+    </div>
+  );
 };
 
 export default Home;
