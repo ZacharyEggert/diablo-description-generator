@@ -1,13 +1,13 @@
+import { IAmpDamageContext, IAmpFormContext, IDamageContext } from 'lib/types';
 import {
+  ampDamageReportVerbose,
   combinePickups,
   combineStates,
-  damageReport,
   damageReportVerbose,
   fixCase,
   listify,
 } from 'lib/helpers';
 
-import { IDamageContext } from 'lib/types';
 import { IFormContext } from 'lib/context';
 import { guitarCaseMap } from 'lib/description/guitarOptions/guitarCase';
 import { topWoodsMap } from 'lib/description/guitarOptions/topWoods';
@@ -140,6 +140,42 @@ const formats = [
       );
     },
   },
+
+  {
+    name: 'Only The Damage',
+    method: (
+      form: IFormContext,
+      other: IFormContext,
+      damage: IDamageContext,
+    ) => {
+      return (
+        <div>
+          <h3 className='text-xl underline'>Condition</h3>
+          {damageReportVerbose(damage)}
+        </div>
+      );
+    },
+  },
 ];
 
 export default formats;
+
+export const ampFormats = [
+  {
+    name: 'Only The Damage',
+    method: (
+      form: IAmpFormContext,
+      other: IAmpFormContext,
+      damage: IAmpDamageContext,
+    ) => {
+      return (
+        <div>
+          <h3 className='text-xl underline'>Condition</h3>
+          {ampDamageReportVerbose(damage)}
+        </div>
+      );
+    },
+  },
+];
+
+export const acousticFormats = [];

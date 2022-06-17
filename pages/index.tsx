@@ -93,7 +93,7 @@ const Home: React.FC<{
         </>
       )}
 
-      <FormOutput />
+      <FormOutput itemType={itemType} />
     </div>
   );
 };

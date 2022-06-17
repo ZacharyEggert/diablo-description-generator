@@ -7,6 +7,7 @@ import FormSelect from './FormSelect';
 import { IAmpFormContext } from 'lib/types';
 import React from 'react';
 import { UseFormContext } from 'lib/context';
+import { manualArrayOfAmpKeys } from 'lib/helpers';
 
 const AmpForm: React.FC<{
   alterForm: (Object: Partial<IAmpFormContext>) => void;
@@ -47,44 +48,46 @@ const AmpForm: React.FC<{
           <h2 className='text-center text-2xl font-semibold text-white lg:col-span-2'>
             General
           </h2>
-          {makeFormSelect(ampFormLabelPrettier.ampMake, 'ampMake')}
+          {manualArrayOfAmpKeys.map((key) => {
+            return makeFormSelect(ampFormLabelPrettier[key], key);
+          })}
         </div>
 
-        <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-3'>
-          {/*Neck*/}
-          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+        {/* <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-3'> */}
+        {/* Neck */}
+        {/* <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Neck
             </h2>
-          </div>
-          {/*Body*/}
-          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+          </div> */}
+        {/*Body*/}
+        {/* <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Body
             </h2>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
-        <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-3'>
-          {/*Hardware*/}
-          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+        {/* <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-6'> */}
+        {/*Hardware*/}
+        {/* <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Hardware
             </h2>
-          </div>
-          {/*Electronics*/}
-          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+          </div> */}
+        {/*Electronics*/}
+        {/* <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Electronics
             </h2>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
         {/*Misc Section*/}
-        <div className='col-span-2 grid min-h-[3rem] w-full grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900 lg:col-span-6 lg:grid-cols-2'>
+        {/* <div className='col-span-2 grid min-h-[3rem] w-full grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900 lg:col-span-6 lg:grid-cols-2'>
           <h2 className='text-center text-2xl font-semibold text-white lg:col-span-2'>
             Miscellaneous
           </h2>
-        </div>
+        </div> */}
 
         {/* {Object.keys(formOptions).map((key) => {
                     let opt = [];

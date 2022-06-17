@@ -1,16 +1,16 @@
 import {
   IAcousticDamageContext,
   IAmpDamageContext,
+  IAmpFormContext,
   IDamageContext,
   IFormContext,
 } from 'lib/types';
+import { ampDamageLabelPrettier, damageLabelPrettier } from './damage/damage';
 import {
   formLabelPrettier,
   make,
   tuningMachineBrands,
 } from 'lib/description/description';
-
-import { damageLabelPrettier } from './damage/damage';
 
 const whitelist = [
   ...make,
@@ -96,6 +96,29 @@ export const manualArrayOfContextKeys: Array<
   'otherFeatures',
   'stringGauge',
   'guitarCase',
+];
+
+export const manualArrayOfAmpKeys: Array<keyof IAmpFormContext> = [
+  'ampMake',
+  'ampModel',
+  'ampSubModel',
+  'ampPower',
+  'ampYear',
+  'ampWood',
+  'ampType',
+  'ampExterior',
+  'ampExteriorColor',
+  'ampGrillCloth',
+  'ampPanel',
+  'ampSerial',
+  'ampPreampTubes',
+  'ampPowerTubes',
+  'ampSpeakerModel',
+  'ampSpeakerDateCodes',
+  'ampTransformerOriginality',
+  'ampTransformerDateCodes',
+  'ampCapacitorOriginality',
+  'ampBiasRating',
 ];
 
 export const manualArrayOfDamageKeys: Array<keyof IDamageContext['rating']> = [
@@ -255,6 +278,27 @@ export const damageReportVerbose = (
         {damageState.rating[data] !== 'N/A' && (
           <li className='' key={'li' + data + 'damage'}>
             {damageLabelPrettier[data]}: {damageState.rating[data]}
+            {damageState.description[data] && (
+              <> - {damageState.description[data]}</>
+            )}
+          </li>
+        )}
+      </>
+    );
+  });
+
+  return <ul className='list-disc'>{mappedObject}</ul>;
+};
+
+export const ampDamageReportVerbose = (
+  damageState: IAmpDamageContext,
+): JSX.Element => {
+  const mappedObject = manualArrayOfAmpDamageKeys.map((data, i) => {
+    return (
+      <>
+        {damageState.rating[data] !== 'N/A' && (
+          <li className='' key={'li' + data + 'damage'}>
+            {ampDamageLabelPrettier[data]}: {damageState.rating[data]}
             {damageState.description[data] && (
               <> - {damageState.description[data]}</>
             )}
