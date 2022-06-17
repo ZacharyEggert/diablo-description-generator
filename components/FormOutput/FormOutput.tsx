@@ -1,9 +1,18 @@
+import {
+  UseAcousticFormContext,
+  UseAcousticOtherContext,
+} from 'lib/acousticContext';
+import { UseAmpFormContext, UseAmpOtherContext } from 'lib/ampContext';
 import { UseFormContext, UseOtherContext } from 'lib/context';
 import formats, { acousticFormats, ampFormats } from './formats';
+import {
+  useAcousticDamageContext,
+  useAmpDamageContext,
+  useDamageContext,
+} from 'lib/damageContext';
 
 import FormatSelect from './FormatSelect';
 import React from 'react';
-import { useDamageContext } from 'lib/damageContext';
 
 interface FormOutputProps {
   itemType: 'guitar' | 'amplifier' | 'acoustic';
@@ -15,6 +24,15 @@ const FormOutput: React.FC<FormOutputProps> = ({ itemType }) => {
   const form = UseFormContext();
   const other = UseOtherContext();
   const damage = useDamageContext();
+
+  const ampForm = UseAmpFormContext();
+  const acousticForm = UseAcousticFormContext();
+
+  const ampOther = UseAmpOtherContext();
+  const acousticOther = UseAcousticOtherContext();
+
+  const ampDamage = useAmpDamageContext();
+  const acousticDamage = useAcousticDamageContext();
 
   const defaultCopy = <p>...</p>;
 
@@ -29,16 +47,25 @@ const FormOutput: React.FC<FormOutputProps> = ({ itemType }) => {
       }
       console.log(format);
 
-      const fset =
-        itemType === 'guitar'
-          ? formats
-          : itemType === 'amplifier'
-          ? ampFormats
-          : acousticFormats;
-
-      setCopy(
-        fset.filter((f) => f.name === format)[0].method(form, other, damage),
-      );
+      if (itemType === 'guitar') {
+        setCopy(
+          formats
+            .filter((f) => f.name === format)[0]
+            .method(form, other, damage),
+        );
+      } else if (itemType === 'amplifier') {
+        setCopy(
+          ampFormats
+            .filter((f) => f.name === format)[0]
+            .method(ampForm, ampOther, ampDamage),
+        );
+      } else if (itemType === 'acoustic') {
+        setCopy(
+          acousticFormats
+            .filter((f) => f.name === format)[0]
+            .method(acousticForm, acousticOther, acousticDamage),
+        );
+      }
     }
   };
 

@@ -1,11 +1,22 @@
-import { IAmpDamageContext, IAmpFormContext, IDamageContext } from 'lib/types';
 import {
+  IAcousticDamageContext,
+  IAcousticFormContext,
+  IAmpDamageContext,
+  IAmpFormContext,
+  IDamageContext,
+} from 'lib/types';
+import {
+  acousticDamageReportVerbose,
   ampDamageReportVerbose,
+  combineAcousticStates,
+  combineAmpStates,
   combinePickups,
   combineStates,
   damageReportVerbose,
   fixCase,
   listify,
+  listifyAcoustic,
+  listifyAmp,
 } from 'lib/helpers';
 
 import { IFormContext } from 'lib/context';
@@ -142,6 +153,27 @@ const formats = [
   },
 
   {
+    name: 'Bare Bones',
+    method: (
+      form: IFormContext,
+      other: IFormContext,
+      damage: IDamageContext,
+    ) => {
+      let state = combineStates(form, other);
+
+      return (
+        <div>
+          <h3 className='text-xl underline'>Specs</h3>
+          {listify(state)}
+          <br />
+          <h3 className='text-xl underline'>Condition</h3>
+          {damageReportVerbose(damage)}
+        </div>
+      );
+    },
+  },
+
+  {
     name: 'Only The Damage',
     method: (
       form: IFormContext,
@@ -162,6 +194,27 @@ export default formats;
 
 export const ampFormats = [
   {
+    name: 'Bare Bones',
+    method: (
+      form: IAmpFormContext,
+      other: IAmpFormContext,
+      damage: IAmpDamageContext,
+    ) => {
+      let state = combineAmpStates(form, other);
+
+      return (
+        <div>
+          <h3 className='text-xl underline'>Specs</h3>
+          {listifyAmp(state)}
+          <br />
+          <h3 className='text-xl underline'>Condition</h3>
+          {ampDamageReportVerbose(damage)}
+        </div>
+      );
+    },
+  },
+
+  {
     name: 'Only The Damage',
     method: (
       form: IAmpFormContext,
@@ -178,4 +231,41 @@ export const ampFormats = [
   },
 ];
 
-export const acousticFormats = [];
+export const acousticFormats = [
+  {
+    name: 'Bare Bones',
+    method: (
+      form: IAcousticFormContext,
+      other: IAcousticFormContext,
+      damage: IAcousticDamageContext,
+    ) => {
+      let state = combineAcousticStates(form, other);
+
+      return (
+        <div>
+          <h3 className='text-xl underline'>Specs</h3>
+          {listifyAcoustic(state)}
+          <br />
+          <h3 className='text-xl underline'>Condition</h3>
+          {acousticDamageReportVerbose(damage)}
+        </div>
+      );
+    },
+  },
+
+  {
+    name: 'Only The Damage',
+    method: (
+      form: IAcousticFormContext,
+      other: IAcousticFormContext,
+      damage: IAcousticDamageContext,
+    ) => {
+      return (
+        <div>
+          <h3 className='text-xl underline'>Condition</h3>
+          {acousticDamageReportVerbose(damage)}
+        </div>
+      );
+    },
+  },
+];
