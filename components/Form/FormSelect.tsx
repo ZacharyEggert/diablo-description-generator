@@ -1,12 +1,23 @@
-import React, { useEffect } from 'react';
+import { IAcousticFormContext, IAmpFormContext } from 'lib/types';
 import { IFormContext, UseFormContext, UseOtherContext } from 'lib/context';
+import React, { useEffect } from 'react';
+import {
+  UseAcousticFormContext,
+  UseAcousticOtherContext,
+} from 'lib/acousticContext';
+import { UseAmpFormContext, UseAmpOtherContext } from 'lib/ampContext';
 
 interface Props {
   label: string;
   options: string[];
   field: string;
-  alterForm: (Object: Partial<IFormContext>) => void;
-  alterOther: (Object: Partial<IFormContext>) => void;
+  alterForm: (
+    Object: Partial<IFormContext | IAmpFormContext | IAcousticFormContext>,
+  ) => void;
+  alterOther: (
+    Object: Partial<IFormContext | IAmpFormContext | IAcousticFormContext>,
+  ) => void;
+  itemType: 'guitar' | 'amplifier' | 'acoustic';
 }
 
 const FormSelect: React.FC<Props> = ({
@@ -15,8 +26,9 @@ const FormSelect: React.FC<Props> = ({
   field,
   alterForm,
   alterOther,
+  itemType,
 }) => {
-  const [selected, setSelected] = React.useState('sel');
+  const [selectedOpt, setSelectedOpt] = React.useState('sel');
   const [other, setOther] = React.useState('');
   const otherRef = React.useRef<HTMLInputElement>(null);
 
@@ -43,24 +55,44 @@ const FormSelect: React.FC<Props> = ({
   const formState = UseFormContext();
   const otherState = UseOtherContext();
 
-  useEffect(() => {
-    setSelected(formState[field]);
-  }, [formState, field]);
+  const ampFormState = UseAmpFormContext();
+  const ampOtherState = UseAmpOtherContext();
+
+  const acousticFormState = UseAcousticFormContext();
+  const acousticOtherState = UseAcousticOtherContext();
 
   useEffect(() => {
-    setOther(otherState[field]);
-    otherRef.current.value = otherState[field];
-  }, [otherState, field]);
+    if (itemType === 'guitar') {
+      setSelectedOpt(formState[field]);
+    } else if (itemType === 'amplifier') {
+      setSelectedOpt(ampFormState[field]);
+    } else if (itemType === 'acoustic') {
+      setSelectedOpt(acousticFormState[field]);
+    }
+  }, [formState, field, ampFormState, acousticFormState, itemType]);
+
+  useEffect(() => {
+    if (itemType === 'guitar') {
+      setOther(otherState[field]);
+      otherRef.current.value = otherState[field];
+    } else if (itemType === 'amplifier') {
+      setOther(ampOtherState[field]);
+      otherRef.current.value = ampOtherState[field];
+    } else if (itemType === 'acoustic') {
+      setOther(acousticOtherState[field]);
+      otherRef.current.value = acousticOtherState[field];
+    }
+  }, [otherState, field, ampOtherState, acousticOtherState, itemType]);
 
   return (
     <div className='col-span-1 p-2'>
-      <div className='flex w-full py-2 pl-4 mx-auto bg-gray-600 rounded-3xl'>
-        <span className='inline-block w-1/4 font-bold text-right'>{label}</span>
+      <div className='mx-auto flex w-full rounded-3xl bg-neutral-600 py-2 pl-4'>
+        <span className='inline-block w-1/4 text-right font-bold'>{label}</span>
         <div className='w-3/4 pl-2'>
           <select
-            className='inline-block w-11/12 bg-gray-800 rounded-md'
+            className='inline-block w-11/12 rounded-md bg-neutral-800'
             name={field}
-            value={selected}
+            value={selectedOpt}
             onChange={handleChange}>
             <option value='sel'>Select...</option>
             {options.map((option, index) => {
@@ -74,8 +106,8 @@ const FormSelect: React.FC<Props> = ({
           </select>
           <input
             disabled={
-              selected !== '' &&
-              selected !== 'Compound' &&
+              selectedOpt !== '' &&
+              selectedOpt !== 'Compound' &&
               field !== 'pickupNeck' &&
               field !== 'pickupMiddle' &&
               field !== 'pickupBridge'
@@ -85,7 +117,7 @@ const FormSelect: React.FC<Props> = ({
             onChange={handleOtherChange}
             defaultValue={other}
             onClick={(e) => e.stopPropagation()}
-            className='w-11/12 pl-1 mt-1 bg-gray-900 rounded-md disabled:opacity-5'
+            className='mt-1 w-11/12 rounded-md bg-neutral-900 pl-1 disabled:opacity-5'
           />
         </div>
       </div>

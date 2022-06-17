@@ -1,4 +1,9 @@
-import { IDamageAreas, StarRatingType } from 'lib/types';
+import {
+  IAcousticDamageAreas,
+  IAmpDamageAreas,
+  IDamageAreas,
+  StarRatingType,
+} from 'lib/types';
 
 export type { StarRatingType } from 'lib/types';
 
@@ -16,7 +21,9 @@ const stars: StarRatingType[] = [
   '✯✯✯✯✯',
 ];
 
-export const damageOptions = {
+export const damageOptions: {
+  [key in keyof IDamageAreas]: StarRatingType[];
+} = {
   overallCondition: stars,
   bodyBack: stars,
   bodyFront: stars,
@@ -52,4 +59,24 @@ export const damageLabelPrettier: IDamageAreas = {
   hardware: 'Hardware',
   knobs: 'Knobs',
   pickups: 'Pickups',
+};
+
+export const ampDamageLabelPrettier: IAmpDamageAreas = {
+  overallCondition: 'Overall Condition',
+};
+
+export const acousticDamageLabelPrettier: IAcousticDamageAreas = {
+  overallCondition: 'Overall Condition',
+};
+
+export const ampDamageOptions: {
+  [key in keyof IAmpDamageAreas]: StarRatingType[];
+} = {
+  overallCondition: stars,
+};
+
+export const acousticDamageOptions: {
+  [key in keyof IAcousticDamageAreas]: StarRatingType[];
+} = {
+  overallCondition: stars,
 };

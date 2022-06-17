@@ -1,7 +1,15 @@
+import {
+  IAcousticDamageContext,
+  IAmpDamageContext,
+  IDamageContext,
+} from './types';
 import { createContext, useContext } from 'react';
-import { IDamageContext } from './types';
 
-export type { IDamageContext } from './types';
+export type {
+  IDamageContext,
+  IAmpDamageContext,
+  IAcousticDamageContext,
+} from './types';
 
 export const defaultDamageContext: IDamageContext = {
   rating: {
@@ -45,3 +53,31 @@ export const defaultDamageContext: IDamageContext = {
 export const DamageContext =
   createContext<IDamageContext>(defaultDamageContext);
 export const useDamageContext = () => useContext(DamageContext);
+
+export const defaultAmpDamageContext: IAmpDamageContext = {
+  rating: {
+    overallCondition: '☆ · · · ·',
+  },
+  description: {
+    overallCondition: '',
+  },
+};
+
+export const AmpDamageContext = createContext<IAmpDamageContext>(
+  defaultAmpDamageContext,
+);
+export const useAmpDamageContext = () => useContext(AmpDamageContext);
+
+export const defaultAcousticDamageContext: IAcousticDamageContext = {
+  rating: {
+    overallCondition: '☆ · · · ·',
+  },
+  description: {
+    overallCondition: '',
+  },
+};
+
+export const AcousticDamageContext = createContext<IAcousticDamageContext>(
+  defaultAcousticDamageContext,
+);
+export const useAcousticDamageContext = () => useContext(AcousticDamageContext);

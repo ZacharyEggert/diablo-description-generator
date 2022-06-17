@@ -1,10 +1,17 @@
 import {
+  IAcousticDamageContext,
+  IAmpDamageContext,
+  IDamageContext,
+  IFormContext,
+} from 'lib/types';
+import {
   formLabelPrettier,
   make,
   tuningMachineBrands,
 } from 'lib/description/description';
-import { IDamageContext, IFormContext } from 'lib/types';
+
 import { damageLabelPrettier } from './damage/damage';
+
 const whitelist = [
   ...make,
   ...tuningMachineBrands,
@@ -109,6 +116,14 @@ export const manualArrayOfDamageKeys: Array<keyof IDamageContext['rating']> = [
   'knobs',
   'hardware',
 ];
+
+export const manualArrayOfAmpDamageKeys: Array<
+  keyof IAmpDamageContext['rating']
+> = ['overallCondition'];
+
+export const manualArrayOfAcousticDamageKeys: Array<
+  keyof IAcousticDamageContext['rating']
+> = ['overallCondition'];
 
 export const fixCase = (paragraph: string): string => {
   const words = paragraph.split(' ');

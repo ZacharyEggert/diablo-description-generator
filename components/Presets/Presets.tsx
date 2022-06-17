@@ -1,26 +1,74 @@
+import { IAcousticDamageAreas, IAmpDamageAreas, IDamageAreas } from 'lib/types';
+import {
+  IAcousticFormContext,
+  UseAcousticFormContext,
+  UseAcousticOtherContext,
+} from 'lib/acousticContext';
+import {
+  IAmpFormContext,
+  UseAmpFormContext,
+  UseAmpOtherContext,
+} from 'lib/ampContext';
+import { IFormContext, UseFormContext, UseOtherContext } from 'lib/context';
 import React, { MouseEventHandler, useEffect } from 'react';
 import {
-  emptyContext,
-  IFormContext,
-  UseFormContext,
-  UseOtherContext,
-} from 'lib/context';
-import formPresets from './formPresets';
-import { defaultDamageContext } from 'lib/damageContext';
-import { IDamageAreas, IDamageContext } from 'lib/types';
+  defaultAcousticDamageContext,
+  defaultAmpDamageContext,
+  defaultDamageContext,
+} from 'lib/damageContext';
+import formPresets, {
+  acousticFormPresetReset,
+  acousticFormPresets,
+  ampFormPresetReset,
+  ampFormPresets,
+  formPresetReset,
+} from './formPresets';
 
 interface Props {
   alterForm: (Object: Partial<IFormContext>) => void;
+  alterAmpForm: (Object: Partial<IAmpFormContext>) => void;
+  alterAcousticForm: (Object: Partial<IAcousticFormContext>) => void;
   alterOther: (Object: Partial<IFormContext>) => void;
+  alterAmpOther: (Object: Partial<IAmpFormContext>) => void;
+  alterAcousticOther: (Object: Partial<IAcousticFormContext>) => void;
   alterDamage: (Object: {
     rating?: Partial<IDamageAreas>;
     description?: Partial<IDamageAreas>;
   }) => void;
+  alterAmpDamage: (Object: {
+    rating?: Partial<IAmpDamageAreas>;
+    description?: Partial<IAmpDamageAreas>;
+  }) => void;
+  alterAcousticDamage: (Object: {
+    rating?: Partial<IAcousticDamageAreas>;
+    description?: Partial<IAcousticDamageAreas>;
+  }) => void;
+  itemType: 'guitar' | 'amplifier' | 'acoustic';
+  setItemType: (itemType: 'guitar' | 'amplifier' | 'acoustic') => void;
 }
-const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
+const Presets: React.FC<Props> = ({
+  alterForm,
+  alterOther,
+  alterDamage,
+  itemType,
+  setItemType,
+  alterAcousticDamage,
+  alterAcousticForm,
+  alterAcousticOther,
+  alterAmpDamage,
+  alterAmpForm,
+  alterAmpOther,
+}) => {
   const selectRef = React.useRef<HTMLSelectElement>(null);
+
   const formState = UseFormContext();
   const otherState = UseOtherContext();
+
+  const ampFormState = UseAmpFormContext();
+  const ampOtherState = UseAmpOtherContext();
+
+  const acousticFormState = UseAcousticFormContext();
+  const acousticOtherState = UseAcousticOtherContext();
 
   const [presets, setPresets] = React.useState<{
     [key: string]: {
@@ -29,10 +77,34 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
     } & { name: string };
   }>(formPresets);
 
+  const [ampPresets, setAmpPresets] = React.useState<{
+    [key: string]: {
+      formState: IAmpFormContext;
+      otherState: IAmpFormContext;
+    } & { name: string };
+  }>(ampFormPresets);
+
+  const [acousticPresets, setAcousticPresets] = React.useState<{
+    [key: string]: {
+      formState: IAcousticFormContext;
+      otherState: IAcousticFormContext;
+    } & { name: string };
+  }>(acousticFormPresets);
+
   useEffect(() => {
     const localPresets = localStorage.getItem('presets');
     if (localPresets) {
       setPresets(JSON.parse(localPresets));
+    }
+
+    const localAmpPresets = localStorage.getItem('ampPresets');
+    if (localAmpPresets) {
+      setAmpPresets(JSON.parse(localAmpPresets));
+    }
+
+    const localAcousticPresets = localStorage.getItem('acousticPresets');
+    if (localAcousticPresets) {
+      setAcousticPresets(JSON.parse(localAcousticPresets));
     }
   }, []);
 
@@ -64,7 +136,19 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
       return;
     }
 
-    const preset = presets[selectedPreset];
+    let preset: {
+      formState: IAmpFormContext | IAcousticFormContext | IFormContext;
+      otherState: IAmpFormContext | IAcousticFormContext | IFormContext;
+    } & { name: string };
+
+    if (itemType === 'guitar') {
+      preset = presets[selectedPreset];
+    } else if (itemType === 'amplifier') {
+      preset = ampPresets[selectedPreset];
+    } else if (itemType === 'acoustic') {
+      preset = acousticPresets[selectedPreset];
+    }
+
     // console.log(preset, presets);
     console.log(JSON.stringify({ [preset.name]: preset }));
   };
@@ -79,30 +163,55 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
       'Enter a name for this preset. You can delete it later by pressing ` (above the tab key)',
     );
     if (name) {
-      const preset = {
-        formState: {
-          ...formState,
-          year: '',
-          serial: '',
-          weight: '',
-          finish: '',
-          modifications: 'sel',
-          otherFeatures: 'sel',
-        },
-        otherState: {
-          ...otherState,
-          year: 'XXXX',
-          serial: '-',
-          weight: 'Xlbs Xoz',
-          finish: '',
-          modifications: '',
-          otherFeatures: '',
-        },
-        name,
-      };
-      const newPresets = { ...presets, [name]: preset };
-      setPresets(newPresets);
-      localStorage.setItem('presets', JSON.stringify(newPresets));
+      if (itemType === 'guitar') {
+        const preset = {
+          formState: {
+            ...formState,
+            ...formPresetReset.formState,
+          },
+          otherState: {
+            ...otherState,
+            ...formPresetReset.otherState,
+          },
+          name,
+        };
+        const newPresets = { ...presets, [name]: preset };
+        setPresets(newPresets);
+        localStorage.setItem('presets', JSON.stringify(newPresets));
+      } else if (itemType === 'amplifier') {
+        const preset = {
+          formState: {
+            ...ampFormState,
+            ...ampFormPresetReset.formState,
+          },
+          otherState: {
+            ...ampOtherState,
+            ...ampFormPresetReset.otherState,
+          },
+          name,
+        };
+        const newAmpPresets = { ...ampPresets, [name]: preset };
+        setAmpPresets(newAmpPresets);
+        localStorage.setItem('ampPresets', JSON.stringify(newAmpPresets));
+      } else if (itemType === 'acoustic') {
+        const preset = {
+          formState: {
+            ...acousticFormState,
+            ...acousticFormPresetReset.formState,
+          },
+          otherState: {
+            ...ampOtherState,
+            ...acousticFormPresetReset.otherState,
+          },
+          name,
+        };
+        const newAcousticPresets = { ...acousticPresets, [name]: preset };
+        setAcousticPresets(newAcousticPresets);
+        localStorage.setItem(
+          'acousticPresets',
+          JSON.stringify(newAcousticPresets),
+        );
+      }
     } else {
       printPresetToConsole();
     }
@@ -115,63 +224,126 @@ const Presets: React.FC<Props> = ({ alterForm, alterOther, alterDamage }) => {
     if (!confirm) return;
     const name = selectRef.current?.value;
     if (name) {
-      const newPresets = { ...presets };
-      delete newPresets[name];
-      setPresets(newPresets);
-      localStorage.setItem('presets', JSON.stringify(newPresets));
+      if (itemType === 'guitar') {
+        const newPresets = { ...presets };
+        delete newPresets[name];
+        setPresets(newPresets);
+        localStorage.setItem('presets', JSON.stringify(newPresets));
+      } else if (itemType === 'amplifier') {
+        const newAmpPresets = { ...ampPresets };
+        delete newAmpPresets[name];
+        setAmpPresets(newAmpPresets);
+        localStorage.setItem('ampPresets', JSON.stringify(newAmpPresets));
+      } else if (itemType === 'acoustic') {
+        const newAcousticPresets = { ...acousticPresets };
+        delete newAcousticPresets[name];
+        setAcousticPresets(newAcousticPresets);
+        localStorage.setItem(
+          'acousticPresets',
+          JSON.stringify(newAcousticPresets),
+        );
+      }
     }
   };
 
   const handlePresetApplication = () => {
     const selectedPreset = selectRef.current.value;
-    // console.log(selectedPreset);
 
     if (selectedPreset && selectedPreset === 'select...') {
       return;
     }
 
-    const preset = presets[selectedPreset];
-    // console.log(preset, presets);
+    if (itemType === 'guitar') {
+      const preset = presets[selectedPreset];
 
-    alterForm(preset.formState);
-    alterOther(preset.otherState);
-    alterDamage(defaultDamageContext);
+      alterForm(preset.formState);
+      alterOther(preset.otherState);
+      alterDamage(defaultDamageContext);
+
+      console.log(`applying ${itemType} preset ${preset.name}`);
+    } else if (itemType === 'amplifier') {
+      const preset = ampPresets[selectedPreset];
+
+      alterAmpForm(preset.formState);
+      alterAmpOther(preset.otherState);
+      alterAmpDamage(defaultAmpDamageContext);
+
+      console.log(`applying ${itemType} preset ${preset.name}`);
+    } else if (itemType === 'acoustic') {
+      const preset = acousticPresets[selectedPreset];
+
+      alterAcousticForm(preset.formState);
+      alterAcousticOther(preset.otherState);
+      alterAcousticDamage(defaultAcousticDamageContext);
+      console.log(`applying ${itemType} preset ${preset.name}`);
+    }
+  };
+
+  const toggleType = () => {
+    if (itemType === 'guitar') {
+      setItemType('acoustic');
+    } else if (itemType === 'acoustic') {
+      setItemType('amplifier');
+    } else if (itemType === 'amplifier') {
+      setItemType('guitar');
+    }
   };
 
   return (
-    <div className='py-4 text-white'>
-      <h3 className='inline mx-12 text-2xl font-bold'>Presets</h3>
-      <select
-        className='mx-4 bg-gray-800 w-72'
-        defaultValue='select...'
-        ref={selectRef}
-        onKeyPress={(e) => {
-          if (
-            e.key === '`' &&
-            selectRef.current.value !== 'select...' &&
-            selectRef.current.value !== 'Clear'
-          ) {
-            deletePreset();
-          }
-        }}>
-        <option value='select...' disabled>
-          Select a preset
-        </option>
-        {Object.values(presets).map((preset, i) => (
-          <option
-            key={i}
-            value={Object.keys(presets)[i]}
-            className='bg-gray-800'>
-            {preset.name}
+    <div className='flex justify-between py-4 pr-8 text-white'>
+      <div>
+        <h3 className='mx-12 inline text-2xl font-bold'>Presets</h3>
+        <select
+          className='mx-4 my-1 w-72 rounded-md border border-neutral-200 bg-neutral-800 py-1 px-2 capitalize'
+          defaultValue='select...'
+          ref={selectRef}
+          onKeyPress={(e) => {
+            if (
+              e.key === '`' &&
+              selectRef.current.value !== 'select...' &&
+              selectRef.current.value !== 'Clear'
+            ) {
+              deletePreset();
+            }
+          }}>
+          <option value='select...' disabled>
+            Select a preset
           </option>
-        ))}
-      </select>
-      <button onClick={handlePresetApplication} className='mx-4'>
-        Apply
-      </button>
-      <button onClick={savePreset} className='float-right mx-4'>
-        Make Preset
-      </button>
+          {Object.values(
+            itemType === 'guitar'
+              ? presets
+              : itemType === 'acoustic'
+              ? acousticPresets
+              : ampPresets,
+          ).map((preset, i) => (
+            <option
+              key={i}
+              value={Object.keys(presets)[i]}
+              className='bg-neutral-800'>
+              {preset.name}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={handlePresetApplication}
+          className='mx-2 rounded-md border border-neutral-200 py-1 px-2 capitalize'>
+          Apply
+        </button>
+      </div>
+      <div>
+        <button
+          onClick={savePreset}
+          className='my-1 rounded-md border border-neutral-200 py-1 px-2 capitalize'>
+          Make Preset
+        </button>
+      </div>
+      <div>
+        <button
+          onClick={toggleType}
+          className='my-1 rounded-md border border-neutral-200 py-1 px-2 capitalize'>
+          {itemType}
+        </button>
+      </div>
     </div>
   );
 };

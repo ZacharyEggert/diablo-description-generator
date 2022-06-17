@@ -7,12 +7,15 @@ interface FormatSelectProps {
 
 const FormatSelect: React.FC<FormatSelectProps> = ({ refObj }) => {
   return (
-    <select ref={refObj} className='text-xl w-72'>
-      <option value='' className='bg-gray-800'>
+    <select ref={refObj} className='w-72 text-xl'>
+      <option value='' className='bg-neutral-800'>
         Select...
       </option>
       {formats.map((format) => (
-        <option key={format.name} value={format.name} className='bg-gray-800'>
+        <option
+          key={format.name}
+          value={format.name}
+          className='bg-neutral-800'>
           {format.name}
         </option>
       ))}

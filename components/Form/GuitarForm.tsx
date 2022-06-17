@@ -1,16 +1,18 @@
-import React from 'react';
 import { IFormContext, UseFormContext } from 'lib/context';
 import {
   formLabelPrettier,
   formOptions,
   guitarCase,
 } from 'lib/description/description';
-import FormSelect from './FormSelect';
 
-const Form: React.FC<{
+import FormSelect from './FormSelect';
+import React from 'react';
+
+const GuitarForm: React.FC<{
   alterForm: (Object: Partial<IFormContext>) => void;
   alterOther: (Object: Partial<IFormContext>) => void;
-}> = ({ alterForm, alterOther }) => {
+  itemType: 'guitar';
+}> = ({ alterForm, alterOther, itemType }) => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -71,18 +73,19 @@ const Form: React.FC<{
         alterOther={alterOther}
         field={key}
         options={opt}
+        itemType={itemType}
       />
     );
   };
 
   return (
-    <div className='flex flex-col w-full px-12 pt-12 text-white'>
+    <div className='flex w-full flex-col px-12 pt-12 text-white'>
       <form
-        className='grid w-full grid-cols-2 gap-4 pb-8 mx-auto lg:grid-cols-6 lg:w-10/12'
+        className='mx-auto grid w-full grid-cols-2 gap-4 pb-8 lg:w-10/12 lg:grid-cols-6'
         onSubmit={onSubmit}>
         {/*General Section*/}
-        <div className='grid w-full min-h-[3rem] grid-cols-1 col-span-2 py-2 rounded-2xl bg-neutral-500 lg:col-span-6 lg:grid-cols-2 shadow-md shadow-neutral-900'>
-          <h2 className='text-2xl font-semibold text-center text-white lg:col-span-2'>
+        <div className='col-span-2 grid min-h-[3rem] w-full grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900 lg:col-span-6 lg:grid-cols-2'>
+          <h2 className='text-center text-2xl font-semibold text-white lg:col-span-2'>
             General
           </h2>
           {makeFormSelect(formLabelPrettier.make, 'make')}
@@ -95,10 +98,10 @@ const Form: React.FC<{
           {makeFormSelect(formLabelPrettier.condition, 'condition')}
         </div>
 
-        <div className='flex flex-col w-full min-h-[3rem] col-span-2 lg:col-span-3'>
+        <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-3'>
           {/*Neck*/}
-          <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
-            <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
+          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+            <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Neck
             </h2>
             {makeFormSelect(formLabelPrettier.fingerBoard, 'fingerBoard')}
@@ -122,8 +125,8 @@ const Form: React.FC<{
             {makeFormSelect(formLabelPrettier.inlays, 'inlays')}
           </div>
           {/*Body*/}
-          <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
-            <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
+          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+            <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Body
             </h2>
             {makeFormSelect(formLabelPrettier.bodyType, 'bodyType')}
@@ -134,10 +137,10 @@ const Form: React.FC<{
           </div>
         </div>
 
-        <div className='flex flex-col w-full min-h-[3rem] col-span-2 lg:col-span-3'>
+        <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-3'>
           {/*Hardware*/}
-          <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
-            <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
+          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+            <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Hardware
             </h2>
             {makeFormSelect(formLabelPrettier.bridge, 'bridge')}
@@ -160,8 +163,8 @@ const Form: React.FC<{
             )}
           </div>
           {/*Electronics*/}
-          <div className='grid flex-none grid-cols-1 py-2 mb-4 shadow-md rounded-2xl bg-neutral-500 shadow-neutral-900'>
-            <h2 className='text-2xl font-semibold text-center text-white lg:col-span-1'>
+          <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
+            <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Electronics
             </h2>
             {makeFormSelect(
@@ -179,8 +182,8 @@ const Form: React.FC<{
           </div>
         </div>
         {/*Misc Section*/}
-        <div className='grid w-full min-h-[3rem] grid-cols-1 col-span-2 py-2 rounded-2xl bg-neutral-500 lg:col-span-6 lg:grid-cols-2 shadow-md shadow-neutral-900'>
-          <h2 className='text-2xl font-semibold text-center text-white lg:col-span-2'>
+        <div className='col-span-2 grid min-h-[3rem] w-full grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900 lg:col-span-6 lg:grid-cols-2'>
+          <h2 className='text-center text-2xl font-semibold text-white lg:col-span-2'>
             Miscellaneous
           </h2>
           {makeFormSelect(formLabelPrettier.weight, 'weight')}
@@ -259,4 +262,4 @@ const Form: React.FC<{
   );
 };
 
-export default Form;
+export default GuitarForm;

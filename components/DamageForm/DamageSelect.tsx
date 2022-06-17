@@ -1,19 +1,28 @@
-import { useDamageContext } from 'lib/damageContext';
-import { IDamageAreas, IDamageContext } from 'lib/types';
+import { IAcousticDamageAreas, IAmpDamageAreas, IDamageAreas } from 'lib/types';
 import React, { useEffect } from 'react';
+import {
+  useAcousticDamageContext,
+  useAmpDamageContext,
+  useDamageContext,
+} from 'lib/damageContext';
 
 const DamageSelect: React.FC<{
   label: string;
   options: string[];
   field: string;
   alterDamage: (Object: {
-    rating?: Partial<IDamageAreas>;
-    description?: Partial<IDamageAreas>;
+    rating?: Partial<IDamageAreas | IAmpDamageAreas | IAcousticDamageAreas>;
+    description?: Partial<
+      IDamageAreas | IAmpDamageAreas | IAcousticDamageAreas
+    >;
   }) => void;
-}> = ({ label, options, field, alterDamage }) => {
-  const [selected, setSelected] = React.useState('');
+  itemType: 'amplifier' | 'acoustic' | 'guitar';
+}> = ({ label, options, field, alterDamage, itemType }) => {
+  const [selectedRating, setSelectedRating] = React.useState('');
 
   const damageState = useDamageContext();
+  const ampDamageState = useAmpDamageContext();
+  const acousticDamageState = useAcousticDamageContext();
 
   const handleChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     let alterObject = { [field]: event.target.value };
@@ -25,23 +34,28 @@ const DamageSelect: React.FC<{
     event,
   ) => {
     let alterObject = { [field]: event.target.value };
-
     alterDamage({ description: alterObject });
   };
 
   useEffect(() => {
-    setSelected(damageState.rating[field]);
-  }, [damageState, field]);
+    if (itemType === 'amplifier') {
+      setSelectedRating(ampDamageState.rating[field]);
+    } else if (itemType === 'acoustic') {
+      setSelectedRating(acousticDamageState.rating[field]);
+    } else {
+      setSelectedRating(damageState.rating[field]);
+    }
+  }, [damageState, field, ampDamageState, acousticDamageState, itemType]);
 
   return (
     <div className='col-span-1 p-2'>
-      <div className='flex w-full py-2 pl-4 mx-auto bg-gray-600 rounded-xl'>
-        <span className='inline-block w-1/4 font-bold text-right'>{label}</span>
+      <div className='mx-auto flex w-full rounded-xl bg-neutral-600 py-2 pl-4'>
+        <span className='inline-block w-1/4 text-right font-bold'>{label}</span>
         <div className='w-3/4 pl-2'>
           <select
-            className='inline-block w-11/12 bg-gray-800 rounded-md'
+            className='inline-block w-11/12 rounded-md bg-neutral-800'
             name={field}
-            value={selected}
+            value={selectedRating}
             onChange={handleChange}>
             {options.map((option, index) => {
               return (
@@ -52,9 +66,15 @@ const DamageSelect: React.FC<{
             })}
           </select>
           <input
-            value={damageState.description[field]}
+            value={
+              itemType === 'amplifier'
+                ? ampDamageState.description[field]
+                : itemType === 'acoustic'
+                ? acousticDamageState.description[field]
+                : damageState.description[field]
+            }
             onChange={handleOtherChange}
-            className='inline-block w-11/12 pl-1 bg-gray-800 rounded-md'
+            className='inline-block w-11/12 rounded-md bg-neutral-800 pl-1'
             name={field}
           />
         </div>

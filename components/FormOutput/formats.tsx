@@ -1,15 +1,16 @@
-import { IFormContext } from 'lib/context';
 import {
   combinePickups,
   combineStates,
-  fixCase,
-  listify,
   damageReport,
   damageReportVerbose,
+  fixCase,
+  listify,
 } from 'lib/helpers';
-import { guitarCaseMap } from 'lib/description/options/guitarCase';
-import { topWoodsMap } from 'lib/description/options/topWoods';
+
 import { IDamageContext } from 'lib/types';
+import { IFormContext } from 'lib/context';
+import { guitarCaseMap } from 'lib/description/guitarOptions/guitarCase';
+import { topWoodsMap } from 'lib/description/guitarOptions/topWoods';
 
 const formats = [
   {

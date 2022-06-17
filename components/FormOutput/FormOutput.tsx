@@ -1,7 +1,8 @@
-import React from 'react';
-import FormatSelect from './FormatSelect';
-import formats from './formats';
 import { UseFormContext, UseOtherContext } from 'lib/context';
+
+import FormatSelect from './FormatSelect';
+import React from 'react';
+import formats from './formats';
 import { useDamageContext } from 'lib/damageContext';
 
 interface FormOutputProps {}
@@ -48,15 +49,15 @@ const FormOutput: React.FC<FormOutputProps> = ({}) => {
   return (
     <>
       <div className='w-full px-12'>
-        <div className='flex flex-row justify-end w-11/12 mx-auto mb-8'>
+        <div className='mx-auto mb-8 flex w-11/12 flex-row justify-end'>
           <FormatSelect refObj={formatRef} />
           <button
             onClick={applyFormat}
-            className='px-4 py-2 ml-8 text-xl bg-gray-600 rounded-xl'>
+            className='ml-8 rounded-xl bg-neutral-600 px-4 py-2 text-xl'>
             Apply Copy
           </button>
         </div>
-        <div className='flex flex-row items-center justify-center w-11/12 mx-auto mb-8'>
+        <div className='mx-auto mb-8 flex w-11/12 flex-row items-center justify-center'>
           {copy}
         </div>
       </div>
