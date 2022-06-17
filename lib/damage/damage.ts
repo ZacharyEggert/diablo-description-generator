@@ -67,6 +67,19 @@ export const ampDamageLabelPrettier: IAmpDamageAreas = {
 
 export const acousticDamageLabelPrettier: IAcousticDamageAreas = {
   overallCondition: 'Overall Condition',
+  bodyBack: 'Body Back',
+  bodyFront: 'Body Front',
+  bodyBinding: 'Body Binding',
+  fretboard: 'Fretboard',
+  fretLife: 'Fret Life',
+  neckBack: 'Neck',
+  neckBinding: 'Neck Binding',
+  neckPocket: 'Neck Join',
+  headstockBack: 'Headstock Back',
+  headstockFront: 'Headstock Front',
+  bridge: 'Bridge',
+  tailpiece: 'Tailpiece',
+  hardware: 'Hardware',
 };
 
 export const ampDamageOptions: {
@@ -79,4 +92,17 @@ export const acousticDamageOptions: {
   [key in keyof IAcousticDamageAreas]: StarRatingType[];
 } = {
   overallCondition: stars,
+  bodyBack: stars,
+  bodyFront: stars,
+  bodyBinding: stars,
+  fretboard: stars,
+  fretLife: stars,
+  neckBack: stars,
+  neckBinding: stars,
+  neckPocket: stars,
+  headstockBack: stars,
+  headstockFront: stars,
+  bridge: stars,
+  tailpiece: stars,
+  hardware: stars,
 };

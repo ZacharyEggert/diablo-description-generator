@@ -7,13 +7,17 @@ import {
   IFormContext,
 } from 'lib/types';
 import {
+  acousticDamageLabelPrettier,
+  ampDamageLabelPrettier,
+  damageLabelPrettier,
+} from './damage/damage';
+import {
   acousticFormLabelPrettier,
   ampFormLabelPrettier,
   formLabelPrettier,
   make,
   tuningMachineBrands,
 } from 'lib/description/description';
-import { ampDamageLabelPrettier, damageLabelPrettier } from './damage/damage';
 
 const whitelist = [
   ...make,
@@ -151,7 +155,22 @@ export const manualArrayOfAmpDamageKeys: Array<
 
 export const manualArrayOfAcousticDamageKeys: Array<
   keyof IAcousticDamageContext['rating']
-> = ['overallCondition'];
+> = [
+  'overallCondition',
+  'bodyBack',
+  'bodyFront',
+  'bodyBinding',
+  'fretboard',
+  'fretLife',
+  'neckBack',
+  'neckBinding',
+  'neckPocket',
+  'headstockFront',
+  'headstockBack',
+  'bridge',
+  'tailpiece',
+  'hardware',
+];
 
 export const fixCase = (paragraph: string): string => {
   const words = paragraph.split(' ');
@@ -381,12 +400,12 @@ export const ampDamageReportVerbose = (
 export const acousticDamageReportVerbose = (
   damageState: IAcousticDamageContext,
 ): JSX.Element => {
-  const mappedObject = manualArrayOfAmpDamageKeys.map((data, i) => {
+  const mappedObject = manualArrayOfAcousticDamageKeys.map((data, i) => {
     return (
       <>
         {damageState.rating[data] !== 'N/A' && (
           <li className='' key={'li' + data + 'damage'}>
-            {ampDamageLabelPrettier[data]}: {damageState.rating[data]}
+            {acousticDamageLabelPrettier[data]}: {damageState.rating[data]}
             {damageState.description[data] && (
               <> - {damageState.description[data]}</>
             )}
