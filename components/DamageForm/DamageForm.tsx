@@ -2,7 +2,7 @@ import { damageLabelPrettier, damageOptions } from 'lib/damage/damage';
 
 import DamageSelect from './DamageSelect';
 import { IDamageAreas } from 'lib/types';
-import { manualArrayOfDamageKeys } from 'lib/helpers';
+import { manualArrayOfDamageKeys } from 'lib/manualArrays';
 import { useDamageContext } from 'lib/damageContext';
 
 const DamageForm: React.FC<{

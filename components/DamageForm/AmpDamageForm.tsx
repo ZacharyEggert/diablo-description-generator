@@ -7,7 +7,7 @@ import {
 
 import DamageSelect from './DamageSelect';
 import { IAmpDamageAreas } from 'lib/types';
-import { manualArrayOfAmpDamageKeys } from 'lib/helpers';
+import { manualArrayOfAmpDamageKeys } from 'lib/manualArrays';
 import { useAmpDamageContext } from 'lib/damageContext';
 
 const AmpDamageForm: React.FC<{

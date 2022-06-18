@@ -6,7 +6,7 @@ import { useAcousticDamageContext, useDamageContext } from 'lib/damageContext';
 
 import DamageSelect from './DamageSelect';
 import { IDamageAreas } from 'lib/types';
-import { manualArrayOfAcousticDamageKeys } from 'lib/helpers';
+import { manualArrayOfAcousticDamageKeys } from 'lib/manualArrays';
 
 const AcousticDamageForm: React.FC<{
   alterDamage: (Object: {

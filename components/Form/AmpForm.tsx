@@ -7,7 +7,7 @@ import FormSelect from './FormSelect';
 import { IAmpFormContext } from 'lib/types';
 import React from 'react';
 import { UseFormContext } from 'lib/context';
-import { manualArrayOfAmpKeys } from 'lib/helpers';
+import { manualArrayOfAmpKeys } from 'lib/manualArrays';
 
 const AmpForm: React.FC<{
   alterForm: (Object: Partial<IAmpFormContext>) => void;
