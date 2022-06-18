@@ -21,9 +21,7 @@ const AmpForm: React.FC<{
   const currentOptions = UseFormContext();
 
   const makeFormSelect = (label: string, key: keyof IAmpFormContext) => {
-    let opt = [];
-
-    opt = ampFormOptions[key];
+    let opt = ampFormOptions[key];
 
     return (
       <FormSelect

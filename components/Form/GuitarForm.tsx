@@ -49,7 +49,7 @@ const GuitarForm: React.FC<{
         opt = [];
       }
     } else {
-      opt = formOptions[key];
+      opt = formOptions[key] as string[];
     }
 
     if (
@@ -78,6 +78,16 @@ const GuitarForm: React.FC<{
     );
   };
 
+  /**
+   *
+   * @param key key of IFormContext to generate a selection for.
+   * @returns a FormSelect JSX element.
+   * @description generates a FormSelect element for the given key.
+   */
+  const MFST = (key: keyof IFormContext) => {
+    return makeFormSelect(formLabelPrettier[key], key);
+  };
+
   return (
     <div className='flex w-full flex-col px-12 pt-12 text-white'>
       <form
@@ -88,14 +98,14 @@ const GuitarForm: React.FC<{
           <h2 className='text-center text-2xl font-semibold text-white lg:col-span-2'>
             General
           </h2>
-          {makeFormSelect(formLabelPrettier.make, 'make')}
-          {makeFormSelect(formLabelPrettier.model, 'model')}
-          {makeFormSelect(formLabelPrettier.subModel, 'subModel')}
-          {makeFormSelect(formLabelPrettier.countryOfOrigin, 'countryOfOrigin')}
-          {makeFormSelect(formLabelPrettier.year, 'year')}
-          {makeFormSelect(formLabelPrettier.finish, 'finish')}
-          {makeFormSelect(formLabelPrettier.serial, 'serial')}
-          {makeFormSelect(formLabelPrettier.condition, 'condition')}
+          {MFST('make')}
+          {MFST('model')}
+          {MFST('subModel')}
+          {MFST('countryOfOrigin')}
+          {MFST('year')}
+          {MFST('finish')}
+          {MFST('serial')}
+          {MFST('condition')}
         </div>
 
         <div className='col-span-2 flex min-h-[3rem] w-full flex-col lg:col-span-3'>
@@ -104,36 +114,30 @@ const GuitarForm: React.FC<{
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Neck
             </h2>
-            {makeFormSelect(formLabelPrettier.fingerBoard, 'fingerBoard')}
-            {makeFormSelect(formLabelPrettier.radius, 'radius')}
-            {makeFormSelect(formLabelPrettier.neckFinish, 'neckFinish')}
-            {makeFormSelect(formLabelPrettier.neckWood, 'neckWood')}
-            {makeFormSelect(formLabelPrettier.neckProfile, 'neckProfile')}
-            {makeFormSelect(
-              formLabelPrettier.neckThickness_1,
-              'neckThickness_1',
-            )}
-            {makeFormSelect(
-              formLabelPrettier.neckThickness_12,
-              'neckThickness_12',
-            )}
-            {makeFormSelect(formLabelPrettier.frets, 'frets')}
-            {makeFormSelect(formLabelPrettier.scaleLength, 'scaleLength')}
-            {makeFormSelect(formLabelPrettier.neckJoint, 'neckJoint')}
-            {makeFormSelect(formLabelPrettier.nut, 'nut')}
-            {makeFormSelect(formLabelPrettier.nutWidth, 'nutWidth')}
-            {makeFormSelect(formLabelPrettier.inlays, 'inlays')}
+            {MFST('fingerBoard')}
+            {MFST('radius')}
+            {MFST('neckFinish')}
+            {MFST('neckWood')}
+            {MFST('neckProfile')}
+            {MFST('neckThickness_1')}
+            {MFST('neckThickness_12')}
+            {MFST('frets')}
+            {MFST('scaleLength')}
+            {MFST('neckJoint')}
+            {MFST('nut')}
+            {MFST('nutWidth')}
+            {MFST('inlays')}
           </div>
           {/*Body*/}
           <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Body
             </h2>
-            {makeFormSelect(formLabelPrettier.bodyType, 'bodyType')}
-            {makeFormSelect(formLabelPrettier.bodyWood, 'bodyWood')}
-            {makeFormSelect(formLabelPrettier.finishType, 'finishType')}
-            {makeFormSelect(formLabelPrettier.bodyShape, 'bodyShape')}
-            {makeFormSelect(formLabelPrettier.topWood, 'topWood')}
+            {MFST('bodyType')}
+            {MFST('bodyWood')}
+            {MFST('finishType')}
+            {MFST('bodyShape')}
+            {MFST('topWood')}
           </div>
         </div>
 
@@ -143,42 +147,31 @@ const GuitarForm: React.FC<{
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Hardware
             </h2>
-            {makeFormSelect(formLabelPrettier.bridge, 'bridge')}
-            {makeFormSelect(formLabelPrettier.knobs, 'knobs')}
-            {makeFormSelect(formLabelPrettier.hardware, 'hardware')}
-            {makeFormSelect(formLabelPrettier.pickguard, 'pickguard')}
-            {makeFormSelect(formLabelPrettier.strapButtons, 'strapButtons')}
-            {makeFormSelect(formLabelPrettier.stringGauge, 'stringGauge')}
-            {makeFormSelect(
-              formLabelPrettier.tuningMachineBrands,
-              'tuningMachineBrands',
-            )}
-            {makeFormSelect(
-              formLabelPrettier.tuningMachineModels,
-              'tuningMachineModels',
-            )}
-            {makeFormSelect(
-              formLabelPrettier.tuningMachineHeads,
-              'tuningMachineHeads',
-            )}
+            {MFST('bridge')}
+            {MFST('knobs')}
+            {MFST('hardware')}
+            {MFST('pickguard')}
+            {MFST('strapButtons')}
+            {MFST('stringGauge')}
+            {MFST('tuningMachineBrands')}
+            {MFST('tuningMachineModels')}
+            {MFST('tuningMachineHeads')}
           </div>
           {/*Electronics*/}
           <div className='mb-4 grid flex-none grid-cols-1 rounded-2xl bg-neutral-500 py-2 shadow-md shadow-neutral-900'>
             <h2 className='text-center text-2xl font-semibold text-white lg:col-span-1'>
               Electronics
             </h2>
-            {makeFormSelect(
-              formLabelPrettier.pickupConfiguration,
-              'pickupConfiguration',
-            )}
-            {makeFormSelect(formLabelPrettier.pickupNeck, 'pickupNeck')}
-            {makeFormSelect(formLabelPrettier.pickupMiddle, 'pickupMiddle')}
-            {makeFormSelect(formLabelPrettier.pickupBridge, 'pickupBridge')}
-            {makeFormSelect(formLabelPrettier.pots, 'pots')}
-            {makeFormSelect(formLabelPrettier.pickupSwitch, 'pickupSwitch')}
-            {makeFormSelect(formLabelPrettier.coilTap, 'coilTap')}
-            {makeFormSelect(formLabelPrettier.killSwitch, 'killSwitch')}
-            {makeFormSelect(formLabelPrettier.phaseSwitch, 'phaseSwitch')}
+            {MFST('pickupConfiguration')}
+            {MFST('pickupNeck')}
+            {MFST('pickupMiddle')}
+            {MFST('pickupBridge')}
+            {MFST('pots')}
+            {MFST('potCodes')}
+            {MFST('pickupSwitch')}
+            {MFST('coilTap')}
+            {MFST('killSwitch')}
+            {MFST('phaseSwitch')}
           </div>
         </div>
         {/*Misc Section*/}
@@ -186,10 +179,10 @@ const GuitarForm: React.FC<{
           <h2 className='text-center text-2xl font-semibold text-white lg:col-span-2'>
             Miscellaneous
           </h2>
-          {makeFormSelect(formLabelPrettier.weight, 'weight')}
-          {makeFormSelect(formLabelPrettier.modifications, 'modifications')}
-          {makeFormSelect(formLabelPrettier.otherFeatures, 'otherFeatures')}
-          {makeFormSelect(formLabelPrettier.guitarCase, 'guitarCase')}
+          {MFST('weight')}
+          {MFST('modifications')}
+          {MFST('otherFeatures')}
+          {MFST('guitarCase')}
         </div>
 
         {/* {Object.keys(formOptions).map((key) => {

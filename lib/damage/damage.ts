@@ -42,7 +42,7 @@ export const damageOptions: {
   pickups: stars,
 };
 
-export const damageLabelPrettier: IDamageAreas = {
+export const damageLabelPrettier = {
   overallCondition: 'Overall Condition',
   bodyBack: 'Body Back',
   bodyFront: 'Body Front',
@@ -61,11 +61,11 @@ export const damageLabelPrettier: IDamageAreas = {
   pickups: 'Pickups',
 };
 
-export const ampDamageLabelPrettier: IAmpDamageAreas = {
+export const ampDamageLabelPrettier = {
   overallCondition: 'Overall Condition',
 };
 
-export const acousticDamageLabelPrettier: IAcousticDamageAreas = {
+export const acousticDamageLabelPrettier = {
   overallCondition: 'Overall Condition',
   bodyBack: 'Body Back',
   bodyFront: 'Body Front',
