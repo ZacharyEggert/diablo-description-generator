@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+
 import { IFormContext } from 'lib/types';
 
 export type { IFormContext } from 'lib/types';
@@ -33,6 +34,7 @@ export const defaultContext: IFormContext = {
   pickupBridge: '',
   pickguard: 'sel',
   pots: 'sel',
+  potCodes: '',
   coilTap: 'sel',
   pickupSwitch: 'sel',
   phaseSwitch: 'sel',
@@ -84,6 +86,7 @@ export const emptyContext: IFormContext = {
   pickupBridge: '',
   pickguard: '',
   pots: '',
+  potCodes: '',
   coilTap: '',
   killSwitch: '',
   phaseSwitch: '',

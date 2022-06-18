@@ -75,7 +75,9 @@ export {
   topWood,
 };
 
-export const formOptions = {
+export const formOptions: {
+  [key in keyof IFormContext]: IFormContext[key][] | object;
+} = {
   make,
   model,
   subModel,
@@ -105,6 +107,7 @@ export const formOptions = {
   pickupBridge: pickupBrands,
   pickguard,
   pots,
+  potCodes: [],
   coilTap,
   pickupSwitch: switches,
   killSwitch: coilTap,
@@ -126,7 +129,7 @@ export const formOptions = {
   strapButtons: [],
 };
 
-export const formLabelPrettier: IFormContext = {
+export const formLabelPrettier = {
   make: 'Make',
   model: 'Model',
   subModel: 'Sub-Model',
@@ -156,6 +159,7 @@ export const formLabelPrettier: IFormContext = {
   pickupBridge: 'Bridge Pickup',
   pickguard: 'Pickguard',
   pots: 'Pots',
+  potCodes: 'Pot Date Codes',
   coilTap: 'Coil Tap',
   pickupSwitch: 'Switch',
   killSwitch: 'Kill Switch',
@@ -180,10 +184,10 @@ export const formLabelPrettier: IFormContext = {
 export {};
 
 export const acousticFormOptions: {
-  [key in keyof IAcousticFormContext]: String[];
+  [key in keyof IAcousticFormContext]: any;
 } = {};
 
-export const acousticFormLabelPrettier: IAcousticFormContext = {};
+export const acousticFormLabelPrettier = {};
 
 export { ampMake };
 
@@ -212,26 +216,25 @@ export const ampFormOptions: {
   ampBiasRating: [],
 };
 
-export const ampFormLabelPrettier: { [key in keyof IAmpFormContext]: string } =
-  {
-    ampMake: 'Make',
-    ampModel: 'Model',
-    ampSubModel: 'Submodel',
-    ampYear: 'Year',
-    ampType: 'Type',
-    ampPower: 'Power',
-    ampExteriorColor: 'Exterior Color',
-    ampExterior: 'Exterior Material',
-    ampGrillCloth: 'Grill Cloth',
-    ampPanel: 'Panel',
-    ampWood: 'Cabinet Wood',
-    ampSerial: 'Serial',
-    ampPreampTubes: 'Preamp Tubes',
-    ampPowerTubes: 'Power Tubes',
-    ampSpeakerModel: 'Speakers',
-    ampSpeakerDateCodes: 'Speaker Date Codes',
-    ampTransformerDateCodes: 'Transformer Date Codes',
-    ampTransformerOriginality: 'Transformer Originality',
-    ampCapacitorOriginality: 'Capacitors',
-    ampBiasRating: 'Bias',
-  };
+export const ampFormLabelPrettier = {
+  ampMake: 'Make',
+  ampModel: 'Model',
+  ampSubModel: 'Submodel',
+  ampYear: 'Year',
+  ampType: 'Type',
+  ampPower: 'Power',
+  ampExteriorColor: 'Exterior Color',
+  ampExterior: 'Exterior Material',
+  ampGrillCloth: 'Grill Cloth',
+  ampPanel: 'Panel',
+  ampWood: 'Cabinet Wood',
+  ampSerial: 'Serial',
+  ampPreampTubes: 'Preamp Tubes',
+  ampPowerTubes: 'Power Tubes',
+  ampSpeakerModel: 'Speakers',
+  ampSpeakerDateCodes: 'Speaker Date Codes',
+  ampTransformerDateCodes: 'Transformer Date Codes',
+  ampTransformerOriginality: 'Transformer Originality',
+  ampCapacitorOriginality: 'Capacitors',
+  ampBiasRating: 'Bias',
+};
