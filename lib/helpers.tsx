@@ -89,6 +89,7 @@ export const manualArrayOfContextKeys: Array<
   'pickupBridge',
   'pickguard',
   'pots',
+  'potCodes',
   'coilTap',
   'pickupSwitch',
   'phaseSwitch',
