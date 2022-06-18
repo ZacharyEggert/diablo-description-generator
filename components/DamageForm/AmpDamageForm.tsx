@@ -1,18 +1,23 @@
-import { damageLabelPrettier, damageOptions } from 'lib/damage/damage';
+import {
+  ampDamageLabelPrettier,
+  ampDamageOptions,
+  damageLabelPrettier,
+  damageOptions,
+} from 'lib/damage/damage';
 
 import DamageSelect from './DamageSelect';
-import { IDamageAreas } from 'lib/types';
-import { manualArrayOfDamageKeys } from 'lib/helpers';
-import { useDamageContext } from 'lib/damageContext';
+import { IAmpDamageAreas } from 'lib/types';
+import { manualArrayOfAmpDamageKeys } from 'lib/helpers';
+import { useAmpDamageContext } from 'lib/damageContext';
 
-const DamageForm: React.FC<{
+const AmpDamageForm: React.FC<{
   alterDamage: (Object: {
-    rating?: Partial<IDamageAreas>;
-    description?: Partial<IDamageAreas>;
+    rating?: Partial<IAmpDamageAreas>;
+    description?: Partial<IAmpDamageAreas>;
   }) => void;
   itemType: 'amplifier' | 'acoustic' | 'guitar';
 }> = ({ alterDamage, itemType }) => {
-  const damageState = useDamageContext();
+  const damageState = useAmpDamageContext();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,12 +31,12 @@ const DamageForm: React.FC<{
         <h2 className='col-span-2 text-center text-2xl font-semibold lg:col-span-4'>
           Condition
         </h2>
-        {manualArrayOfDamageKeys.map((key) => {
-          let opt = damageOptions[key];
+        {manualArrayOfAmpDamageKeys.map((key) => {
+          let opt = ampDamageOptions[key];
 
           return (
             <DamageSelect
-              label={damageLabelPrettier[key]}
+              label={ampDamageLabelPrettier[key]}
               key={key}
               field={key}
               options={opt}
@@ -45,4 +50,4 @@ const DamageForm: React.FC<{
   );
 };
 
-export default DamageForm;
+export default AmpDamageForm;

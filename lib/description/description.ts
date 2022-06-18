@@ -1,40 +1,43 @@
+import { IAcousticFormContext } from 'lib/acousticContext';
+import { IAmpFormContext } from 'lib/ampContext';
 import { IFormContext } from 'lib/context';
-import make from 'lib/description/options/make';
-import model from 'lib/description/options/model';
-import subModel from 'lib/description/options/subModel';
-import country from 'lib/description/options/country';
-import condition from 'lib/description/options/condition';
-import bodyType from 'lib/description/options/bodyType';
-import bodyWood from 'lib/description/options/bodyWood';
-import scaleLength from 'lib/description/options/scaleLength';
-import neckJoint from 'lib/description/options/neckJoint';
-import neckWood from 'lib/description/options/neckWood';
-import fingerBoardMaterial from 'lib/description/options/fingerBoardMaterial';
-import radius from 'lib/description/options/radius';
-import neckProfile from 'lib/description/options/neckProfile';
-import inlays from 'lib/description/options/inlays';
-import nutWidth from 'lib/description/options/nutWidth';
-import nutMaterial from 'lib/description/options/nutMaterial';
-import frets from 'lib/description/options/frets';
-import pickupConfiguration from 'lib/description/options/pickupConfiguration';
-import pickguard from 'lib/description/options/pickGuard';
-import pots from 'lib/description/options/pots';
-import switches from 'lib/description/options/switches';
-import hardware from 'lib/description/options/hardware';
-import knobs from 'lib/description/options/knobs';
-import otherFeatures from 'lib/description/options/otherFeatures';
-import stringGauge from 'lib/description/options/stringGauge';
-import guitarCase from 'lib/description/options/guitarCase';
-import bridge from 'lib/description/options/bridge';
-import tuningMachineBrands from 'lib/description/options/tuningMachineBrands';
-import tuningMachineModels from 'lib/description/options/tuningMachineModels';
-import tuningMachineHeads from 'lib/description/options/tuningMachineHeads';
-import modifications from 'lib/description/options/modifications';
-import pickupBrands from 'lib/description/options/pickupBrands';
-import coilTap from 'lib/description/options/coilTap';
-import topWood from 'lib/description/options/topWoods';
-import bodyShape from 'lib/description/options/bodyShape';
-import finishType from 'lib/description/options/finishType';
+import ampMake from './ampOptions/make';
+import bodyShape from 'lib/description/guitarOptions/bodyShape';
+import bodyType from 'lib/description/guitarOptions/bodyType';
+import bodyWood from 'lib/description/guitarOptions/bodyWood';
+import bridge from 'lib/description/guitarOptions/bridge';
+import coilTap from 'lib/description/guitarOptions/coilTap';
+import condition from 'lib/description/guitarOptions/condition';
+import country from 'lib/description/guitarOptions/country';
+import fingerBoardMaterial from 'lib/description/guitarOptions/fingerBoardMaterial';
+import finishType from 'lib/description/guitarOptions/finishType';
+import frets from 'lib/description/guitarOptions/frets';
+import guitarCase from 'lib/description/guitarOptions/guitarCase';
+import hardware from 'lib/description/guitarOptions/hardware';
+import inlays from 'lib/description/guitarOptions/inlays';
+import knobs from 'lib/description/guitarOptions/knobs';
+import make from 'lib/description/guitarOptions/make';
+import model from 'lib/description/guitarOptions/model';
+import modifications from 'lib/description/guitarOptions/modifications';
+import neckJoint from 'lib/description/guitarOptions/neckJoint';
+import neckProfile from 'lib/description/guitarOptions/neckProfile';
+import neckWood from 'lib/description/guitarOptions/neckWood';
+import nutMaterial from 'lib/description/guitarOptions/nutMaterial';
+import nutWidth from 'lib/description/guitarOptions/nutWidth';
+import otherFeatures from 'lib/description/guitarOptions/otherFeatures';
+import pickguard from 'lib/description/guitarOptions/pickGuard';
+import pickupBrands from 'lib/description/guitarOptions/pickupBrands';
+import pickupConfiguration from 'lib/description/guitarOptions/pickupConfiguration';
+import pots from 'lib/description/guitarOptions/pots';
+import radius from 'lib/description/guitarOptions/radius';
+import scaleLength from 'lib/description/guitarOptions/scaleLength';
+import stringGauge from 'lib/description/guitarOptions/stringGauge';
+import subModel from 'lib/description/guitarOptions/subModel';
+import switches from 'lib/description/guitarOptions/switches';
+import topWood from 'lib/description/guitarOptions/topWoods';
+import tuningMachineBrands from 'lib/description/guitarOptions/tuningMachineBrands';
+import tuningMachineHeads from 'lib/description/guitarOptions/tuningMachineHeads';
+import tuningMachineModels from 'lib/description/guitarOptions/tuningMachineModels';
 
 export {
   make,
@@ -173,3 +176,62 @@ export const formLabelPrettier: IFormContext = {
   neckThickness_12: 'Neck Thickness at 12th',
   strapButtons: 'Strap Buttons',
 };
+
+export {};
+
+export const acousticFormOptions: {
+  [key in keyof IAcousticFormContext]: String[];
+} = {};
+
+export const acousticFormLabelPrettier: IAcousticFormContext = {};
+
+export { ampMake };
+
+export const ampFormOptions: {
+  [key in keyof IAmpFormContext]: IAmpFormContext[key][];
+} = {
+  ampMake: ampMake,
+  ampModel: [],
+  ampSubModel: [],
+  ampYear: [],
+  ampType: [],
+  ampPower: [],
+  ampExteriorColor: [],
+  ampExterior: [],
+  ampGrillCloth: [],
+  ampPanel: [],
+  ampWood: [],
+  ampSerial: [],
+  ampPreampTubes: [],
+  ampPowerTubes: [],
+  ampSpeakerModel: [],
+  ampSpeakerDateCodes: [],
+  ampTransformerDateCodes: [],
+  ampTransformerOriginality: ['Original', 'Replaced'],
+  ampCapacitorOriginality: ['Original', 'Recapped', 'Partially Recapped'],
+  ampBiasRating: [],
+};
+
+export const ampFormLabelPrettier: { [key in keyof IAmpFormContext]: string } =
+  {
+    ampMake: 'Make',
+    ampModel: 'Model',
+    ampSubModel: 'Submodel',
+    ampYear: 'Year',
+    ampType: 'Type',
+    ampPower: 'Power',
+    ampExteriorColor: 'Exterior Color',
+    ampExterior: 'Exterior Material',
+    ampGrillCloth: 'Grill Cloth',
+    ampPanel: 'Panel',
+    ampWood: 'Cabinet Wood',
+    ampSerial: 'Serial',
+    ampPreampTubes: 'Preamp Tubes',
+    ampPowerTubes: 'Power Tubes',
+    ampSpeakerModel: 'Speakers',
+    ampSpeakerDateCodes: 'Speaker Date Codes',
+    ampTransformerDateCodes: 'Transformer Date Codes',
+    ampTransformerOriginality: 'Transformer Originality',
+    ampCapacitorOriginality: 'Capacitors',
+    ampBiasRating: 'Bias',
+  };

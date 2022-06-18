@@ -49,6 +49,31 @@ export type IFormContext = {
   guitarCase: string;
 };
 
+export type IAmpFormContext = {
+  ampMake: string;
+  ampModel: string;
+  ampSubModel: string;
+  ampYear: string;
+  ampType: string;
+  ampPower: string;
+  ampExteriorColor: string;
+  ampExterior: string;
+  ampGrillCloth: string;
+  ampPanel: string;
+  ampWood: string;
+  ampSerial: string;
+  ampPreampTubes: string;
+  ampPowerTubes: string;
+  ampSpeakerModel: string;
+  ampSpeakerDateCodes: string;
+  ampTransformerDateCodes: string;
+  ampTransformerOriginality: string;
+  ampCapacitorOriginality: string;
+  ampBiasRating: string;
+};
+
+export type IAcousticFormContext = {};
+
 export type IDamageAreas = {
   overallCondition: string;
   fretLife: string;
@@ -68,9 +93,40 @@ export type IDamageAreas = {
   hardware: string;
 };
 
+export type IAcousticDamageAreas = {
+  overallCondition: string;
+  fretLife: string;
+  headstockFront: string;
+  headstockBack: string;
+  fretboard: string;
+  neckBack: string;
+  neckBinding: string;
+  neckPocket: string;
+  bodyFront: string;
+  bodyBack: string;
+  bodyBinding: string;
+  bridge: string;
+  tailpiece: string;
+  hardware: string;
+};
+
+export type IAmpDamageAreas = {
+  overallCondition: string;
+};
+
 export type IDamageContext = {
   rating: IDamageAreas;
   description: IDamageAreas;
+};
+
+export type IAcousticDamageContext = {
+  rating: IAcousticDamageAreas;
+  description: IAcousticDamageAreas;
+};
+
+export type IAmpDamageContext = {
+  rating: IAmpDamageAreas;
+  description: IAmpDamageAreas;
 };
 
 export type StarRatingType =

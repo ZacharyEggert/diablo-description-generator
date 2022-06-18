@@ -1,32 +1,40 @@
-import React from 'react';
-import FormatSelect from './FormatSelect';
-import formats from './formats';
+import {
+  UseAcousticFormContext,
+  UseAcousticOtherContext,
+} from 'lib/acousticContext';
+import { UseAmpFormContext, UseAmpOtherContext } from 'lib/ampContext';
 import { UseFormContext, UseOtherContext } from 'lib/context';
-import { useDamageContext } from 'lib/damageContext';
+import formats, { acousticFormats, ampFormats } from './formats';
+import {
+  useAcousticDamageContext,
+  useAmpDamageContext,
+  useDamageContext,
+} from 'lib/damageContext';
 
-interface FormOutputProps {}
+import FormatSelect from './FormatSelect';
+import React from 'react';
 
-const FormOutput: React.FC<FormOutputProps> = ({}) => {
+interface FormOutputProps {
+  itemType: 'guitar' | 'amplifier' | 'acoustic';
+}
+
+const FormOutput: React.FC<FormOutputProps> = ({ itemType }) => {
   const formatRef = React.useRef<HTMLSelectElement>(null);
 
   const form = UseFormContext();
   const other = UseOtherContext();
   const damage = useDamageContext();
 
-  const defaultCopy = (
-    <p>
-      Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim
-      labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet.
-      Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum
-      Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident.
-      Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
-      occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat
-      officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in
-      Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non
-      excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco
-      ut ea consectetur et est culpa et culpa duis.
-    </p>
-  );
+  const ampForm = UseAmpFormContext();
+  const acousticForm = UseAcousticFormContext();
+
+  const ampOther = UseAmpOtherContext();
+  const acousticOther = UseAcousticOtherContext();
+
+  const ampDamage = useAmpDamageContext();
+  const acousticDamage = useAcousticDamageContext();
+
+  const defaultCopy = <p>...</p>;
 
   const [copy, setCopy] = React.useState(defaultCopy);
 
@@ -39,24 +47,40 @@ const FormOutput: React.FC<FormOutputProps> = ({}) => {
       }
       console.log(format);
 
-      setCopy(
-        formats.filter((f) => f.name === format)[0].method(form, other, damage),
-      );
+      if (itemType === 'guitar') {
+        setCopy(
+          formats
+            .filter((f) => f.name === format)[0]
+            .method(form, other, damage),
+        );
+      } else if (itemType === 'amplifier') {
+        setCopy(
+          ampFormats
+            .filter((f) => f.name === format)[0]
+            .method(ampForm, ampOther, ampDamage),
+        );
+      } else if (itemType === 'acoustic') {
+        setCopy(
+          acousticFormats
+            .filter((f) => f.name === format)[0]
+            .method(acousticForm, acousticOther, acousticDamage),
+        );
+      }
     }
   };
 
   return (
     <>
       <div className='w-full px-12'>
-        <div className='flex flex-row justify-end w-11/12 mx-auto mb-8'>
-          <FormatSelect refObj={formatRef} />
+        <div className='mx-auto mb-8 flex w-11/12 flex-row justify-end'>
+          <FormatSelect refObj={formatRef} itemType={itemType} />
           <button
             onClick={applyFormat}
-            className='px-4 py-2 ml-8 text-xl bg-gray-600 rounded-xl'>
+            className='ml-8 rounded-xl bg-neutral-600 px-4 py-2 text-xl'>
             Apply Copy
           </button>
         </div>
-        <div className='flex flex-row items-center justify-center w-11/12 mx-auto mb-8'>
+        <div className='mx-auto mb-8 flex w-11/12 flex-row items-center justify-center'>
           {copy}
         </div>
       </div>
