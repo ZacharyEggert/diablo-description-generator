@@ -1,17 +1,17 @@
 const nutMaterial = [
   'Bone',
-  'Fossil Ivory',
+  'Synthetic Bone',
   'Plastic',
+  'Corian',
   'Graphite',
   'Graph Tech',
-  'Ebony',
-  'Synthetic Bone',
   'Tektoid',
+  'Ebony',
   'Floyd Rose Locking',
   'Kahler Locking',
   'Fender LSR Roller',
   'Ibanez Top-Lok',
-  'Corian',
+  'Fossil Ivory',
 ];
 
 export default nutMaterial;

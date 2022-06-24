@@ -1,12 +1,11 @@
 const bodyShape = [
-  'Stratocaster',
-  'Telecaster',
-  'Les Paul (Single Cut)',
-  'Les Paul (Double Cut)',
+  'S',
+  'T',
+  'LP (Single Cut)',
+  'LP (Double Cut)',
   'SG',
   'V',
-  'Explorer',
-  'Firebird',
+  'X',
   'Offset',
 ];
 export default bodyShape;

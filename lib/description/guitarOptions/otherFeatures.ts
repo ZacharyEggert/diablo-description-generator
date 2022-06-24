@@ -5,6 +5,7 @@ const otherFeatures = [
   'VOS',
   '100% Factory',
   'Original Plastic',
+  'Hang Tags',
 ];
 
 export default otherFeatures;
