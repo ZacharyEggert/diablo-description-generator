@@ -34,6 +34,7 @@ export const formPresetReset: FormPresetReset<IFormContext> = {
     finish: '',
     modifications: 'sel',
     otherFeatures: 'sel',
+    potCodes: '',
   },
   otherState: {
     year: 'XXXX',
@@ -42,6 +43,7 @@ export const formPresetReset: FormPresetReset<IFormContext> = {
     finish: '',
     modifications: '',
     otherFeatures: '',
+    potCodes: '',
   },
 };
 

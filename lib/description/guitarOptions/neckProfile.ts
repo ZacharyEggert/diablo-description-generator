@@ -9,6 +9,7 @@ const neckProfile = [
   'Soft V',
   'U',
   'Deep U',
+  'Thin U',
   'BB',
   'Asymmetrical',
   'Pattern',

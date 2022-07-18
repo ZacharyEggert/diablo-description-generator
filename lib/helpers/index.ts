@@ -39,6 +39,7 @@ const whitelist = [
   'Schaller',
   'Floyd',
   'Rose',
+  'Nashville',
 ].map((x) => x.toLowerCase());
 
 export const fixCase = (paragraph: string): string => {

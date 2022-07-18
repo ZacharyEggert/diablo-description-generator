@@ -7,6 +7,9 @@ const radius = [
   '15"',
   '16"',
   '20"',
+  '300mm',
+  '305mm',
+  '320mm',
   'Flat',
   'Compound',
 ];
