@@ -1,9 +1,10 @@
 const fingerBoardMaterial = [
   'Maple',
-  'Flamed Maple',
-  'Birdseye Maple',
   'Rosewood',
   'Ebony',
+  'Flamed Maple',
+  'Birdseye Maple',
+  'Roasted Maple',
   'Pau Ferro',
   'Laurel',
   'Wenge',

@@ -1,2 +1,10 @@
-const hardware = ['Nickel', 'Black', 'Gold', 'Aged Nickel', 'Aged Gold'];
+const hardware = [
+  'Nickel',
+  'Chrome',
+  'Black',
+  'Black Chrome',
+  'Gold',
+  'Aged Gold',
+  'Aged Nickel',
+];
 export default hardware;

@@ -9,6 +9,7 @@ const inlays = [
   'Abalone Trapezoid',
   'Mother of Pearl Block',
   'Abalone Block',
+  'Split Diamond',
   'Sharkfin',
   'Reverse Sharkfin',
   'Piranha Tooth',
