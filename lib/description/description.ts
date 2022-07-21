@@ -1,6 +1,9 @@
 import { IAcousticFormContext } from 'lib/acousticContext';
 import { IAmpFormContext } from 'lib/ampContext';
 import { IFormContext } from 'lib/context';
+import acousticMake from 'lib/description/acousticOptions/acousticMake';
+import acousticModel from 'lib/description/acousticOptions/acousticModel';
+import acousticSubModel from 'lib/description/acousticOptions/acousticSubModel';
 import ampMake from './ampOptions/make';
 import bodyShape from 'lib/description/guitarOptions/bodyShape';
 import bodyType from 'lib/description/guitarOptions/bodyType';
@@ -186,9 +189,9 @@ export const formLabelPrettier = {
 export const acousticFormOptions: {
   [key in keyof IAcousticFormContext]: any;
 } = {
-  acousticMake: [],
-  acousticModel: [],
-  acousticSubModel: [],
+  acousticMake,
+  acousticModel,
+  acousticSubModel,
   acousticYear: [],
   acousticFinish: [],
   acousticCountryOfOrigin: country,
