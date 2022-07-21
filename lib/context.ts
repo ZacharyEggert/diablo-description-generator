@@ -20,7 +20,7 @@ export const defaultContext: IFormContext = {
   scaleLength: 'sel',
   neckJoint: 'sel',
   neckWood: 'sel',
-  neckFinish: '',
+  neckFinish: 'sel',
   fingerBoard: 'sel',
   radius: 'sel',
   neckProfile: 'sel',

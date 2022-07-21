@@ -41,6 +41,8 @@ const subModel = {
       "Standard '60s",
       "'70s Deluxe",
       'Modern',
+      'Traditional',
+      'Traditional Pro',
     ],
     SG: [
       'Special',
@@ -56,7 +58,9 @@ const subModel = {
     Explorer: [],
     'Flying V': [],
     M3: [],
+    RD: ['Artist'],
     'ES-335': [],
+    'ES-345': [],
     'ES-339': [],
     'ES-347': [],
   } as Record<typeof model['Gibson'][number], string[]>,
@@ -90,9 +94,9 @@ const subModel = {
       'JS32T',
     ],
     Monarkh: [],
-    Rhoads: [],
-    'San Dimas': [],
-    'So-Cal': [],
+    Rhoads: ['RR1', 'RR0.5', 'RR24'],
+    'San Dimas': ['Style 1', 'Style 2'],
+    'So-Cal': ['Style 1', 'Style 2'],
     Soloist: ['SL1', 'SL2', 'SL2H', 'SLS', 'SL3', 'SL3R', 'SL3X'],
   } as Record<typeof model['Jackson'][number], string[]>,
   Charvel: {
@@ -126,8 +130,8 @@ const subModel = {
     ],
     Monarkh: [],
     Rhoads: [],
-    'San Dimas': [],
-    'So-Cal': [],
+    'San Dimas': ['Style 1', 'Style 2'],
+    'So-Cal': ['Style 1', 'Style 2'],
     Soloist: ['SL1', 'SL2', 'SL2H', 'SLS', 'SL3', 'SL3R', 'SL3X'],
   } as Record<typeof model['Charvel'][number], string[]>,
   PRS: {
@@ -155,8 +159,9 @@ const subModel = {
     G6: [],
   } as Record<typeof model['Gretsch'][number], string[]>,
   'G&L': {
-    Asat: [],
+    Asat: ['Signature'],
     Commanche: [],
+    Legacy: ['Signature'],
   } as Record<typeof model['G&L'][number], string[]>,
   Knaggs: {
     'Chop Tank': [],
@@ -166,7 +171,7 @@ const subModel = {
   Epiphone: {
     'Les Paul': ['Standard', 'Custom', 'Special', 'Junior', 'Studio'],
     SG: [],
-    Firebird: [],
+    Firebird: ['I', 'III', 'V', 'VII'],
     Explorer: [],
     'Flying V': [],
     M3: [],

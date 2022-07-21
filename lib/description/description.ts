@@ -19,6 +19,7 @@ import knobs from 'lib/description/guitarOptions/knobs';
 import make from 'lib/description/guitarOptions/make';
 import model from 'lib/description/guitarOptions/model';
 import modifications from 'lib/description/guitarOptions/modifications';
+import neckFinish from 'lib/description/guitarOptions/neckFinish';
 import neckJoint from 'lib/description/guitarOptions/neckJoint';
 import neckProfile from 'lib/description/guitarOptions/neckProfile';
 import neckWood from 'lib/description/guitarOptions/neckWood';
@@ -48,6 +49,7 @@ export {
   bodyType,
   bodyWood,
   scaleLength,
+  neckFinish,
   neckJoint,
   neckWood,
   fingerBoardMaterial,
@@ -93,7 +95,7 @@ export const formOptions: {
   scaleLength,
   neckJoint,
   neckWood,
-  neckFinish: [],
+  neckFinish,
   fingerBoard: fingerBoardMaterial,
   radius,
   neckProfile,
