@@ -198,14 +198,17 @@ const Presets: React.FC<Props> = ({
           formState: {
             ...acousticFormState,
             ...acousticFormPresetReset.formState,
-          },
+          } as IAcousticFormContext,
           otherState: {
             ...ampOtherState,
             ...acousticFormPresetReset.otherState,
-          },
+          } as IAcousticFormContext,
           name,
         };
-        const newAcousticPresets = { ...acousticPresets, [name]: preset };
+        const newAcousticPresets = {
+          ...acousticPresets,
+          [name]: preset,
+        };
         setAcousticPresets(newAcousticPresets);
         localStorage.setItem(
           'acousticPresets',
