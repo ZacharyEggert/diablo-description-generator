@@ -1,6 +1,9 @@
 import { IAcousticFormContext } from 'lib/acousticContext';
 import { IAmpFormContext } from 'lib/ampContext';
 import { IFormContext } from 'lib/context';
+import acousticMake from 'lib/description/acousticOptions/acousticMake';
+import acousticModel from 'lib/description/acousticOptions/acousticModel';
+import acousticSubModel from 'lib/description/acousticOptions/acousticSubModel';
 import ampMake from './ampOptions/make';
 import bodyShape from 'lib/description/guitarOptions/bodyShape';
 import bodyType from 'lib/description/guitarOptions/bodyType';
@@ -183,13 +186,91 @@ export const formLabelPrettier = {
   strapButtons: 'Strap Buttons',
 };
 
-export {};
-
 export const acousticFormOptions: {
   [key in keyof IAcousticFormContext]: any;
-} = {};
+} = {
+  acousticMake,
+  acousticModel,
+  acousticSubModel,
+  acousticYear: [],
+  acousticFinish: [],
+  acousticCountryOfOrigin: country,
+  acousticSerial: [],
+  acousticCondition: condition,
+  acousticWeight: [],
+  acousticBackWood: bodyWood,
+  acousticSideWood: bodyWood,
+  acousticTopWood: topWood,
+  acousticScaleLength: scaleLength,
+  acousticNeckJoint: neckJoint,
+  acousticNeckWood: neckWood,
+  acousticNeckFinish: neckFinish,
+  acousticFingerBoard: fingerBoardMaterial,
+  acousticRadius: radius,
+  acousticNeckProfile: neckProfile,
+  acousticInlays: inlays,
+  acousticNutWidth: nutWidth,
+  acousticNut: nutMaterial,
+  acousticFrets: frets,
+  acousticPickguard: pickguard,
+  acousticTuningMachineBrands: tuningMachineBrands,
+  acousticTuningMachineModels: tuningMachineModels,
+  acousticTuningMachineHeads: tuningMachineHeads,
+  acousticBridge: bridge,
+  acousticModifications: modifications,
+  acousticOtherFeatures: otherFeatures,
+  acousticStringGauge: stringGauge,
+  acousticGuitarCase: guitarCase,
+  acousticBodyShape: bodyShape,
+  acousticFinishType: finishType,
+  acousticNeckThickness_1: [],
+  acousticNeckThickness_12: [],
+  acousticStrapButtons: [],
+  acousticElectronics: ['Fishman', 'EMG', 'Seymour Duncan', 'Mojotone'],
+  acousticElectronicsType: ['Under Bridge Piezo', 'Soundhole Magnetic Pickup'],
+};
 
-export const acousticFormLabelPrettier = {};
+export const acousticFormLabelPrettier = {
+  acousticMake: 'Make',
+  acousticModel: 'Model',
+  acousticSubModel: 'Sub-Model',
+  acousticYear: 'Year',
+  acousticFinish: 'Finish',
+  acousticCountryOfOrigin: 'Country',
+  acousticSerial: 'Serial #',
+  acousticCondition: 'Condition',
+  acousticWeight: 'Weight',
+  acousticBackWood: 'Back Wood',
+  acousticSideWood: 'Side Wood',
+  acousticTopWood: 'Top Wood',
+  acousticScaleLength: 'Scale Length',
+  acousticNeckJoint: 'Neck Joint',
+  acousticNeckWood: 'Neck Wood',
+  acousticNeckFinish: 'Neck Finish',
+  acousticFingerBoard: 'Finger Board',
+  acousticRadius: 'Neck Radius',
+  acousticNeckProfile: 'Neck Profile',
+  acousticInlays: 'Inlays',
+  acousticNutWidth: 'Nut Width',
+  acousticNut: 'Nut',
+  acousticFrets: 'Frets',
+  acousticPickguard: 'Pickguard',
+  acousticTuningMachineBrands: 'Tuner Brand',
+  acousticTuningMachineModels: 'Tuner Model',
+  acousticTuningMachineHeads: 'Tuner Head',
+  acousticBridge: 'Bridge',
+  acousticModifications: 'Mods',
+  acousticOtherFeatures: 'Other Features',
+  acousticStringGauge: 'String Gauge',
+  acousticGuitarCase: 'Case',
+  acousticBodyShape: 'Body Shape',
+  acousticFinishType: 'Finish Type',
+  acousticNeckThickness_1: 'Neck Thickness at 1st',
+  acousticNeckThickness_12: 'Neck Thickness at 12th',
+  acousticStrapButtons: 'Strap Buttons',
+  acousticElectronics: 'Electronics',
+  acousticElectronicsType: 'Electronics Type',
+};
 
 export { ampMake };
 

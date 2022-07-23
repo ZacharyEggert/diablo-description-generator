@@ -1,6 +1,10 @@
 import model from './model';
 
-const subModel = {
+const subModel: {
+  [propertyA in keyof typeof model]: {
+    [propertyB in typeof model[propertyA][number]]: string[];
+  };
+} = {
   Fender: {
     Stratocaster: [
       'American Standard',
@@ -26,7 +30,7 @@ const subModel = {
     Nocaster: [],
     Jaguar: [],
     Jazzmaster: ['American Vintage'],
-  } as Record<typeof model['Fender'][number], string[]>,
+  },
   Gibson: {
     'Les Paul': [
       'Standard',
@@ -63,7 +67,7 @@ const subModel = {
     'ES-345': [],
     'ES-339': [],
     'ES-347': [],
-  } as Record<typeof model['Gibson'][number], string[]>,
+  },
   Jackson: {
     Dinky: [
       'DK1',
@@ -98,7 +102,7 @@ const subModel = {
     'San Dimas': ['Style 1', 'Style 2'],
     'So-Cal': ['Style 1', 'Style 2'],
     Soloist: ['SL1', 'SL2', 'SL2H', 'SLS', 'SL3', 'SL3R', 'SL3X'],
-  } as Record<typeof model['Jackson'][number], string[]>,
+  },
   Charvel: {
     Dinky: [
       'DK1',
@@ -133,7 +137,7 @@ const subModel = {
     'San Dimas': ['Style 1', 'Style 2'],
     'So-Cal': ['Style 1', 'Style 2'],
     Soloist: ['SL1', 'SL2', 'SL2H', 'SLS', 'SL3', 'SL3R', 'SL3X'],
-  } as Record<typeof model['Charvel'][number], string[]>,
+  },
   PRS: {
     'Custom 24': [],
     McCarty: [],
@@ -142,32 +146,32 @@ const subModel = {
     'CE 24': [],
     S2: [],
     SE: [],
-  } as Record<typeof model['PRS'][number], string[]>,
+  },
   Washburn: {
     Nuno: [],
     S10: [],
     S20: [],
     S2H: [],
     V26: [],
-  } as Record<typeof model['Washburn'][number], string[]>,
+  },
   ESP: {
     Vintage: [],
     Kamikaze: [],
-  } as Record<typeof model['ESP'][number], string[]>,
+  },
   Gretsch: {
     Falcon: [],
     G6: [],
-  } as Record<typeof model['Gretsch'][number], string[]>,
+  },
   'G&L': {
     Asat: ['Signature'],
     Commanche: [],
     Legacy: ['Signature'],
-  } as Record<typeof model['G&L'][number], string[]>,
+  },
   Knaggs: {
     'Chop Tank': [],
     'Steve Stevens': [],
-  } as Record<typeof model['Knaggs'][number], string[]>,
-  Ibanez: {} as Record<typeof model['Ibanez'][number], string[]>,
+  },
+  Ibanez: {},
   Epiphone: {
     'Les Paul': ['Standard', 'Custom', 'Special', 'Junior', 'Studio'],
     SG: [],
@@ -175,21 +179,21 @@ const subModel = {
     Explorer: [],
     'Flying V': [],
     M3: [],
-  } as Record<typeof model['Epiphone'][number], string[]>,
-  Schecter: {} as Record<typeof model['Schecter'][number], string[]>,
+  },
+  Schecter: {},
   Caparison: {
     Orbit: [],
-  } as Record<typeof model['Caparison'][number], string[]>,
+  },
   Carvin: {
     DC: [],
     CS: [],
     AC: [],
-  } as Record<typeof model['Carvin'][number], string[]>,
+  },
   Kiesel: {
     DC: [],
     CS: [],
     AC: [],
-  } as Record<typeof model['Kiesel'][number], string[]>,
+  },
 };
 
 export default subModel;
