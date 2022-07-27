@@ -116,11 +116,10 @@ const Presets: React.FC<Props> = ({
           'Are you sure you want to import this preset?',
         );
         if (replaceOrUpdate) {
-          setPresets({ ...presets, ...newPreset });
-          localStorage.setItem(
-            'presets',
-            JSON.stringify({ ...presets, ...newPreset }),
-          );
+          const newPresets = { ...presets, ...newPreset };
+          delete newPresets['null'];
+          setPresets(newPresets);
+          localStorage.setItem('presets', JSON.stringify(newPresets));
         }
       }
     } catch (error) {
@@ -149,7 +148,17 @@ const Presets: React.FC<Props> = ({
       preset = acousticPresets[selectedPreset];
     }
 
-    // console.log(preset, presets);
+    let AllPresets: any = presets;
+
+    if (itemType === 'guitar') {
+      AllPresets = presets;
+    } else if (itemType === 'amplifier') {
+      AllPresets = ampPresets;
+    } else if (itemType === 'acoustic') {
+      AllPresets = acousticPresets;
+    }
+
+    console.dir(JSON.stringify(AllPresets));
     console.log(JSON.stringify({ [preset.name]: preset }));
   };
 
@@ -162,7 +171,7 @@ const Presets: React.FC<Props> = ({
     const name = prompt(
       'Enter a name for this preset. You can delete it later by pressing ` (above the tab key)',
     );
-    if (name) {
+    if (name !== '') {
       if (itemType === 'guitar') {
         const preset = {
           formState: {
@@ -312,20 +321,28 @@ const Presets: React.FC<Props> = ({
           <option value='select...' disabled>
             Select a preset
           </option>
-          {Object.values(
+          <option value='Clear'>Clear</option>
+
+          {Object.keys(
             itemType === 'guitar'
               ? presets
               : itemType === 'acoustic'
               ? acousticPresets
               : ampPresets,
-          ).map((preset, i) => (
-            <option
-              key={i}
-              value={Object.keys(presets)[i]}
-              className='bg-neutral-800'>
-              {preset.name}
-            </option>
-          ))}
+          ).length > 0 &&
+            Object.values(
+              itemType === 'guitar'
+                ? presets
+                : itemType === 'acoustic'
+                ? acousticPresets
+                : ampPresets,
+            ).map((preset, i) =>
+              preset.name === 'Clear' || preset.name === 'null' ? null : (
+                <option key={i} value={preset.name} className='bg-neutral-800'>
+                  {preset.name}
+                </option>
+              ),
+            )}
         </select>
         <button
           onClick={handlePresetApplication}
