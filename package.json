@@ -6,7 +6,13 @@
     "export": "next export",
     "build": "npm run half-build && npm run export",
     "start": "next start",
-		"typecheck": "tsc -p tsconfig.json --noEmit"
+		"typecheck": "tsc -p tsconfig.json --noEmit",
+		"p:pages": "yarn prettier --write ./pages",
+		"p:components": "yarn prettier --write ./components",
+		"p:styles": "yarn prettier --write ./styles",
+		"p:public": "yarn prettier --write ./public",
+		"p:lib": "yarn prettier --write ./lib",
+		"p": "yarn p:pages && yarn p:components && yarn p:lib"
   },
   "dependencies": {
     "next": "latest",

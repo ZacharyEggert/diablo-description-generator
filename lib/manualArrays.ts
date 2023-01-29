@@ -52,6 +52,7 @@ export const manualArrayOfContextKeys: Array<
   'tuningMachineBrands',
   'tuningMachineModels',
   'tuningMachineHeads',
+  'strapButtons',
   'bridge',
   'knobs',
   'modifications',

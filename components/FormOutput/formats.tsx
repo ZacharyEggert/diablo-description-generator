@@ -82,6 +82,7 @@ const formats = [
         neckThickness_1,
         neckThickness_12,
         strapButtons,
+        potCodes,
       }: IFormContext = state;
 
       let pickups = combinePickups(pickupNeck, pickupMiddle, pickupBridge);
