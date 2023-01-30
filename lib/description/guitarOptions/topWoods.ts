@@ -19,9 +19,9 @@ const topWoods = [
   'Mahogany Cap',
   'Ash Top',
   'Ash Cap',
-];
+] as const;
 
-export const topWoodsMap = {
+export const topWoodsMap: { [key in typeof topWoods[number]]: string } = {
   'Maple Top': '',
   'Maple Cap': '',
   'Flamed Maple Top': 'FMT',

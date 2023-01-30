@@ -1,7 +1,7 @@
 const neckProfile = [
+  'C',
   'Modern C',
   'Chunky C',
-  'C',
   'D',
   'Slim D',
   'V',
@@ -14,6 +14,7 @@ const neckProfile = [
   'Asymmetrical',
   'Pattern',
   'Pattern Thin',
+  'Pattern Wide',
   'Rounded',
   'Slim Taper',
   "'58 Neck",

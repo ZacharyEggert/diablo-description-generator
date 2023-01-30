@@ -1,7 +1,9 @@
 const modifications = [
   'Refretted',
-  'Neck Reset',
   "Refretted and Plek'd",
+  'Neck Reset',
+  'Refinished',
+  'Refinished and Refretted',
   'Upgraded Pickups',
   'Upgraded Tuning Machines',
   'FU TONE Floyd Upgrades',

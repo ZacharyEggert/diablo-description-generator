@@ -6,6 +6,7 @@ const bodyShape = [
   'SG',
   'V',
   'X',
+  'RR',
   'Offset',
 ];
 export default bodyShape;

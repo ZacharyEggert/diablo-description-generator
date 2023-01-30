@@ -1,3 +1,3 @@
-const bodyType = ['Solid', 'Crossbanded', 'Semi-Hollow', 'Hollow'];
+const bodyType = ['Solid', 'Chambered', 'Semi-Hollow', 'Hollow', 'Crossbanded'];
 
 export default bodyType;

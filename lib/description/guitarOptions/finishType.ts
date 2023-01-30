@@ -1,5 +1,6 @@
 const finishType = [
   'Polyurethane',
+  'Urethane',
   'Polyester',
   'Nitrocellulose',
   'VOS Nitrocellulose',

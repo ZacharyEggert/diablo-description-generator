@@ -9,5 +9,5 @@ const tuningMachineBrands = [
   'Sperzel',
   'Schaller',
   'Kluson',
-];
+] as const;
 export default tuningMachineBrands;

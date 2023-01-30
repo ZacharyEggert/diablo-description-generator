@@ -12,6 +12,7 @@ const pickguard = [
   'Single-Ply White',
   'Single-Ply Mint',
   'Tortoise Shell',
+  'White Tortoise Shell',
   'Mirror',
   'Gold',
   'Anodized',

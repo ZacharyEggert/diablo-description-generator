@@ -1,4 +1,8 @@
-const tuningMachineModels = {
+import tuningMachineBrands from './tuningMachineBrands';
+
+const tuningMachineModels: {
+  [key in typeof tuningMachineBrands[number]]: string[];
+} = {
   Grover: [
     'Vintage',
     'Vintage Deluxe',
@@ -36,8 +40,21 @@ const tuningMachineModels = {
     'Locking 6-In-Line',
     'Left-Handed Locking 6-In-Line',
     'Road Worn 6-In-Line',
+    'Deluxe 6-In-Line',
+    'Deluxe Locking 6-In-Line',
+    'Deluxe Staggered 6-In-Line',
+    'Deluxe Staggered Locking 6-In-Line',
   ],
-  Gibson: ['Vintage Deluxe', 'Modern'],
+  Gibson: [
+    'Vintage Deluxe',
+    'Modern',
+    'No Line Single Ring',
+    'Single Line, Single Ring',
+    'Single Line, Double Ring',
+    'Double Line, Single Ring',
+    'Double Line, Double Ring',
+    'Patent Applied For',
+  ],
   Jackson: ['Sealed Diecast'],
   Ibanez: [],
   'Hip Shot': [],
@@ -52,6 +69,8 @@ const tuningMachineModels = {
   Kluson: [
     'Deluxe',
     'Locking Deluxe',
+    'No Line, Single Ring Reissue',
+    'Single Line, Double Ring Reissue',
     '6-In-Line Deluxe',
     '6-In-Line Locking Deluxe',
     '6-In-Line Diecast 2-Pin',

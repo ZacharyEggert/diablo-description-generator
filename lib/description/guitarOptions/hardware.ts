@@ -1,10 +1,10 @@
 const hardware = [
-  'Nickel',
   'Chrome',
+  'Gold',
+  'Nickel',
   'Black',
   'Black Chrome',
-  'Gold',
   'Aged Gold',
   'Aged Nickel',
-];
+] as const;
 export default hardware;
