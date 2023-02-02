@@ -110,7 +110,7 @@ const model = {
     'Vulture',
   ],
   Gretsch: ['Falcon', 'G6'],
-  EVH: ['Wolfgang', 'Striped Series'],
+  EVH: ['Wolfgang', 'Striped Series', '5150 Series'],
   'G&L': ['Asat', 'Commanche', 'Legacy'],
   Knaggs: ['Chop Tank', 'Steve Stevens'],
   Ibanez: [],
