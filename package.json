@@ -6,8 +6,8 @@
     "export": "next export",
     "build": "npm run half-build && npm run export",
     "start": "next start",
-		"typecheck": "tsc -p tsconfig.json --noEmit",
-		"p": "yarn prettier ./**/*.{ts,tsx} --ignore-path .prettierignore --write"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "p": "yarn prettier ./**/*.{ts,tsx} --ignore-path .prettierignore --write"
   },
   "dependencies": {
     "next": "latest",
