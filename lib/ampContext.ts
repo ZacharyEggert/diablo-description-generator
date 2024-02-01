@@ -25,6 +25,15 @@ export const defaultAmpContext: IAmpFormContext = {
   ampExterior: '',
   ampExteriorColor: '',
   ampYear: '',
+	ampChannels: '',
+	ampCondition: '',
+	ampEffectsLoop: '',
+	ampInputs: '',
+	ampInputVoltage: '',
+	ampMasterVolume: '',
+	ampOutputImpedance: '',
+	ampOutputs: '',
+	ampPhaseInverterTube: '',
 };
 
 export const emptyAmpContext: IAmpFormContext = {
@@ -48,6 +57,15 @@ export const emptyAmpContext: IAmpFormContext = {
   ampExterior: '',
   ampExteriorColor: '',
   ampYear: '',
+	ampChannels: '',
+	ampCondition: '',
+	ampEffectsLoop: '',
+	ampInputs: '',
+	ampInputVoltage: '',
+	ampMasterVolume: '',
+	ampOutputImpedance: '',
+	ampOutputs: '',
+	ampPhaseInverterTube: '',
 };
 
 export const AmpFormContext = createContext<IAmpFormContext>(defaultAmpContext);
