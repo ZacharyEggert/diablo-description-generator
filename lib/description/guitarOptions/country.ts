@@ -1,5 +1,6 @@
 const country = [
-  'USA',
+  'The USA',
+  'The UK',
   'Mexico',
   'Japan',
   'China',
