@@ -274,6 +274,59 @@ export const acousticFormLabelPrettier = {
 
 export { ampMake };
 
+const ampPreampTubes = [
+  '12AT7',
+  'ECC81',
+  '12AU7',
+  'ECC82',
+  '12AX7',
+  'ECC83',
+  '7025',
+  '12AY7',
+  '6072',
+  '12BH7',
+  '12DW7',
+  '7247',
+  '5687',
+  '5751',
+  '6AQ8',
+  'ECC85',
+  '6AU6',
+  '6C10',
+  '6C4',
+  '6CG7',
+  '6DJ8',
+  'ECC88',
+  '6EU7',
+  '6SL7',
+  '6SN7',
+  '6U8',
+].toSorted();
+
+const powerTubeNumbers = ['1', '2', '4', '6', '8', '10'];
+const powerTubes = [
+  '2A3',
+  '6550',
+  'KT88',
+  '6973',
+  '6AQ5',
+  'EL90',
+  '6L6',
+  'KT66',
+  'KT77',
+  '5881',
+  'EL37',
+  '6V6',
+  'EL34',
+  '6CA7',
+  'EL3N',
+  'EL84',
+].toSorted();
+
+const combinedPowerTubes = powerTubes
+  .map((tube) => powerTubeNumbers.map((number) => `${number}x ${tube}`))
+  .flat();
+
 export const ampFormOptions: {
   [key in keyof IAmpFormContext]: IAmpFormContext[key][];
 } = {
@@ -321,8 +374,29 @@ export const ampFormOptions: {
   ampPanel: ['Black', 'Brown', 'Silver', 'Plexiglass', 'Anodized'],
   ampWood: [],
   ampSerial: [],
+  ampRectifierTube: [
+    '5AR4',
+    '5R4',
+    '5V4',
+    '5U4',
+    '5Y3',
+    '5Z3',
+    '6C4',
+    '6CA4',
+    '6V4',
+    '6X4',
+    'Solid State',
+  ],
   ampPreampTubes: [],
-  ampPowerTubes: [],
+  ampPreampTubeV1: ampPreampTubes,
+  ampPreampTubeV2: ampPreampTubes,
+  ampPreampTubeV3: ampPreampTubes,
+  ampPreampTubeV4: ampPreampTubes,
+  ampPreampTubeV5: ampPreampTubes,
+  ampPreampTubeV6: ampPreampTubes,
+  ampPreampTubeV7: ampPreampTubes,
+  ampPreampTubeV8: ampPreampTubes,
+  ampPowerTubes: combinedPowerTubes,
   ampSpeakerModel: [],
   ampSpeakerDateCodes: [],
   ampTransformerDateCodeInput: [],
@@ -347,6 +421,7 @@ export const ampFormOptions: {
   ampInputVoltage: ['120V', '220V', '230V', '120V/220V'],
   ampOutputImpedance: ['4Ω', '8Ω', '16Ω', '4Ω/8Ω', '8Ω/16Ω', '4Ω/8Ω/16Ω'],
   ampOutputs: [],
+  ampWeight: [],
 };
 
 export const ampFormLabelPrettier = {
@@ -364,7 +439,16 @@ export const ampFormLabelPrettier = {
   ampPanel: 'Panel',
   ampWood: 'Cabinet Wood',
   ampSerial: 'Serial',
+  ampRectifierTube: 'Rectifier',
   ampPreampTubes: 'Preamp Tubes',
+  ampPreampTubeV1: 'V1',
+  ampPreampTubeV2: 'V2',
+  ampPreampTubeV3: 'V3',
+  ampPreampTubeV4: 'V4',
+  ampPreampTubeV5: 'V5',
+  ampPreampTubeV6: 'V6',
+  ampPreampTubeV7: 'V7',
+  ampPreampTubeV8: 'V8',
   ampPhaseInverterTube: 'Phase Inverter Tube',
   ampPowerTubes: 'Power Tubes',
   ampMasterVolume: 'Master Volume',
@@ -384,4 +468,5 @@ export const ampFormLabelPrettier = {
   ampBiasRating: 'Bias',
   ampOutputImpedance: 'Output Impedance',
   ampOutputs: 'Outputs',
+  ampWeight: 'Weight',
 };

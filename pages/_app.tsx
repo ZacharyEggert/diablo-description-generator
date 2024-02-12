@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }) {
   const [ampDamageState, setAmpDamageState] = useState(defaultAmpDamageContext);
 
   const [itemType, setItemType] = useState<'guitar' | 'amplifier' | 'acoustic'>(
-    'guitar',
+    'amplifier',
   );
 
   const alterForm = (Object: Partial<IFormContext>) => {

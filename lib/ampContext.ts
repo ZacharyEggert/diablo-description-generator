@@ -5,13 +5,23 @@ import { IAmpFormContext } from 'lib/types';
 export type { IAmpFormContext } from 'lib/types';
 
 export const defaultAmpContext: IAmpFormContext = {
+  ampPreampTubeV1: 'sel',
+  ampPreampTubeV2: 'sel',
+  ampPreampTubeV3: 'sel',
+  ampPreampTubeV4: 'sel',
+  ampPreampTubeV5: 'sel',
+  ampPreampTubeV6: 'sel',
+  ampPreampTubeV7: 'sel',
+  ampPreampTubeV8: 'sel',
+  ampRectifierTube: 'sel',
+  ampWeight: '',
   ampBiasRating: '',
   ampCapacitorOriginality: '',
   ampMake: 'sel',
   ampModel: '',
   ampPower: '',
   ampCountryOfOrigin: 'sel',
-  ampPowerTubes: '',
+  ampPowerTubes: 'sel',
   ampPreampTubes: '',
   ampSerial: '',
   ampSpeakerDateCodes: '',
@@ -54,6 +64,7 @@ export const emptyAmpContext: IAmpFormContext = {
   ampSpeakerDateCodes: '',
   ampSpeakerModel: '',
   ampSubModel: '',
+  ampWeight: '',
   ampType: '',
   ampTransformerDateCodeInput: '',
   ampTransformerDateCodeOutput: '',
@@ -76,6 +87,15 @@ export const emptyAmpContext: IAmpFormContext = {
   ampOutputs: '',
   ampPhaseInverterTube: '',
   ampGrounding: '',
+  ampPreampTubeV1: '',
+  ampPreampTubeV2: '',
+  ampPreampTubeV3: '',
+  ampPreampTubeV4: '',
+  ampPreampTubeV5: '',
+  ampPreampTubeV6: '',
+  ampPreampTubeV7: '',
+  ampPreampTubeV8: '',
+  ampRectifierTube: '',
 };
 
 export const AmpFormContext = createContext<IAmpFormContext>(defaultAmpContext);
